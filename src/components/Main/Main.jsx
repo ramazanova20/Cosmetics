@@ -10,9 +10,9 @@ function Main() {
     <div>
         <MainBasic/>
         <Cosmetics/>
-        <Baxim/>
+        {/* <Baxim/>
         <Aksesuar/>
-        <Brend/>
+        <Brend/> */}
     </div>
   )
 }
