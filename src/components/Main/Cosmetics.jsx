@@ -25,12 +25,7 @@ function Cosmetics() {
           </div>
         </div>
         <div className="my-4">
-          <Item
-            name="Example Item"
-            prices={{ default: 10 }}
-            desc="This is a great product!"
-            img="https://via.placeholder.com/150"
-          />
+          <Item />
         </div>
         <div className="flex flex-col">
           <h6 className="text-blue-700 font-bold">Kosmetika Məlumatları</h6>

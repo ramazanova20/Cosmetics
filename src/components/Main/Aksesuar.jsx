@@ -1,4 +1,5 @@
 import React from 'react'
+import Item from './Item'
 
 function Aksesuar() {
   return (
@@ -19,6 +20,9 @@ function Aksesuar() {
             </div>
             <div className='my-4'>
                 AAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBCCCCCCCCCCCCCCCCCCCCCCCC
+                <div className="my-4">
+                    <Item/>
+                 </div>
             </div>
             <div className='flex flex-col'>
                 <p>Aksessuar dedikdə şəxsi aksessuarlar - eynekler, qol saatlari, cantalar, bijuteriyalar və s. bu kimi şeylər və ev aksessuarlarını – suviner kimi aksessuarlar nəzərdə tutulur.</p>

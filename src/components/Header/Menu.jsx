@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { IoMdMenu } from "react-icons/io";
 import { FaHome } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 function Menu() {
   const [show, setShow] = useState(false); 
@@ -33,27 +34,29 @@ function Menu() {
                 <FaHome  onClick={handleClick}/>
               </div> */}
               <ul className="flex flex-col gap-2">
-                <li>Kosmetika</li>
-                <li>Baxım</li>
-                <li>Aksessuar və Moda</li>
-                <li>Brendlər</li>
-                <li>Məlumatlar</li>
+                <li><Link to ={"/cosmetics"}>Kosmetika</Link></li>
+                <li><Link to ={"/baxim"}>Baxım</Link></li>
+                <li><Link to ={"/aksesuar"}>Aksessuar və Moda</Link></li>
+                <li><Link to ={"/brend"}>Brendlər</Link></li>
+                <li><Link to ={"/melumat"}>Məlumatlar</Link></li>
+                
               </ul>
             </div>
           </div>
-        
+          
 
         <div className="hidden md:block">
           <div className="flex flex-row items-center justify-start gap-4 text-white">
             <div>
-              <FaHome />
+              <Link to ={"/basic"}><FaHome /></Link>
+              
             </div>
             <ul className="flex flex-row gap-4">
-              <li>Kosmetika</li>
-              <li>Baxım</li>
-              <li>Aksessuar və Moda</li>
-              <li>Brendlər</li>
-              <li>Məlumatlar</li>
+                <li><Link to ={"/cosmetics"}>Kosmetika</Link></li>
+                <li><Link to ={"/baxim"}>Baxım</Link></li>
+                <li><Link to ={"/aksesuar"}>Aksessuar və Moda</Link></li>
+                <li><Link to ={"/brend"}>Brendlər</Link></li>
+                <li><Link to ={"/melumat"}>Məlumatlar</Link></li>
             </ul>
           </div>
         </div>

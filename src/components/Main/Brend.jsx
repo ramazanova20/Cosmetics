@@ -4,8 +4,9 @@ function Brend() {
   return (
     <div>
         <div className='container lg:max-w-[1024px] mx-auto p-3'>
-        <div class=""><h1>Brend kosmetika firmalar</h1><div class="">
-            <ul class="flex flex-wap">
+        <div class=""><h1>Brend kosmetika firmalar</h1>
+        <div className=' flex flex-row gap-4'>
+            <ul className="flex flex-col ">
 <li><a href="" title="A La Rose brand kosmetika">A La Rose</a></li>
 <li><a href="" title="Abib brand kosmetika">Abib</a></li>
 <li><a href="" title="ABODY brand kosmetika">ABODY</a></li>
@@ -29,6 +30,7 @@ function Brend() {
 <li><a href="" title="Avofarm brand kosmetika">Avofarm</a></li>
 <li><a href="" title="Avon brand kosmetika">Avon</a></li>
 <li><a href="" title="Azzaro brand kosmetika">Azzaro</a></li>
+
 <li><a href="" title="Bade Natural brand kosmetika">Bade Natural</a></li>
 <li><a href="" title="BALEA brand kosmetika">BALEA</a></li>
 <li><a href="" title="Beaute Melasma-X brand kosmetika">Beaute Melasma-X</a></li>
@@ -82,6 +84,8 @@ function Brend() {
 <li><a href="" title="Chloe brand kosmetika">Chloe</a></li>
 <li><a href="" title="Choosy brand kosmetika">Choosy</a></li>
 <li><a href="" title="Christian Dior brand kosmetika">Christian Dior</a></li>
+</ul>
+<ul>
 <li><a href="" title="Chupa Chups brand kosmetika">Chupa Chups</a></li>
 <li><a href="" title="Cica Farm Pore Cleansing brand kosmetika">Cica Farm Pore Cleansing</a></li>
 <li><a href="" title="Ciracle brand kosmetika">Ciracle</a></li>
@@ -91,6 +95,7 @@ function Brend() {
 <li><a href="" title="COCUTE brand kosmetika">COCUTE</a></li>
 <li><a href="" title="COLLEER brand kosmetika">COLLEER</a></li>
 <li><a href="" title="COLOURPOP brand kosmetika">COLOURPOP</a></li>
+
 <li><a href="" title="COSRX brand kosmetika">COSRX</a></li>
 <li><a href="" title="Cosway Kingirls brand kosmetika">Cosway Kingirls</a></li>
 <li><a href="" title="Coxir brand kosmetika">Coxir</a></li>
@@ -234,6 +239,8 @@ function Brend() {
 <li><a href="" title="Lancôme brand kosmetika">Lancôme</a></li>
 <li><a href="" title="Lanvin brand kosmetika">Lanvin</a></li>
 <li><a href="" title="Lapitak brand kosmetika">Lapitak</a></li>
+</ul>
+<ul>
 <li><a href="" title="LE CAFE DE BEAUTE brand kosmetika">LE CAFE DE BEAUTE</a></li>
 <li><a href="" title="Le Petit Marseillais brand kosmetika">Le Petit Marseillais</a></li>
 <li><a href="" title="Lebelage brand kosmetika">Lebelage</a></li>
@@ -384,6 +391,8 @@ function Brend() {
 <li><a href="" title="Shiseido brand kosmetika">Shiseido</a></li>
 <li><a href="" title="SIENNA X brand kosmetika">SIENNA X</a></li>
 <li><a href="" title="SILISPONGE BLENDER brand kosmetika">SILISPONGE BLENDER</a></li>
+</ul>
+<ul>
 <li><a href="" title="Silstar brand kosmetika">Silstar</a></li>
 <li><a href="" title="Simple brand kosmetika">Simple</a></li>
 <li><a href="" title="Skin &amp; Lab brand kosmetika">Skin &amp; Lab</a></li>
@@ -452,7 +461,7 @@ function Brend() {
 <li><a href="" title="Ziaja brand kosmetika">Ziaja</a></li>
 <li><a href="" title="ZOEVA brand kosmetika">ZOEVA</a></li></ul></div>
         
-        </div>
+</div>
         </div>
     </div>
   )

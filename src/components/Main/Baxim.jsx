@@ -1,4 +1,5 @@
 import React from 'react'
+import Item from './Item'
 
 function Baxim() {
   return (
@@ -26,6 +27,9 @@ function Baxim() {
             </div>
             <div className='my-4'>
                 AAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBCCCCCCCCCCCCCCCCCCCCCCCC
+                <div className="my-4">
+                    <Item/>
+                </div>
             </div>
             <div className='flex flex-col'>
                 <p>Baxım kateqoriyamızda xanımların gözəl, baxımlı olmasını təmin edən məhsullar yer almışdır. Bunlara uze qulluq, deriye qulluq, bedene qulluq, saclara qulluq, gigiyenik vasitələr aiddir. Gözəl və baxımlı olmaq bir çox cəhətdən vacibdir. Estetik cəhətdən, sağlamlıq və insanın özünü yaxşı hiss etməsi baxımından və digər səbəblərdən. Buna görə də, bu tip məhsullar geniş çeşiddə təqdim olunur. Hər bir yaş, fərqli dəri tipləri və müxtəlif məqsədlər üçün xüsusi vasitələr var.</p>

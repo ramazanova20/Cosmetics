@@ -14,7 +14,7 @@ function Item({ name, prices, desc, img }) {
       <div className="rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5">
         <Heart />
       </div>
-      <img className="w-full" src={img} alt={name} />
+      <img className="w-full" src="https://images.pexels.com/photos/236599/pexels-photo-236599.jpeg?auto=compress&cs=tinysrgb&w=600" alt={name} />
       <div className="p-6">
         <h2 className="text-xl font-semibold mb-2">{name}</h2>
         <p className="text-gray-700 mb-4">{desc}</p>
