@@ -1,46 +1,51 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Heart from './Heart';
+import { DATA } from '../../context/DataContext';
 
-function Item({ name, prices, desc, img }) {
-  const [price] = useState(prices || 0);
+function Item() {
+  const data = useContext(DATA); 
   const [quant, setQuant] = useState(1);
 
-  const handleBuyClick = () => {
-    alert(`You selected ${quant} ${name}(s) for ${quant * price}₼.`);
-  };
+  if (!data) {
+    return <div>Loading...</div>;  
+  }
 
   return (
-    <div className="max-w-sm rounded overflow-hidden shadow-lg bg-white relative">
-      <div className="rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5">
-        <Heart />
-      </div>
-      <img className="w-full" src="https://images.pexels.com/photos/236599/pexels-photo-236599.jpeg?auto=compress&cs=tinysrgb&w=600" alt={name} />
-      <div className="p-6">
-        <h2 className="text-xl font-semibold mb-2">{name}</h2>
-        <p className="text-gray-700 mb-4">{desc}</p>
-        <h5 className="text-lg font-semibold mb-4">{quant * price}₼</h5>
-        <div className="flex items-center justify-between mb-3">
-          <button
-            onClick={() => setQuant(quant > 1 ? quant - 1 : quant)}
-            className="px-3 py-1 bg-gray-200 rounded"
-          >
-            -
-          </button>
-          <span className="px-3 py-2">{quant}</span>
-          <button
-            onClick={() => setQuant(quant + 1)}
-            className="px-3 py-1 bg-gray-200 rounded"
-          >
-            +
-          </button>
+    <div className="flex flex-wrap gap-6">
+      {data.map((item,i) => (
+        <div key={i} className="max-w-sm rounded overflow-hidden shadow-lg bg-white relative">
+          <div className="rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5">
+            <Heart />
+          </div>
+          <img className="w-full" src={item.api_featured_image} alt={item.name} />
+          <div className="p-6">
+            <h2 className="text-xl font-semibold mb-2">{item.name}</h2>
+            {/* <p className="text-gray-700 mb-4">{item.description}</p> */}
+            <h5 className="text-lg font-semibold mb-4">{quant * item.price}₼</h5>
+            <div className="flex items-center justify-between mb-3">
+              <button
+                onClick={() => setQuant(quant > 1 ? quant - 1 : quant)}
+                className="px-3 py-1 bg-gray-200 rounded"
+              >
+                -
+              </button>
+              <span className="px-3 py-2">{quant}</span>
+              <button
+                onClick={() => setQuant(quant + 1)}
+                className="px-3 py-1 bg-gray-200 rounded"
+              >
+                +
+              </button>
+            </div>
+            <button
+              onClick={() => alert(`You selected ${quant} ${item.name}(s) for ${quant * item.price}₼.`)}
+              className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+            >
+              Buy
+            </button>
+          </div>
         </div>
-        <button
-          onClick={handleBuyClick}
-          className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
-        >
-          Ye məni
-        </button>
-      </div>
+      ))}
     </div>
   );
 }

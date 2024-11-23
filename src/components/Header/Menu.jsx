@@ -34,6 +34,7 @@ function Menu() {
                 <FaHome  onClick={handleClick}/>
               </div> */}
               <ul className="flex flex-col gap-2">
+                <li><Link to ={"/basic"}>Home Page</Link></li>
                 <li><Link to ={"/cosmetics"}>Kosmetika</Link></li>
                 <li><Link to ={"/baxim"}>Baxım</Link></li>
                 <li><Link to ={"/aksesuar"}>Aksessuar və Moda</Link></li>
