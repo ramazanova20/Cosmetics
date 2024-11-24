@@ -4,8 +4,8 @@ function Brend() {
   return (
     <div>
         <div className='container lg:max-w-[1024px] mx-auto p-3'>
-        <div class=""><h1>Brend kosmetika firmalar</h1>
-        <div className=' flex flex-row gap-4'>
+        <div className=""><h1>Brend kosmetika firmalar</h1>
+        <div className=' flex flex-wrap gap-4'>
             <ul className="flex flex-col ">
 <li><a href="" title="A La Rose brand kosmetika">A La Rose</a></li>
 <li><a href="" title="Abib brand kosmetika">Abib</a></li>
@@ -158,7 +158,7 @@ function Brend() {
 <li><a href="" title="Farm Stay brand kosmetika">Farm Stay</a></li>
 <li><a href="" title="FarmStay brand kosmetika">FarmStay</a></li>
 <li><a href="" title="FARSALI brand kosmetika">FARSALI</a></li>
-<li><a href="" title="FENTY BEAUTY brand kosmetika">FENTY BEAUTY</a></li></ul><ul class="col-lg-4 col-md-4 col-sm-6"><li><a href="/ferfree-kosmetika-brand-349" title="Ferfree brand kosmetika">Ferfree</a></li>
+<li><a href="" title="FENTY BEAUTY brand kosmetika">FENTY BEAUTY</a></li></ul><ul className="col-lg-4 col-md-4 col-sm-6"><li><a href="/ferfree-kosmetika-brand-349" title="Ferfree brand kosmetika">Ferfree</a></li>
 <li><a href="" title="Ferrari brand kosmetika">Ferrari</a></li>
 <li><a href="" title="Flormar brand kosmetika">Flormar</a></li>
 <li><a href="" title="FLOVEME brand kosmetika">FLOVEME</a></li>
@@ -309,7 +309,7 @@ function Brend() {
 <li><a href="" title="NARS brand kosmetika">NARS</a></li>
 <li><a href="" title="Nashi brand kosmetika">Nashi</a></li>
 <li><a href="" title="Natasha Denona brand kosmetika">Natasha Denona</a></li>
-<li><a href="" title="NATURE REPUBLIC brand kosmetika">NATURE REPUBLIC</a></li></ul><ul class="col-lg-4 col-md-4 col-sm-6"><li><a href="/natures-own-factory-kosmetika-brand-380" title="Nature&#039;s Own Factory brand kosmetika">Nature&#039;s Own Factory</a></li>
+<li><a href="" title="NATURE REPUBLIC brand kosmetika">NATURE REPUBLIC</a></li></ul><ul className="col-lg-4 col-md-4 col-sm-6"><li><a href="/natures-own-factory-kosmetika-brand-380" title="Nature&#039;s Own Factory brand kosmetika">Nature&#039;s Own Factory</a></li>
 <li><a href="" title="Nestidante brand kosmetika">Nestidante</a></li>
 <li><a href="" title="NEUTROGENA brand kosmetika">NEUTROGENA</a></li>
 <li><a href="" title="New Well brand kosmetika">New Well</a></li>

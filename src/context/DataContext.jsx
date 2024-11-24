@@ -9,8 +9,12 @@ function DataContext({children}) {
         () =>{
             axios
             .get("https://makeup-api.herokuapp.com/api/v1/products.json")
-            .then(res => setData(res.data))
-}, []);
+            .then((response) => {
+              const limitedData = response.data.slice(0, 50); 
+              setData(limitedData); 
+            })
+            .catch((error) => console.error("Error fetching data:", error));
+        }, []);
   return (
     <DATA.Provider value={data}>
         {children}
