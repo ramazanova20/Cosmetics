@@ -1,5 +1,6 @@
 import React from 'react';
 import Item from './Item';
+import { Link } from 'react-router-dom';
 
 function Cosmetics() {
   return (
@@ -8,9 +9,9 @@ function Cosmetics() {
         <div>
           <h6>Kosmetika</h6>
           <ul className="flex flex-row space-x-4">
-            <li>ÜZ üçün Kosmetika</li>
-            <li>GÖZ üçün Kosmetika</li>
-            <li>DODAQ üçün Kosmetika</li>
+            <li><Link to ={"/uzcosmetics"}>ÜZ üçün Kosmetika</Link></li>
+            <li><Link to ={"/eyecosmetics"}>GÖZ üçün Kosmetika</Link></li>
+            <li><Link to ={"/lipcosmetics"}>DODAQ üçün Kosmetika</Link></li>
             <li>Aksessuarlar</li>
           </ul>
         </div>

@@ -2,17 +2,17 @@ import React, { useContext, useState } from 'react';
 import Heart from './Heart';
 import { DATA } from '../../context/DataContext';
 
-function Item() {
-  const {data} = useContext(DATA); 
+function EyeItem() {
+  const {eye} = useContext(DATA); 
   const [quant, setQuant] = useState(1);
 
-  if (!data) {
+  if (!eye) {
     return <div>Loading...</div>;  
   }
 
   return (
     <div className="flex flex-wrap gap-6 mx-auto justify-center m-1">
-      {data.map((item,i) => (
+      {eye.map((item,i) => (
         <div key={i} className="max-w-[200px] rounded overflow-hidden shadow-lg bg-white relative">
           <div className="rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5">
             <Heart />
@@ -50,4 +50,5 @@ function Item() {
   );
 }
 
-export default Item;
+
+export default EyeItem

@@ -9,6 +9,9 @@ import Brend from './components/Main/Brend'
 import Aksesuar from './components/Main/Aksesuar'
 import Error from './components/Main/Error'
 import Melumat from './components/Main/Melumat'
+import UzCosmetics from './components/Main/UzCosmetics'
+import LipCosmetics from './components/Main/LipCosmetics'
+import EyeCosmetics from './components/Main/EyeCosmetics'
 
 
 function App() {
@@ -24,6 +27,9 @@ function App() {
       <Route path="/brend" element={<Brend/>} />
       <Route path="/aksesuar" element={<Aksesuar/>} />
       <Route path="/melumat" element={<Melumat/>} />
+      <Route path="/uzcosmetics" element={<UzCosmetics/>} />
+      <Route path="/lipcosmetics" element={<LipCosmetics/>} />
+      <Route path="/eyecosmetics" element={<EyeCosmetics/>} />
       <Route path="*" element={<Error/>} />
     </Route>
   </Routes>
