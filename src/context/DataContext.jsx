@@ -8,12 +8,14 @@ function DataContext({children}) {
     const [lip, setLip] = useState(null)
     const [foundation, setFoundation] = useState(null)
     const [eye, setEye] = useState(null)
+    const [jewelry, setJewelry] = useState(null)
     useEffect(
         () =>{
             getAllData()
             getLipData()
             getFoundationData()
             getEyeData()
+            getJewelryData()
         }, []);
 
 
@@ -62,9 +64,19 @@ function DataContext({children}) {
           })
             
         }
+        function getJewelryData(){
+          axios
+          .get('https://fakestoreapi.com/products')
+          .then((res) => {
+            const jewelry = res.data.filter((item) => item.category === 'jewelery');
+
+            setJewelry(jewelry);
+          })
+            
+        }
 
   return (
-    <DATA.Provider value={{data, lip, foundation, eye}}>
+    <DATA.Provider value={{data, lip, foundation, eye, jewelry}}>
         {children}
     </DATA.Provider>
   )

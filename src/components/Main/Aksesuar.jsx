@@ -1,5 +1,5 @@
 import React from 'react'
-import Item from './Item'
+import JewelryItem from './JewelryItem'
 
 function Aksesuar() {
   return (
@@ -21,7 +21,7 @@ function Aksesuar() {
             <div className='my-4'>
                 AAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBCCCCCCCCCCCCCCCCCCCCCCCC
                 <div className="my-4">
-                    <Item/>
+                    <JewelryItem/>
                  </div>
             </div>
             <div className='flex flex-col'>

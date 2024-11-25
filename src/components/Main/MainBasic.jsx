@@ -1,5 +1,8 @@
 import React from 'react'
-import Item from './Item'
+// import Item from './Item'
+import UzItem from './UzItem'
+import EyeItem from './EyeItem'
+import LipItem from './LipItem'
 
 function MainBasic() {
   return (
@@ -8,8 +11,25 @@ function MainBasic() {
         Kosmetika məhsulları, kosmetik vasitələr
       </div>
       <div className="my-4">
-          <Item/>
-        </div>
+          {/* <Item/> */}
+          uz ucun
+         <UzItem/>
+      </div>
+      <div className="my-4">
+          {/* <Item/> */}
+          goz ucun
+         <EyeItem/>
+      </div>
+      <div className="my-4">
+          {/* <Item/> */}
+          dodaq ucun
+         <LipItem/>
+      </div>
+      <div className="my-4">
+          {/* <Item/> */}
+          Aksesuar ucun
+         <LipItem/>
+      </div>
     </div>
   )
 }

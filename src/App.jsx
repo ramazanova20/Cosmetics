@@ -30,6 +30,7 @@ function App() {
       <Route path="/uzcosmetics" element={<UzCosmetics/>} />
       <Route path="/lipcosmetics" element={<LipCosmetics/>} />
       <Route path="/eyecosmetics" element={<EyeCosmetics/>} />
+      
       <Route path="*" element={<Error/>} />
     </Route>
   </Routes>
