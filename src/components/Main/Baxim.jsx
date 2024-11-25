@@ -26,7 +26,6 @@ function Baxim() {
                 </div>
             </div>
             <div className='my-4'>
-                AAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBCCCCCCCCCCCCCCCCCCCCCCCC
                 <div className="my-4">
                     <Item/>
                 </div>

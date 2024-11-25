@@ -19,7 +19,6 @@ function Aksesuar() {
                 </div>
             </div>
             <div className='my-4'>
-                AAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBCCCCCCCCCCCCCCCCCCCCCCCC
                 <div className="my-4">
                     <JewelryItem/>
                  </div>

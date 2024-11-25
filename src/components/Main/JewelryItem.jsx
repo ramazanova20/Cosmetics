@@ -19,7 +19,7 @@ function JewelryItem() {
           </div>
           <img className="w-full" src={item.image} alt={item.title} />
           <div className="p-4">
-            <h2 className="text-xl font-semibold mb-2">{item.title}</h2>
+            <h2 className="text-xl font-semibold mb-2">{item.title.slice(0, 17)}</h2>
             {/* <p className="text-gray-700 mb-4">{item.description}</p> */}
             <h5 className="text-lg font-semibold mb-4">{quant * item.price}₼</h5>
             <div className="flex items-center justify-between mb-3">
