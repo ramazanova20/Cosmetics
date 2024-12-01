@@ -1,34 +1,34 @@
 import React from 'react'
-// import Item from './Item'
-import UzItem from './UzItem'
-import EyeItem from './EyeItem'
-import LipItem from './LipItem'
+import Item from './Item'
+
+import JewelryItem from './JewelryItem'
+// import Breadcrumb from './Breadcrumb'
 
 function MainBasic() {
   return (
     <div className='container lg:max-w-[1024px] mx-auto p-3'>
+      {/* <Breadcrumb/> */}
       <div >
         Kosmetika məhsulları, kosmetik vasitələr
       </div>
       <div className="my-4">
-          {/* <Item/> */}
+          
           uz ucun
-         <UzItem/>
+          <Item category="foundation" />
       </div>
       <div className="my-4">
-          {/* <Item/> */}
+          
           goz ucun
-         <EyeItem/>
+          <Item category="eye" />
       </div>
       <div className="my-4">
-          {/* <Item/> */}
+          
           dodaq ucun
-         <LipItem/>
+          <Item category="lip" />
       </div>
       <div className="my-4">
-          {/* <Item/> */}
           Aksesuar ucun
-         <LipItem/>
+         <JewelryItem/>
       </div>
     </div>
   )

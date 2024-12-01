@@ -1,26 +1,75 @@
-import React, { useContext, useState } from 'react';
-import Heart from './Heart';
-import { DATA } from '../../context/DataContext';
+// src/components/Main/JewelryItem.jsx
+import React, { useContext, useState, useEffect } from "react";
+import { DATA } from "../../context/DataContext";
+import Heart from './Heart'; // Dəyişiklik yoxdursa, Heart komponentini daxil edin
 
-function JewelryItem() {
-  const {jewelry} = useContext(DATA); 
+function JeweleryItem() {
+  const { jewelery } = useContext(DATA);
+  const [showProductList, setShowProductList] = useState([]);
+  const [sorting, setSorting] = useState("latest");
   const [quant, setQuant] = useState(1);
 
-  if (!jewelry) {
-    return <div>Loading...</div>;  
+  useEffect(() => {
+    if (jewelery) {
+      setShowProductList(jewelery); // Başlangıçda məlumatları təyin edirik
+    }
+  }, [jewelery]);
+
+  useEffect(() => {
+    if (showProductList.length > 0) {
+      handleSortingChange(sorting); // Sorting dəyişikliyi ilə sıralama
+    }
+  }, [sorting, jewelery]);
+
+  const handleSortingChange = (newSorting) => {
+    setSorting(newSorting);
+
+    let sortedProducts = [...jewelery];
+
+    if (newSorting === "high-to-low") {
+      sortedProducts.sort((a, b) => b.price - a.price); // Bahadan ucuz olana doğru
+    } else if (newSorting === "low-to-high") {
+      sortedProducts.sort((a, b) => a.price - b.price); // Ucuzdan baha doğru
+    } else {
+      sortedProducts = jewelery; // Son Məhsullar sıralama
+    }
+
+    setShowProductList(sortedProducts); // Yenicə sıralanmış məhsulları təyin etmək
+  };
+
+  if (!jewelery) {
+    return <div>Loading...</div>;
   }
 
   return (
+    <div className="flex flex-col">
+    <div>
+        Sıralama:
+        <select
+          name="sorting"
+          id="sorting"
+          onChange={(e) => handleSortingChange(e.target.value)}
+          value={sorting}
+        >
+          <option value="latest">Son Məhsullar</option>
+          <option value="high-to-low">Bahadan Ucuza</option>
+          <option value="low-to-high">Ucuzdan Bahaya</option>
+        </select>
+      </div>
     <div className="flex flex-wrap gap-6 mx-auto justify-center m-1">
-      {jewelry.map((item,i) => (
-        <div key={i} className="max-w-[200px] rounded overflow-hidden shadow-lg bg-white relative">
+      
+      {/* Sorting üçün select */}
+      
+
+      {/* Məhsul siyahısı */}
+      {showProductList.map((item, i) => (
+        <div key={i} className="max-w-[200px] h-[500px] rounded overflow-hidden shadow-lg bg-white relative">
           <div className="rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5">
             <Heart />
           </div>
-          <img className="w-full" src={item.image} alt={item.title} />
+          <img className="w-full h-[300px]" src={item.image} alt={item.title} />
           <div className="p-4">
-            <h2 className="text-xl font-semibold mb-2">{item.title.slice(0, 17)}</h2>
-            {/* <p className="text-gray-700 mb-4">{item.description}</p> */}
+            <h2 className="text-xl font-semibold mb-2 whitespace-nowrap">{item.title.slice(0, 17)}</h2>
             <h5 className="text-lg font-semibold mb-4">{quant * item.price}₼</h5>
             <div className="flex items-center justify-between mb-3">
               <button
@@ -47,7 +96,8 @@ function JewelryItem() {
         </div>
       ))}
     </div>
+    </div>
   );
 }
 
-export default JewelryItem
+export default JeweleryItem;

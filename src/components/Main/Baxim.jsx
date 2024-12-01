@@ -1,6 +1,6 @@
 import React from 'react'
 import Item from './Item'
-
+import { Link } from 'react-router-dom';
 function Baxim() {
   return (
     <div>
@@ -8,11 +8,11 @@ function Baxim() {
         <div className='container lg:max-w-[1024px] mx-auto p-3'>
             <div>
                 <h6>Baxim</h6>
-                <ul className='flex flex-row'>
-                    <li>Üzə qulluq</li>
-                    <li>Bədənə qulluq</li>
-                    <li>Saçlara qulluq</li>
-                    <li>Gigiyena vasitələri</li>
+                <ul className='flex flex-col md:flex-row gap-4'>
+                    <li><Link to ={"/uzbaxim"}>Üzə qulluq</Link></li>
+                    <li><Link to ={"/bedenbaxim"}>Bədənə qulluq</Link></li>
+                    <li><Link to ={"/sacbaxim"}>Saçlara qulluq</Link></li>
+                    <li><Link to ={"/gigyena"}>Gigiyena vasitələri</Link></li>
                 </ul>
             </div>
             <div className='bg-slate-400'>

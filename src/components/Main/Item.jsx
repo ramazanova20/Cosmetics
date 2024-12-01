@@ -1,26 +1,41 @@
 import React, { useContext, useState } from 'react';
-import Heart from './Heart';
-import { DATA } from '../../context/DataContext';
+import { useDataContext } from '../../context/DataContext'; 
+import { useParams } from 'react-router-dom';
 
 function Item() {
-  const {data} = useContext(DATA); 
+  const { category } = useParams(); 
+  const { lip, foundation, eye, jewelery } = useDataContext(); 
   const [quant, setQuant] = useState(1);
 
-  if (!data) {
-    return <div>Loading...</div>;  
+  let filteredData;
+
+  // `category`-yə uyğun datanı filtrlə
+  if (category === 'eyeshadow' || category === 'eyeliner' || category === 'mascara') {
+    filteredData = eye; // `eye` datasını götür
+  } else if (category === 'lipstick' || category === 'lip_liner') {
+    filteredData = lip;
+  } else if (category === 'powder' || category === 'cream') {
+    filteredData = foundation;
+  } else if (category === 'jewelery') {
+    filteredData = jewelery;
+  }
+
+  // Əgər data mövcud deyilsə və ya boşdursa, yükləmə mesajı göstər
+  if (!filteredData) {
+    return <div>Loading...</div>;
   }
 
   return (
     <div className="flex flex-wrap gap-6 mx-auto justify-center m-1">
-      {data.map((item,i) => (
-        <div key={i} className="max-w-[200px] rounded overflow-hidden shadow-lg bg-white relative">
-          <div className="rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5">
-            <Heart />
-          </div>
-          <img className="w-full" src={item.api_featured_image} alt={item.name} />
+      {filteredData.map((item, i) => (
+        <div key={i} className="max-w-[200px] h-[500px] rounded overflow-hidden shadow-lg bg-white relative">
+          <img
+            className="w-full h-[300px]"
+            src={item.api_featured_image} 
+            alt={item.name.slice(0, 10)}
+          />
           <div className="p-4">
             <h2 className="text-xl font-semibold mb-2">{item.name}</h2>
-            {/* <p className="text-gray-700 mb-4">{item.description}</p> */}
             <h5 className="text-lg font-semibold mb-4">{quant * item.price}₼</h5>
             <div className="flex items-center justify-between mb-3">
               <button

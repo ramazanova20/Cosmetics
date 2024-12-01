@@ -12,6 +12,11 @@ import Melumat from './components/Main/Melumat'
 import UzCosmetics from './components/Main/UzCosmetics'
 import LipCosmetics from './components/Main/LipCosmetics'
 import EyeCosmetics from './components/Main/EyeCosmetics'
+import Item from './components/Main/Item'
+import UzBaxim from './components/Main/UzBaxim'
+import SacBaxim from './components/Main/SacBaxim'
+import BedenBaxim from './components/Main/BedenBaxim'
+import Gigiyena from './components/Main/Gigiyena'
 
 
 function App() {
@@ -30,7 +35,12 @@ function App() {
       <Route path="/uzcosmetics" element={<UzCosmetics/>} />
       <Route path="/lipcosmetics" element={<LipCosmetics/>} />
       <Route path="/eyecosmetics" element={<EyeCosmetics/>} />
-      
+      <Route path="/uzbaxim" element={<UzBaxim/>} />
+      <Route path="/sacbaxim" element={<SacBaxim/>} />
+      <Route path="/bedenbaxim" element={<BedenBaxim/>} />
+      <Route path="/gigiyena" element={<Gigiyena/>} />
+      <Route path="/items/:category" element={<Item />} />
+
       <Route path="*" element={<Error/>} />
     </Route>
   </Routes>

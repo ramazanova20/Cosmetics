@@ -4,6 +4,7 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
 
 function HeaderTop() {
+    
   return (
     <div>
         <div className='container lg:max-w-[1024px] mx-auto p-3'>

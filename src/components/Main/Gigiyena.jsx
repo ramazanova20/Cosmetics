@@ -1,12 +1,13 @@
 import React from 'react'
-import Item from './Item'
 
-function LipCosmetics() {
+import JeweleryItem from './JewelryItem'
+
+function Gigiyena() {
   return (
     <div  className='container lg:max-w-[1024px] mx-auto p-3'>
       
       <div>
-        Dodaq üçün Kosmetika
+        Gigiyena
       </div>
       <div className="bg-slate-400 my-4">
           <div>
@@ -19,10 +20,11 @@ function LipCosmetics() {
           </div>
         </div>
       <div className="my-4">
-        <Item category="lip" />
+        <JeweleryItem/>
+        
       </div>
     </div>
   )
 }
 
-export default LipCosmetics
+export default Gigiyena

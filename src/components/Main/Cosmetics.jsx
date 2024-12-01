@@ -1,18 +1,21 @@
 import React from 'react';
 import Item from './Item';
 import { Link } from 'react-router-dom';
+import Breadcrumb from './Breadcrumb';
 
 function Cosmetics() {
   return (
     <div>
       <div className="container lg:max-w-[1024px] mx-auto p-3">
+        {/* <Breadcrumb/> */}
         <div>
           <h6>Kosmetika</h6>
-          <ul className="flex flex-row space-x-4">
+          <ul className="flex flex-col md:flex-row gap-4">
             <li><Link to ={"/uzcosmetics"}>ÜZ üçün Kosmetika</Link></li>
             <li><Link to ={"/eyecosmetics"}>GÖZ üçün Kosmetika</Link></li>
             <li><Link to ={"/lipcosmetics"}>DODAQ üçün Kosmetika</Link></li>
-            <li>Aksessuarlar</li>
+            <li><Link to ={"/aksesuar"}>Aksessuarlar</Link></li>
+        
           </ul>
         </div>
         <div className="bg-slate-400 my-4">

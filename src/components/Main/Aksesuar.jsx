@@ -1,5 +1,8 @@
 import React from 'react'
-import JewelryItem from './JewelryItem'
+import JeweleryItem from './JewelryItem'
+
+
+
 
 function Aksesuar() {
   return (
@@ -8,7 +11,7 @@ function Aksesuar() {
             
                 <h6>Aksessuar və Moda</h6>
                
-            <div className='bg-slate-400'>
+            {/* <div className='bg-slate-400'>
                 <div>
                     Sirlama:
                     <select name="" id="">
@@ -17,10 +20,11 @@ function Aksesuar() {
                         <option value="">Ucuzdan Bahaya</option>
                     </select>
                 </div>
-            </div>
+            </div> */}
+            
             <div className='my-4'>
                 <div className="my-4">
-                    <JewelryItem/>
+                <JeweleryItem/>
                  </div>
             </div>
             <div className='flex flex-col'>

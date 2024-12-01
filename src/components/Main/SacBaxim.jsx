@@ -1,12 +1,12 @@
 import React from 'react'
 import Item from './Item'
 
-function LipCosmetics() {
+function SacBaxim() {
   return (
     <div  className='container lg:max-w-[1024px] mx-auto p-3'>
       
       <div>
-        Dodaq üçün Kosmetika
+        Sac Baxim
       </div>
       <div className="bg-slate-400 my-4">
           <div>
@@ -20,9 +20,10 @@ function LipCosmetics() {
         </div>
       <div className="my-4">
         <Item category="lip" />
+        
       </div>
     </div>
   )
 }
 
-export default LipCosmetics
+export default SacBaxim
