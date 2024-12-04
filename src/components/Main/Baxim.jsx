@@ -1,7 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Item from './Item'
 import { Link } from 'react-router-dom';
+import { getProductByName } from '../../services/api';
 function Baxim() {
+    const url = window.location.search
+  const tip = (url.split("=").at(-1));
+  const [data, setData] = useState(null)
+  useEffect(() => {
+    getProductByName(tip).then(res => {
+      // console.log(res);
+      setData(res)
+    }
+    )
+  }, [])
   return (
     <div>
         
@@ -9,10 +20,12 @@ function Baxim() {
             <div>
                 <h6>Baxim</h6>
                 <ul className='flex flex-col md:flex-row gap-4'>
-                    <li><Link to ={"/uzbaxim"}>Üzə qulluq</Link></li>
-                    <li><Link to ={"/bedenbaxim"}>Bədənə qulluq</Link></li>
-                    <li><Link to ={"/sacbaxim"}>Saçlara qulluq</Link></li>
-                    <li><Link to ={"/gigyena"}>Gigiyena vasitələri</Link></li>
+                    <li>Üzə qulluq
+                        {/* <Link to ={"/baxim?tip=eyeshadow"}>Üzə qulluq</Link> */}
+                        </li>
+                    <li><Link to ={"/baxim?tip=bronzer"}>Bədənə qulluq</Link></li>
+                    <li><Link to ={"/baxim?tip=eyebrow"}>Saçlara qulluq</Link></li>
+                    <li><Link to ={"/baxim?tip=nail_polish"}>Gigiyena vasitələri</Link></li>
                 </ul>
             </div>
             <div className='bg-slate-400'>
@@ -27,7 +40,13 @@ function Baxim() {
             </div>
             <div className='my-4'>
                 <div className="my-4">
-                    <Item/>
+                <div className="my-4">
+                   {data ? (
+                     <Item />
+                     ) : (
+                     <p>Loading...</p>
+                     )}
+                </div>
                 </div>
             </div>
             <div className='flex flex-col'>

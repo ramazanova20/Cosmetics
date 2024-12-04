@@ -34,9 +34,9 @@ function Menu() {
                 <FaHome  onClick={handleClick}/>
               </div> */}
               <ul className="flex flex-col gap-2">
-                <li><Link to ={"/basic"}>Home Page</Link></li>
+                <li><Link to ={""}>Home Page</Link></li>
                 <li><Link to ={"/cosmetics"}>Kosmetika</Link></li>
-                <li><Link to ={""}>Baxım</Link></li>
+                <li><Link to ={"/baxim"}>Baxım</Link></li>
                 <li><Link to ={"/aksesuar"}>Aksessuar və Moda</Link></li>
                 <li><Link to ={"/brend"}>Brendlər</Link></li>
                 <li><Link to ={"/melumat"}>Məlumatlar</Link></li>
@@ -49,7 +49,7 @@ function Menu() {
         <div className="hidden md:block">
           <div className="flex flex-row items-center justify-start gap-4 text-white">
             <div>
-              <Link to ={"/basic"}><FaHome /></Link>
+              <Link to ={""}><FaHome /></Link>
               
             </div>
             <ul className="flex flex-row gap-4">

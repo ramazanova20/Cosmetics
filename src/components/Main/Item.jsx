@@ -7,7 +7,7 @@ function Item() {
   const queryParams = new URLSearchParams(location.search);
   const tip = queryParams.get('tip'); 
 
-  const { lipstick, foundation, eyeliner, jewelery } = useDataContext();
+  const { lipstick, foundation, eyeliner } = useDataContext();
   const [quant, setQuant] = useState(1);
   const [filteredData, setFilteredData] = useState(null);
 
@@ -22,14 +22,21 @@ function Item() {
     else if (tip === 'foundation') {
       data = foundation;
     }
-    else if (tip === 'jewelery') {
-      data = jewelery;
+    // else if (tip === 'eyeshadow') {
+    //   data = eyeshadow;
+    // }
+    else if (tip === 'bronzer') {
+      data = bronzer;
     }
+    else if (tip === 'nail_polish') {
+      data = nail_polish;
+    }
+    
 
     if (data && JSON.stringify(filteredData) !== JSON.stringify(data)) {
       setFilteredData(data);
     }
-  }, [tip, lipstick, foundation, eyeliner, jewelery, filteredData]); 
+  }, [tip, lipstick, foundation, eyeliner, bronzer, eyebrow, nail_polish, filteredData]); 
   // console.log(filteredData)
   if (!filteredData) {
     return <div>Loading...</div>;
@@ -48,11 +55,11 @@ function Item() {
         >
           <img
             className="w-full h-[300px]"
-            src={item.api_featured_image || item.image}
+            src={item.api_featured_image}
             alt={item.name.slice(0, 10)}
           />
           <div className="p-4">
-            <h2 className="text-xl font-semibold mb-2">{item.name || item.title}</h2>
+            <h2 className="text-xl font-semibold mb-2">{item.name}</h2>
             <h5 className="text-lg font-semibold mb-4">{quant * item.price}₼</h5>
             <div className="flex items-center justify-between mb-3">
               <button
