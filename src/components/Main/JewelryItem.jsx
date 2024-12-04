@@ -1,7 +1,7 @@
 // src/components/Main/JewelryItem.jsx
 import React, { useContext, useState, useEffect } from "react";
 import { DATA } from "../../context/DataContext";
-import Heart from './Heart'; // Dəyişiklik yoxdursa, Heart komponentini daxil edin
+import Heart from './Heart'; 
 
 function JeweleryItem() {
   const { jewelery } = useContext(DATA);
@@ -11,13 +11,13 @@ function JeweleryItem() {
 
   useEffect(() => {
     if (jewelery) {
-      setShowProductList(jewelery); // Başlangıçda məlumatları təyin edirik
+      setShowProductList(jewelery); 
     }
   }, [jewelery]);
 
   useEffect(() => {
     if (showProductList.length > 0) {
-      handleSortingChange(sorting); // Sorting dəyişikliyi ilə sıralama
+      handleSortingChange(sorting); 
     }
   }, [sorting, jewelery]);
 
@@ -27,14 +27,14 @@ function JeweleryItem() {
     let sortedProducts = [...jewelery];
 
     if (newSorting === "high-to-low") {
-      sortedProducts.sort((a, b) => b.price - a.price); // Bahadan ucuz olana doğru
+      sortedProducts.sort((a, b) => b.price - a.price); 
     } else if (newSorting === "low-to-high") {
-      sortedProducts.sort((a, b) => a.price - b.price); // Ucuzdan baha doğru
+      sortedProducts.sort((a, b) => a.price - b.price);
     } else {
-      sortedProducts = jewelery; // Son Məhsullar sıralama
+      sortedProducts = jewelery;
     }
 
-    setShowProductList(sortedProducts); // Yenicə sıralanmış məhsulları təyin etmək
+    setShowProductList(sortedProducts); 
   };
 
   if (!jewelery) {
@@ -58,10 +58,7 @@ function JeweleryItem() {
       </div>
     <div className="flex flex-wrap gap-6 mx-auto justify-center m-1">
       
-      {/* Sorting üçün select */}
       
-
-      {/* Məhsul siyahısı */}
       {showProductList.map((item, i) => (
         <div key={i} className="max-w-[200px] h-[500px] rounded overflow-hidden shadow-lg bg-white relative">
           <div className="rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5">

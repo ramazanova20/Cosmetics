@@ -1,41 +1,58 @@
-import React, { useContext, useState } from 'react';
-import { useDataContext } from '../../context/DataContext'; 
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useDataContext } from '../../context/DataContext';
 
 function Item() {
-  const { category } = useParams(); 
-  const { lip, foundation, eye, jewelery } = useDataContext(); 
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const tip = queryParams.get('tip'); 
+
+  const { lipstick, foundation, eyeliner, jewelery } = useDataContext();
   const [quant, setQuant] = useState(1);
+  const [filteredData, setFilteredData] = useState(null);
 
-  let filteredData;
+  useEffect(() => {
+    
+    let data;
+    if (tip === 'eyeliner') {
+      data = eyeliner;
+    } else if (tip === 'lipstick') {
+      data = lipstick;
+    } 
+    else if (tip === 'foundation') {
+      data = foundation;
+    }
+    else if (tip === 'jewelery') {
+      data = jewelery;
+    }
 
-  // `category`-yə uyğun datanı filtrlə
-  if (category === 'eyeshadow' || category === 'eyeliner' || category === 'mascara') {
-    filteredData = eye; // `eye` datasını götür
-  } else if (category === 'lipstick' || category === 'lip_liner') {
-    filteredData = lip;
-  } else if (category === 'powder' || category === 'cream') {
-    filteredData = foundation;
-  } else if (category === 'jewelery') {
-    filteredData = jewelery;
-  }
-
-  // Əgər data mövcud deyilsə və ya boşdursa, yükləmə mesajı göstər
+    if (data && JSON.stringify(filteredData) !== JSON.stringify(data)) {
+      setFilteredData(data);
+    }
+  }, [tip, lipstick, foundation, eyeliner, jewelery, filteredData]); 
+  // console.log(filteredData)
   if (!filteredData) {
     return <div>Loading...</div>;
+  }
+
+  if (filteredData.length === 0) {
+    return <div>{tip} is not found.</div>;
   }
 
   return (
     <div className="flex flex-wrap gap-6 mx-auto justify-center m-1">
       {filteredData.map((item, i) => (
-        <div key={i} className="max-w-[200px] h-[500px] rounded overflow-hidden shadow-lg bg-white relative">
+        <div
+          key={i}
+          className="max-w-[200px] h-[500px] rounded overflow-hidden shadow-lg bg-white relative"
+        >
           <img
             className="w-full h-[300px]"
-            src={item.api_featured_image} 
+            src={item.api_featured_image || item.image}
             alt={item.name.slice(0, 10)}
           />
           <div className="p-4">
-            <h2 className="text-xl font-semibold mb-2">{item.name}</h2>
+            <h2 className="text-xl font-semibold mb-2">{item.name || item.title}</h2>
             <h5 className="text-lg font-semibold mb-4">{quant * item.price}₼</h5>
             <div className="flex items-center justify-between mb-3">
               <button
@@ -53,10 +70,12 @@ function Item() {
               </button>
             </div>
             <button
-              onClick={() => alert(`You selected ${quant} ${item.name}(s) for ${quant * item.price} ₼.`)}
+              onClick={() =>
+                alert(`Seçtiğiniz ürün: ${quant} adet ${item.name} toplamda ${quant * item.price} ₼.`)
+              }
               className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
             >
-              Buy
+              Satın Al
             </button>
           </div>
         </div>

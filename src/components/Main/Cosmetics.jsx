@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Item from './Item';
 import { Link } from 'react-router-dom';
 import Breadcrumb from './Breadcrumb';
+import { getProductByName } from '../../services/api';
 
 function Cosmetics() {
+  const url = window.location.search
+  const tip = (url.split("=").at(-1));
+  const [data, setData] = useState(null)
+  useEffect(() => {
+    getProductByName(tip).then(res => {
+      // console.log(res);
+      setData(res)
+    }
+    )
+  }, [])
+
   return (
     <div>
       <div className="container lg:max-w-[1024px] mx-auto p-3">
@@ -11,11 +23,11 @@ function Cosmetics() {
         <div>
           <h6>Kosmetika</h6>
           <ul className="flex flex-col md:flex-row gap-4">
-            <li><Link to ={"/uzcosmetics"}>ÜZ üçün Kosmetika</Link></li>
-            <li><Link to ={"/eyecosmetics"}>GÖZ üçün Kosmetika</Link></li>
-            <li><Link to ={"/lipcosmetics"}>DODAQ üçün Kosmetika</Link></li>
-            <li><Link to ={"/aksesuar"}>Aksessuarlar</Link></li>
-        
+            <li><Link to={"/cosmetics?tip=foundation"}>ÜZ üçün Kosmetika</Link></li>
+            <li><Link to={"/cosmetics?tip=eyeliner"}>GÖZ üçün Kosmetika</Link></li>
+            <li><Link to={"/cosmetics?tip=lipstick"}>DODAQ üçün Kosmetika</Link></li>
+            <li><Link to={"/aksesuar"}>Aksessuarlar</Link></li>
+
           </ul>
         </div>
         <div className="bg-slate-400 my-4">
@@ -29,7 +41,23 @@ function Cosmetics() {
           </div>
         </div>
         <div className="my-4">
-          <Item />
+          {/* {
+            data &&
+            data.map((item, i) => {
+              // console.log(item);
+
+              return (
+                <p key={i}>{item.brand}</p>
+              )
+            })
+          } */}
+          <div className="my-4">
+            {data ? (
+              <Item />
+              ) : (
+              <p>Loading...</p>
+              )}
+          </div>
         </div>
         <div className="flex flex-col">
           <h6 className="text-blue-700 font-bold">Kosmetika Məlumatları</h6>

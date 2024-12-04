@@ -26,8 +26,9 @@ function App() {
     <Routes>
     <Route path="/" element={<Layout/>}>
       <Route index element={<Main />} />
-      <Route path="/basic" element={<MainBasic/>} />
       <Route path="/cosmetics" element={<Cosmetics/>} />
+      <Route path="/aksesuar" element={<Aksesuar/>} />
+      {/* <Route path="/basic" element={<MainBasic/>} />
       <Route path="/baxim" element={<Baxim/>} />
       <Route path="/brend" element={<Brend/>} />
       <Route path="/aksesuar" element={<Aksesuar/>} />
@@ -39,7 +40,7 @@ function App() {
       <Route path="/sacbaxim" element={<SacBaxim/>} />
       <Route path="/bedenbaxim" element={<BedenBaxim/>} />
       <Route path="/gigiyena" element={<Gigiyena/>} />
-      <Route path="/items/:category" element={<Item />} />
+      <Route path="/items/:category" element={<Item />} /> */}
 
       <Route path="*" element={<Error/>} />
     </Route>

@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
-import axios from "axios";
+import { getAllData, getJeweleryData, getProductByName } from "../services/api";
+import { useLocation, useParams } from "react-router-dom";
 
 export const DATA = createContext();
 
@@ -7,98 +8,85 @@ export const useDataContext = () => {
   return useContext(DATA);
 };
 
-function DataContext({ children, searchQuery }) {
-  const [data, setData] = useState(null); 
-  const [lip, setLip] = useState(null);  
-  const [foundation, setFoundation] = useState(null); 
-  const [eye, setEye] = useState(null); 
-  const [jewelery, setJewelery] = useState(null); 
+function DataContext({ children }) {
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search); 
+  
+  let searchQuery = queryParams.get("tip")
+
+  // console.log(searchQuery)
+
+
+  const [data, setData] = useState(null);
+  const [lipstick, setLip] = useState(null);
+  const [foundation, setFoundation] = useState(null);
+  const [eyeliner, setEyeliner] = useState(null);
+  const [jewelery, setJewelery] = useState(null);
+
+
 
   useEffect(() => {
-    getAllData();
-    getLipData();
-    getFoundationData();
-    getEyeData();
-    getJeweleryData();
-  }, []);
-
-  useEffect(() => {
-    if (searchQuery) {
-      filterData();
-    }
+    const fetchData = async () => {
+      let response = await getAllData(); 
+      if (response) {
+        setData(response);
+      }
+    };
+   
+    
+    fetchData(); 
   }, [searchQuery]);
 
-  // Filter function to apply searchQuery
+  useEffect(() => {
+    if(data){
+      filterData()
+    }
+  }, [data])
+  
+
   const filterData = () => {
+    
+   
+    if (searchQuery === "foundation") {
+      let face = data.filter((item) =>
+        item.product_type.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+      setFoundation(face)
+      return
+    }
+    if (searchQuery === "lipstick") {
+      let lips = data.filter((item) =>
+        item.product_type.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+      setLip(lips)
+      return
+    }
+    if (searchQuery === "eyeliner") {
+      let eyes = data.filter((item) =>
+        item.product_type.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+      setEyeliner(eyes)
+      return
+    }
+
+    if (searchQuery === "jewelery") {
+      let jew = data.filter((item) =>
+        item.title.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+      setJewelery(jew)
+      return
+    }
     if (data) {
-      setData(data.filter(item => item.name.toLowerCase().includes(searchQuery.toLowerCase())));
-    }
-    if (lip) {
-      setLip(lip.filter(item => item.name.toLowerCase().includes(searchQuery.toLowerCase())));
-    }
-    if (foundation) {
-      setFoundation(foundation.filter(item => item.name.toLowerCase().includes(searchQuery.toLowerCase())));
-    }
-    if (eye) {
-      setEye(eye.filter(item => item.name.toLowerCase().includes(searchQuery.toLowerCase())));
-    }
-    if (jewelery) {
-      setJewelery(jewelery.filter(item => item.title.toLowerCase().includes(searchQuery.toLowerCase())));
+      setData(
+        data.filter((item) =>
+          item.name.toLowerCase().includes(searchQuery.toLowerCase())
+        )
+      );
     }
   };
 
-  function getAllData() {
-    axios
-      .get("https://makeup-api.herokuapp.com/api/v1/products.json")
-      .then((res) => {
-        const limitedData = res.data.slice(0, 20);
-        setData(limitedData);
-      })
-      .catch((err) => console.error(err));
-  }
-
-  function getLipData() {
-    axios
-      .get("https://makeup-api.herokuapp.com/api/v1/products.json")
-      .then((res) => {
-        const lipLiners = res.data.filter((item) => item.product_type === "lip_liner").slice(0, 20);
-        const lipStick = res.data.filter((item) => item.product_type === "lipstick").slice(0, 20);
-        setLip([...lipLiners, ...lipStick]);
-      });
-  }
-
-  function getFoundationData() {
-    axios
-      .get("https://makeup-api.herokuapp.com/api/v1/products.json?product_type=blush")
-      .then((res) => {
-        const powder = res.data.filter((item) => item.product_type === "powder").slice(0, 20);
-        const cream = res.data.filter((item) => item.product_type === "cream").slice(0, 20);
-        setFoundation([...powder, ...cream]);
-      });
-  }
-
-  function getEyeData() {
-    axios
-      .get("https://makeup-api.herokuapp.com/api/v1/products.json")
-      .then((res) => {
-        const eyeliner = res.data.filter((item) => item.product_type === "eyeliner").slice(0, 20);
-        const eyeshadow = res.data.filter((item) => item.product_type === "eyeshadow").slice(0, 20);
-        const mascara = res.data.filter((item) => item.product_type === "mascara").slice(0, 20);
-        setEye([...eyeliner, ...eyeshadow, ...mascara]);
-      });
-  }
-
-  function getJeweleryData() {
-    axios
-      .get("https://fakestoreapi.com/products")
-      .then((res) => {
-        const jewelery = res.data.filter((item) => item.category === "jewelery");
-        setJewelery(jewelery);
-      });
-  }
-
   return (
-    <DATA.Provider value={{ data, lip, foundation, eye, jewelery }}>
+    <DATA.Provider value={{ data, lipstick, foundation, eyeliner, jewelery }}>
       {children}
     </DATA.Provider>
   );
