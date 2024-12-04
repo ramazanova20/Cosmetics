@@ -36,7 +36,7 @@ function Menu() {
               <ul className="flex flex-col gap-2">
                 <li><Link to ={""}>Home Page</Link></li>
                 <li><Link to ={"/cosmetics"}>Kosmetika</Link></li>
-                <li><Link to ={"/baxim"}>Baxım</Link></li>
+                {/* <li><Link to ={"/baxim"}>Baxım</Link></li> */}
                 <li><Link to ={"/aksesuar"}>Aksessuar və Moda</Link></li>
                 <li><Link to ={"/brend"}>Brendlər</Link></li>
                 <li><Link to ={"/melumat"}>Məlumatlar</Link></li>

@@ -51,13 +51,17 @@ function Cosmetics() {
               )
             })
           } */}
-          <div className="my-4">
+
+          {/* <div className="my-4">
             {data ? (
               <Item />
               ) : (
               <p>Loading...</p>
               )}
-          </div>
+              {/* <Item /> 
+          </div> */}
+          
+          <Item />
         </div>
         <div className="flex flex-col">
           <h6 className="text-blue-700 font-bold">Kosmetika Məlumatları</h6>

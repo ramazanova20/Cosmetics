@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
-import { getAllData, getJeweleryData, getProductByName } from "../services/api";
+import { getAllData, getJeweleryData } from "../services/api";
 import { useLocation, useParams } from "react-router-dom";
 
 export const DATA = createContext();
@@ -22,13 +22,14 @@ function DataContext({ children }) {
   const [foundation, setFoundation] = useState(null);
   const [eyeliner, setEyeliner] = useState(null);
   // const [eyeshadow, setEyeshadow] = useState(null);
-  const [bronzer, setBronzer] = useState(null);
-  const [eyebrow, setEyebrow] = useState(null);
+  // const [bronzer, setBronzer] = useState(null);
+  // const [eyebrow, setEyebrow] = useState(null);
   const [jewelery, setJeweleryData] = useState(null);
-  const [nail_polish, setNailPolish] = useState(null);
+  // const [nail_polish, setNailPolish] = useState(null);
 
   useEffect(() => {
     getJeweleryData().then(res => setJeweleryData(res));
+    
   }, []);
   
   
@@ -76,40 +77,19 @@ function DataContext({ children }) {
       setEyeliner(eyes)
       return
     }
-    // if (searchQuery === "eyeshadow") {
-    //   let a = data.filter((item) =>
-    //     item.product_type.toLowerCase().includes(searchQuery.toLowerCase())
-    //   )
-    //   setEyeshadow(a)
-    //   return
-    // }
-    if (searchQuery === "bronzer") {
-      let body = data.filter((item) =>
+    if (searchQuery === "data") {
+      let datas = data.filter((item) =>
         item.product_type.toLowerCase().includes(searchQuery.toLowerCase())
       )
-      setBronzer(body)
+      setData(data)
       return
     }
-    if (searchQuery === "eyebrow") {
-      let sac = data.filter((item) =>
-        item.product_type.toLowerCase().includes(searchQuery.toLowerCase())
-      )
-      setEyebrow(sac)
-      return
-    }
-    if (searchQuery === "nail_polish") {
-      let gıgıyena = data.filter((item) =>
-        item.product_type.toLowerCase().includes(searchQuery.toLowerCase())
-      )
-      setNailPolish(gıgıyena)
-      return
-    }
-
+    
    
   };
 
   return (
-    <DATA.Provider value={{ data, lipstick, foundation, eyeliner, bronzer,eyebrow, nail_polish,jewelery }}>
+    <DATA.Provider value={{ data, lipstick, foundation, eyeliner, jewelery }}>
       {children}
     </DATA.Provider>
   );

@@ -24,7 +24,7 @@ function App() {
       <Route index element={<Main />} />
       <Route path="/cosmetics" element={<Cosmetics/>} />
       <Route path="/aksesuar" element={<Aksesuar/>} />
-      <Route path="/baxim" element={<Baxim/>} />
+      {/* <Route path="/baxim" element={<Baxim/>} /> */}
       <Route path="/jewelery" element={<JewelryItem/>} />
       {/* <Route path="/basic" element={<MainBasic/>} />
       <Route path="/baxim" element={<Baxim/>} />

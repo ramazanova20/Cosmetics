@@ -4,11 +4,15 @@ import './index.css'
 import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import DataContext from './context/DataContext.jsx'
+import DataContextProvider from './context/AllDataContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
-    <DataContext>
+  <DataContextProvider> 
+    <DataContext> 
       <App />
     </DataContext>
-  </BrowserRouter>
+  </DataContextProvider>
+</BrowserRouter>
+
 )

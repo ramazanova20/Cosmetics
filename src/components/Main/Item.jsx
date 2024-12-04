@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useDataContext } from '../../context/DataContext';
+import { useAllDataContext } from '../../context/AllDataContext';
+import Heart from './Heart';
 
 function Item() {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const tip = queryParams.get('tip'); 
 
+  const { data } = useAllDataContext();
   const { lipstick, foundation, eyeliner } = useDataContext();
   const [quant, setQuant] = useState(1);
   const [filteredData, setFilteredData] = useState(null);
+  
 
   useEffect(() => {
     
@@ -25,19 +29,19 @@ function Item() {
     // else if (tip === 'eyeshadow') {
     //   data = eyeshadow;
     // }
-    else if (tip === 'bronzer') {
-      data = bronzer;
-    }
-    else if (tip === 'nail_polish') {
-      data = nail_polish;
-    }
+    // else if (tip === 'bronzer') {
+    //   data = bronzer;
+    // }
+    // else if (tip === 'nail_polish') {
+    //   data = nail_polish;
+    // }
     
 
     if (data && JSON.stringify(filteredData) !== JSON.stringify(data)) {
       setFilteredData(data);
     }
-  }, [tip, lipstick, foundation, eyeliner, bronzer, eyebrow, nail_polish, filteredData]); 
-  // console.log(filteredData)
+  }, [tip, lipstick, foundation, eyeliner, filteredData]); 
+  console.log(filteredData)
   if (!filteredData) {
     return <div>Loading...</div>;
   }
@@ -51,8 +55,10 @@ function Item() {
       {filteredData.map((item, i) => (
         <div
           key={i}
-          className="max-w-[200px] h-[500px] rounded overflow-hidden shadow-lg bg-white relative"
-        >
+          className="max-w-[200px] h-[500px] rounded overflow-hidden shadow-lg bg-white relative">
+          <div className="rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5">
+            <Heart/>
+          </div>
           <img
             className="w-full h-[300px]"
             src={item.api_featured_image}
