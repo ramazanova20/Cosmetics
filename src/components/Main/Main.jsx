@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import MainBasic from './MainBasic'
 import Cosmetics from './Cosmetics'
 
@@ -7,7 +7,7 @@ import Heart from './Heart';
 
 function Main() {
   const { data } = useAllDataContext();
-
+  const [quant, setQuant] = useState(1);
   if (!data) {
     return <div>Loading...</div>;
   }
@@ -19,7 +19,7 @@ function Main() {
     <div >
         
         {/* <Cosmetics/>  */}
-        {/* <AllItem/> */}
+       
         <div className="container lg:max-w-[1024px] mx-auto p-3">
           <div className="my-4">
           <div className="flex flex-wrap gap-6 mx-auto justify-center m-1">
@@ -74,3 +74,5 @@ function Main() {
 }
 
 export default Main
+
+

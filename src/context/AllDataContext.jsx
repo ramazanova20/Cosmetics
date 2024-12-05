@@ -3,7 +3,7 @@ import { getAllData } from "../services/api";
 
 export const DataContext = createContext();
 
-export const useAllDataContext = () => {  // Add this hook for useAllDataContext
+export const useAllDataContext = () => {  
   return useContext(DataContext);
 };
 

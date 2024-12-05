@@ -30,16 +30,7 @@ function Cosmetics() {
 
           </ul>
         </div>
-        <div className="bg-slate-400 my-4">
-          <div>
-            Sirlama:
-            <select name="sorting" id="sorting">
-              <option value="latest">Son Məhsullar</option>
-              <option value="high-to-low">Bahadan Ucuza</option>
-              <option value="low-to-high">Ucuzdan Bahaya</option>
-            </select>
-          </div>
-        </div>
+        
         <div className="my-4">
           {/* {
             data &&
@@ -52,16 +43,21 @@ function Cosmetics() {
             })
           } */}
 
-          {/* <div className="my-4">
-            {data ? (
-              <Item />
-              ) : (
-              <p>Loading...</p>
-              )}
-              {/* <Item /> 
-          </div> */}
+          
           
           <Item />
+          <div className="h-[400px]"> 
+            <img 
+             src="https://i.pinimg.com/originals/b0/f3/40/b0f3404f2e2f354ca713dd3bde1a3ada.gif" 
+             alt="" className='h-[90%]' />
+           </div>
+          {/* <div className="h-[400px]"> 
+            <img 
+             src="https://media4.giphy.com/media/hpAJyj5DseG35NeNGP/giphy.gif?cid=6c09b9523lq5qhsqdza48rm5maz1fwvagd58m6n1hljvzxan&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=s" 
+             alt=""  />
+           </div> */}
+
+          
         </div>
         <div className="flex flex-col">
           <h6 className="text-blue-700 font-bold">Kosmetika Məlumatları</h6>

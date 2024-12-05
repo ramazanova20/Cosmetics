@@ -3,8 +3,6 @@ import Main from './components/Main/Main'
 import { Route, Routes } from 'react-router-dom'
 import Layout from './layout/Layout'
 import Cosmetics from './components/Main/Cosmetics'
-import Baxim from './components/Main/Baxim'
-import MainBasic from './components/Main/MainBasic'
 import Brend from './components/Main/Brend'
 import Aksesuar from './components/Main/Aksesuar'
 import Error from './components/Main/Error'
@@ -24,10 +22,9 @@ function App() {
       <Route index element={<Main />} />
       <Route path="/cosmetics" element={<Cosmetics/>} />
       <Route path="/aksesuar" element={<Aksesuar/>} />
-      {/* <Route path="/baxim" element={<Baxim/>} /> */}
       <Route path="/jewelery" element={<JewelryItem/>} />
+      <Route path="/brend" element={<Brend/>} />
       {/* <Route path="/basic" element={<MainBasic/>} />
-      <Route path="/baxim" element={<Baxim/>} />
       <Route path="/brend" element={<Brend/>} />
       <Route path="/aksesuar" element={<Aksesuar/>} />
       <Route path="/melumat" element={<Melumat/>} />

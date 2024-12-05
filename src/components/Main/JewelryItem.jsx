@@ -7,7 +7,7 @@ function JeweleryItem() {
   const { jewelery } = useContext(DATA);
   const [showProductList, setShowProductList] = useState([]);
   const [sorting, setSorting] = useState("latest");
-  const [quant, setQuant] = useState(1);
+  const [quantities, setQuantities] = useState({}); // Hər məhsul üçün miqdar
 
   useEffect(() => {
     if (jewelery) {
@@ -37,13 +37,20 @@ function JeweleryItem() {
     setShowProductList(sortedProducts); 
   };
 
+  const updateQuantity = (id, newQuantity) => {
+    setQuantities((prev) => ({
+      ...prev,
+      [id]: newQuantity,
+    }));
+  };
+
   if (!jewelery) {
     return <div>Loading...</div>;
   }
 
   return (
     <div className="flex flex-col">
-    <div>
+      <div>
         Sıralama:
         <select
           name="sorting"
@@ -56,43 +63,58 @@ function JeweleryItem() {
           <option value="low-to-high">Ucuzdan Bahaya</option>
         </select>
       </div>
-    <div className="flex flex-wrap gap-6 mx-auto justify-center m-1">
-      
-      
-      {showProductList.map((item, i) => (
-        <div key={i} className="max-w-[200px] h-[500px] rounded overflow-hidden shadow-lg bg-white relative">
-          <div className="rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5">
-            <Heart />
-          </div>
-          <img className="w-full h-[300px]" src={item.image} alt={item.title} />
-          <div className="p-4">
-            <h2 className="text-xl font-semibold mb-2 whitespace-nowrap">{item.title.slice(0, 17)}</h2>
-            <h5 className="text-lg font-semibold mb-4">{quant * item.price}₼</h5>
-            <div className="flex items-center justify-between mb-3">
-              <button
-                onClick={() => setQuant(quant > 1 ? quant - 1 : quant)}
-                className="px-3 py-1 bg-gray-200 rounded"
-              >
-                -
-              </button>
-              <span className="px-3 py-2">{quant}</span>
-              <button
-                onClick={() => setQuant(quant + 1)}
-                className="px-3 py-1 bg-gray-200 rounded"
-              >
-                +
-              </button>
+      <div className="flex flex-wrap gap-10 mx-auto justify-center m-1">
+        {showProductList.map((item, i) => {
+          const itemQuantity = quantities[item.id] || 1; // Varsayılan miqdar 1
+          const totalPrice = Math.floor(itemQuantity * item.price); // Qiyməti yuvarlayır
+
+          return (
+            <div
+              key={i}
+              className="max-w-[200px] h-[500px] rounded overflow-hidden shadow-lg bg-white relative">
+              <div className="rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5">
+                <Heart />
+              </div>
+              <div className="w-full h-[280px]">
+                <img className='h-full object-contain' src={item.image} alt={item.title} />
+              </div>
+              <div className="p-4">
+                <h2 className="text-xl font-semibold mb-2 whitespace-nowrap">
+                  {item.title.slice(0, 17)}
+                </h2>
+                <h5 className="text-lg font-semibold mb-4">{totalPrice}₼</h5>
+                <div className="flex items-center justify-between mb-3">
+                  <button
+                    onClick={() =>
+                      updateQuantity(item.id, Math.max(itemQuantity - 1, 1))
+                    }
+                    className="px-3 py-1 bg-gray-200 rounded"
+                  >
+                    -
+                  </button>
+                  <span className="px-3 py-2">{itemQuantity}</span>
+                  <button
+                    onClick={() => updateQuantity(item.id, itemQuantity + 1)}
+                    className="px-3 py-1 bg-gray-200 rounded"
+                  >
+                    +
+                  </button>
+                </div>
+                <button
+                  onClick={() =>
+                    alert(
+                      `You selected ${itemQuantity} ${item.title}(s) for ${totalPrice} ₼.`
+                    )
+                  }
+                  className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+                >
+                  Buy
+                </button>
+              </div>
             </div>
-            <button
-              onClick={() => alert(`You selected ${quant} ${item.title}(s) for ${quant * item.price} ₼.`)}
-              className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
-            >
-              Buy
-            </button>
-          </div>
-        </div>
-      ))}
-    </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
