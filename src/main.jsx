@@ -8,11 +8,10 @@ import DataContextProvider from './context/AllDataContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
-  <DataContextProvider> 
-    <DataContext> 
-      <App />
-    </DataContext>
-  </DataContextProvider>
-</BrowserRouter>
-
+    <DataContextProvider> 
+      <DataContext> 
+        <App />
+      </DataContext>
+    </DataContextProvider>
+  </BrowserRouter>
 )

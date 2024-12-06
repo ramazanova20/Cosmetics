@@ -13,7 +13,7 @@ function Item() {
   const { lipstick, foundation, eyeliner } = useDataContext();
   const [filteredData, setFilteredData] = useState(null);
   const [quantities, setQuantities] = useState({});
-  const [sorting, setSorting] = useState("latest");
+ 
 
   useEffect(() => {
     let data;
@@ -31,22 +31,9 @@ function Item() {
     }
   }, [tip, lipstick, foundation, eyeliner]);
 
-  const handleSortingChange = (newSorting) => {
-    setSorting(newSorting);
-  };
+ 
 
-  useEffect(() => {
-    if (!filteredData) return;
-
-    let sortedProducts = [...filteredData];
-    if (sorting === "high-to-low") {
-      sortedProducts.sort((a, b) => b.price - a.price);
-    } else if (sorting === "low-to-high") {
-      sortedProducts.sort((a, b) => a.price - b.price);
-    }
-
-    setFilteredData(sortedProducts); // Update sorted data
-  }, [sorting, filteredData]);
+  
 
   const updateQuantity = (id, newQuantity) => {
     setQuantities((prev) => ({
@@ -64,20 +51,7 @@ function Item() {
   }
 
   return (
-    <div className="flex flex-col">
-      <div>
-        Sıralama:
-        <select
-          name="sorting"
-          id="sorting"
-          onChange={(e) => handleSortingChange(e.target.value)}
-          value={sorting}
-        >
-          <option value="latest">Son Məhsullar</option>
-          <option value="high-to-low">Bahadan Ucuza</option>
-          <option value="low-to-high">Ucuzdan Bahaya</option>
-        </select>
-      </div>
+      
       <div className="flex flex-wrap gap-10 mx-auto justify-center m-1">
         {filteredData.map((item, i) => (
           <div
@@ -139,7 +113,7 @@ function Item() {
           </div>
         ))}
       </div>
-    </div>
+    
   );
 }
 
