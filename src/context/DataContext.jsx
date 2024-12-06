@@ -7,9 +7,10 @@ export const useDataContext = () => {
   return useContext(DATA);
 };
 
-function DataContext({ children, searchQuery, sortOrder }) {
+function DataContext({ children }) {
   const [data, setData] = useState({});
   const [jewelery, setJewelery] = useState(null);
+  const [searchQuery, setSearchQuery] = useState(""); // Axtarış sorğusu
 
   const productTypes = ["lipstick", "foundation", "eyeliner"];
 
@@ -21,7 +22,7 @@ function DataContext({ children, searchQuery, sortOrder }) {
     const fetchData = async () => {
       let response = await getAllData();
       if (response) {
-        setData(response); // Bütün məlumatları yüklə (zərgərlik daxil)
+        setData(response);
       }
     };
 
@@ -31,7 +32,7 @@ function DataContext({ children, searchQuery, sortOrder }) {
       const res = await getProductByName(type);
       setData((currentData) => ({
         ...currentData,
-        [type]: res, // Xüsusi məhsul tipini yeniləyirik
+        [type]: res,
       }));
     });
   }, []);
@@ -40,24 +41,15 @@ function DataContext({ children, searchQuery, sortOrder }) {
     const filteredData = {};
 
     Object.keys(data).forEach((key) => {
-      if (Array.isArray(data[key])) { // Əgər data bir array-dirsə
-        // Burada axtarış query parametrini işlədirik
+      if (Array.isArray(data[key])) {
         filteredData[key] = data[key]
           .filter((item) => {
-            const searchTerm = searchQuery?.toLowerCase() || "";
+            const searchTerm = searchQuery.toLowerCase();
             return (item.name || item.title)
               .toLowerCase()
-              .includes(searchTerm); // Ad və başlıq üzrə axtarış
+              .includes(searchTerm);
           })
-          .sort((a, b) => {
-            if (sortOrder === "asc") {
-              return a.price - b.price; // Azdan çoxa sıralama
-            } else if (sortOrder === "desc") {
-              return b.price - a.price; // Çoxdan aza sıralama
-            }
-            return 0; // Sıralama yoxdursa
-          })
-          .slice(0, 10); // İlk 10 məhsulu alırıq
+          .slice(0, 10);
       } else {
         filteredData[key] = data[key];
       }
@@ -68,27 +60,8 @@ function DataContext({ children, searchQuery, sortOrder }) {
 
   const filteredData = filterAndSortData();
 
-  // Köhnə koddakı filter və tip məntiqini burada saxlayırıq
-  const filterByType = (searchQuery, data) => {
-    const filters = {
-      foundation: setFoundation,
-      lipstick: setLip,
-      eyeliner: setEyeliner,
-    };
-
-    if (filters[searchQuery]) {
-      const filtered = data.filter((item) =>
-        item.product_type.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-      filters[searchQuery](filtered);
-    } else if (searchQuery === "data") {
-      setData(data); // Ensure no endless loop here
-    }
-  };
-
-  // Filtered data-ya uyğun komponenti göstəririk
   return (
-    <DATA.Provider value={{ ...filteredData, jewelery }}>
+    <DATA.Provider value={{ ...filteredData, jewelery, setSearchQuery }}>
       {children}
     </DATA.Provider>
   );
