@@ -11,6 +11,8 @@ function DataContext({ children }) {
   const [data, setData] = useState({});
   const [jewelery, setJewelery] = useState(null);
   const [searchQuery, setSearchQuery] = useState(""); // Axtarış sorğusu
+  // const [favorites, setFavorites] = useState([]); // favorites state
+  
 
   const productTypes = ["lipstick", "foundation", "eyeliner"];
 
@@ -37,6 +39,21 @@ function DataContext({ children }) {
     });
   }, []);
 
+  // const addToFavorites = (item) => {
+  //   setFavorites((lastFavorites) => {
+  //     if (!lastFavorites.some((fav) => fav.id === item.id)) {
+  //       return [...lastFavorites, item];
+  //     }
+  //     return lastFavorites;
+  //   });
+  // };
+
+  // const removeFromFavorites = (id) => {
+  //   setFavorites((lastFavorites) =>
+  //     lastFavorites.filter((item) => item.id !== id)
+  //   );
+  // };
+
   const filterAndSortData = () => {
     const filteredData = {};
 
@@ -61,7 +78,14 @@ function DataContext({ children }) {
   const filteredData = filterAndSortData();
 
   return (
-    <DATA.Provider value={{ ...filteredData, jewelery, setSearchQuery }}>
+    <DATA.Provider value={{ 
+      ...filteredData, 
+      jewelery, 
+      // favorites,  // favorites məlumatı
+      // addToFavorites,  // favorites-ə əlavə etmə funksiyası
+      // removeFromFavorites,  // favorites-dən çıxarma funksiyası
+      setSearchQuery 
+    }}>
       {children}
     </DATA.Provider>
   );

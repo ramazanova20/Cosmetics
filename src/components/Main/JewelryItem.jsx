@@ -7,7 +7,7 @@ function JeweleryItem() {
   const { jewelery } = useContext(DATA);
   const [showProductList, setShowProductList] = useState([]);
   const [sorting, setSorting] = useState("latest");
-  const [quantities, setQuantities] = useState({}); // Hər məhsul üçün miqdar
+  const [quantities, setQuantities] = useState({}); 
 
   useEffect(() => {
     if (jewelery) {
@@ -38,8 +38,8 @@ function JeweleryItem() {
   };
 
   const updateQuantity = (id, newQuantity) => {
-    setQuantities((prev) => ({
-      ...prev,
+    setQuantities((quant) => ({
+      ...quant,
       [id]: newQuantity,
     }));
   };

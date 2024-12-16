@@ -31,13 +31,11 @@ function Item() {
     }
   }, [tip, lipstick, foundation, eyeliner]);
 
- 
 
-  
 
   const updateQuantity = (id, newQuantity) => {
-    setQuantities((prev) => ({
-      ...prev,
+    setQuantities((quant) => ({
+      ...quant,
       [id]: newQuantity,
     }));
   };

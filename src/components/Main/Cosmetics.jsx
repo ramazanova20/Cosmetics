@@ -2,24 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { getProductByName } from '../../services/api';
 import Heart from './Heart';
-import Favorites from './Favorites'; // Doğru fayl yolunu göstərin
 
-function Cosmetics() {
+function Cosmetics({ favorites, setFavorites }) {
   const location = useLocation();
   const url = location.search;
   const tip = new URLSearchParams(url).get('tip');
   const [data, setData] = useState(null);
   const [quantities, setQuantities] = useState({});
-  const [favorites, setFavorites] = useState([]);
-
-  useEffect(() => {
-    const savedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    setFavorites(savedFavorites);
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('favorites', JSON.stringify(favorites));
-  }, [favorites]);
 
   useEffect(() => {
     if (tip) {
@@ -34,28 +23,17 @@ function Cosmetics() {
   }, [tip]);
 
   const updateQuantity = (id, newQuantity) => {
-    setQuantities((prevQuantities) => ({
-      ...prevQuantities,
+    setQuantities((quant) => ({
+      ...quant,
       [id]: newQuantity,
     }));
   };
 
   const addToFavorites = (item) => {
-    setFavorites((prevFavorites) => {
-      if (!prevFavorites.some((fav) => fav.id === item.id)) {
-        const updatedFavorites = [...prevFavorites, item];
-        localStorage.setItem('favorites', JSON.stringify(updatedFavorites)); // Dərhal `localStorage`-ə yazın
-        return updatedFavorites;
-      }
-      return prevFavorites;
+    setFavorites((currentFavorites) => {
+      if (currentFavorites.find((fav) => fav.id === item.id)) return currentFavorites;
+      return [...currentFavorites, item];
     });
-  };
-  
-
-  const removeFromFavorites = (id) => {
-    setFavorites((prevFavorites) =>
-      prevFavorites.filter((item) => item.id !== id)
-    );
   };
 
   const shouldShowImage = !(tip === 'lipstick' || tip === 'foundation' || tip === 'eyeliner');
@@ -72,17 +50,13 @@ function Cosmetics() {
             <li><Link to="/aksesuar">Aksessuarlar</Link></li>
           </ul>
         </div>
-        
+
         <div className="flex flex-wrap gap-10 mx-auto justify-center m-1">
-          {data && data.map((item, i) => (
-            <div key={i} className="max-w-[200px] h-[500px] rounded overflow-hidden shadow-lg bg-white relative flex flex-col">
+          {data && data.map((item) => (
+            <div key={item.id} className="max-w-[200px] h-[500px] rounded overflow-hidden shadow-lg bg-white relative flex flex-col">
               <div className="rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5">
-                {/* <Heart /> */}
-                <button
-                  onClick={() => addToFavorites(item)}
-                 
-                >
-                 <Heart />
+                <button onClick={() => addToFavorites(item)}>
+                  <Heart />
                 </button>
               </div>
               <div className='w-full h-[280px]'>
@@ -92,7 +66,6 @@ function Cosmetics() {
                   alt={item.name}
                 />
               </div>
-
               <div className="p-4">
                 <h2 className="text-xl font-semibold mb-2 whitespace-nowrap">
                   {item.name.slice(0, 15)}
@@ -134,21 +107,16 @@ function Cosmetics() {
               </div>
             </div>
           ))}
-          
+
           {shouldShowImage && (
             <div className="h-[400px]">
-              <img 
-                src="https://i.pinimg.com/originals/b0/f3/40/b0f3404f2e2f354ca713dd3bde1a3ada.gif" 
+              <img
+                src="https://i.pinimg.com/originals/b0/f3/40/b0f3404f2e2f354ca713dd3bde1a3ada.gif"
                 alt="Cosmetic gif"
-                className='h-[90%]' 
+                className='h-[90%]'
               />
             </div>
           )}
-        </div>
-        <div className="mt-4">
-          <Link to="/favorites" className="text-blue-500 underline">
-            Seçilmişlərə get
-          </Link>
         </div>
       </div>
     </div>

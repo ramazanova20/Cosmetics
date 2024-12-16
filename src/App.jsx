@@ -7,7 +7,8 @@ import Brend from './components/Main/Brend';
 import Aksesuar from './components/Main/Aksesuar';
 import Error from './components/Main/Error';
 import JewelryItem from './components/Main/JewelryItem';
-import FavoritesPage from './components/Main/FavoritePages';
+// import FavoritesPage from './components/Main/FavoritePages';
+import Favorites from './components/Main/Favorites';
 
 function App() {
   const [favorites, setFavorites] = useState([]);
@@ -33,11 +34,11 @@ function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Main />} />
-        <Route path="/cosmetics" element={<Cosmetics />} />
+        {/* <Route path="/cosmetics" element={<Cosmetics />} /> */}
         <Route path="/aksesuar" element={<Aksesuar />} />
         <Route path="/jewelery" element={<JewelryItem />} />
         <Route path="/brend" element={<Brend />} />
-        <Route
+        {/* <Route
           path="/favorites"
           element={
             <FavoritesPage
@@ -45,6 +46,15 @@ function App() {
               removeFromFavorites={removeFromFavorites}
             />
           }
+        /> */}
+        {/* <Route path="/favorites" element={<Favorites favorites={favorites} removeFromFavorites={removeFromFavorites} />} /> */}
+        <Route
+          path="/cosmetics"
+          element={<Cosmetics favorites={favorites} setFavorites={setFavorites} />}
+        />
+        <Route
+          path="/favorites"
+          element={<Favorites favorites={favorites} removeFromFavorites={setFavorites} />}
         />
         <Route path="*" element={<Error />} />
       </Route>

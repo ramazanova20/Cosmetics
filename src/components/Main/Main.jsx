@@ -16,8 +16,8 @@ function Main() {
   }
 
   const updateQuantity = (id, newQuantity) => {
-    setQuantities((prevQuantities) => ({
-      ...prevQuantities,
+    setQuantities((quant) => ({
+      ...quant,
       [id]: newQuantity,
     }));
   };
