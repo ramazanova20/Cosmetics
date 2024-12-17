@@ -6,20 +6,18 @@ import Cosmetics from './components/Main/Cosmetics';
 import Brend from './components/Main/Brend';
 import Aksesuar from './components/Main/Aksesuar';
 import Error from './components/Main/Error';
-import JewelryItem from './components/Main/JewelryItem';
-// import FavoritesPage from './components/Main/FavoritePages';
 import Favorites from './components/Main/Favorites';
+import Melumat from './components/Main/Melumat';
+import ProductDetail from './components/Main/ProductDetail';
 
 function App() {
   const [favorites, setFavorites] = useState([]);
 
-  // Load favorites from localStorage on initial render
   useEffect(() => {
     const savedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
     setFavorites(savedFavorites);
   }, []);
 
-  // Save favorites to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem('favorites', JSON.stringify(favorites));
   }, [favorites]);
@@ -33,21 +31,15 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Main />} />
-        {/* <Route path="/cosmetics" element={<Cosmetics />} /> */}
-        <Route path="/aksesuar" element={<Aksesuar />} />
-        <Route path="/jewelery" element={<JewelryItem />} />
+        <Route index element={<Main favorites={favorites} setFavorites={setFavorites}/>} />
+        <Route path="/aksesuar" element={<Aksesuar favorites={favorites} setFavorites={setFavorites} />} />
         <Route path="/brend" element={<Brend />} />
-        {/* <Route
-          path="/favorites"
-          element={
-            <FavoritesPage
-              favorites={favorites}
-              removeFromFavorites={removeFromFavorites}
-            />
-          }
-        /> */}
-        {/* <Route path="/favorites" element={<Favorites favorites={favorites} removeFromFavorites={removeFromFavorites} />} /> */}
+        <Route path="/melumat" element={<Melumat />} />
+        <Route path="/cosmetics/:id" element={<ProductDetail />} />
+        <Route path="/aksesuar/:id" element={<ProductDetail />} />
+        
+
+
         <Route
           path="/cosmetics"
           element={<Cosmetics favorites={favorites} setFavorites={setFavorites} />}
@@ -56,6 +48,7 @@ function App() {
           path="/favorites"
           element={<Favorites favorites={favorites} removeFromFavorites={setFavorites} />}
         />
+        
         <Route path="*" element={<Error />} />
       </Route>
     </Routes>

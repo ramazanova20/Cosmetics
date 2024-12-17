@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
-import { getProductByName, getJeweleryData, getAllData } from "../services/api";
+import { getProductByName, getJeweleryData, getAllData, getInfoData } from "../services/api";
 
 export const DATA = createContext();
 
@@ -10,14 +10,18 @@ export const useDataContext = () => {
 function DataContext({ children }) {
   const [data, setData] = useState({});
   const [jewelery, setJewelery] = useState(null);
-  const [searchQuery, setSearchQuery] = useState(""); // Axtarış sorğusu
-  // const [favorites, setFavorites] = useState([]); // favorites state
+  const [info, setInfo] = useState(null);
+  const [searchQuery, setSearchQuery] = useState(""); 
+  // const [favorites, setFavorites] = useState([]); 
   
 
   const productTypes = ["lipstick", "foundation", "eyeliner"];
 
   useEffect(() => {
     getJeweleryData().then((res) => setJewelery(res));
+  }, []);
+  useEffect(() => {
+    getInfoData().then((res) => setInfo(res));
   }, []);
 
   useEffect(() => {
@@ -38,6 +42,7 @@ function DataContext({ children }) {
       }));
     });
   }, []);
+  
 
   // const addToFavorites = (item) => {
   //   setFavorites((lastFavorites) => {
@@ -80,10 +85,11 @@ function DataContext({ children }) {
   return (
     <DATA.Provider value={{ 
       ...filteredData, 
-      jewelery, 
-      // favorites,  // favorites məlumatı
-      // addToFavorites,  // favorites-ə əlavə etmə funksiyası
-      // removeFromFavorites,  // favorites-dən çıxarma funksiyası
+      jewelery,
+      info, 
+      // favorites,  
+      // addToFavorites,  
+      // removeFromFavorites, 
       setSearchQuery 
     }}>
       {children}

@@ -53,19 +53,23 @@ function Cosmetics({ favorites, setFavorites }) {
 
         <div className="flex flex-wrap gap-10 mx-auto justify-center m-1">
           {data && data.map((item) => (
-            <div key={item.id} className="max-w-[200px] h-[500px] rounded overflow-hidden shadow-lg bg-white relative flex flex-col">
+            <div key={item.id}
+            className="max-w-[200px] h-[500px] rounded overflow-hidden shadow-lg bg-white relative flex flex-col"
+          >
               <div className="rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5">
                 <button onClick={() => addToFavorites(item)}>
                   <Heart />
                 </button>
               </div>
-              <div className='w-full h-[280px]'>
+              <Link 
+            
+            to={`/cosmetics/${item.id}`} className='w-full h-[280px]'>
                 <img
                   className='h-full object-contain'
                   src={item.api_featured_image}
                   alt={item.name}
                 />
-              </div>
+              </Link>
               <div className="p-4">
                 <h2 className="text-xl font-semibold mb-2 whitespace-nowrap">
                   {item.name.slice(0, 15)}

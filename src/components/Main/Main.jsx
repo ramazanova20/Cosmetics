@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useAllDataContext } from "../../context/AllDataContext";
 import Heart from "./Heart";
+import { Link } from "react-router-dom";
 
-function Main() {
+function Main({ favorites, setFavorites }) {
   const { data } = useAllDataContext();
   const [quantities, setQuantities] = useState({});
   const [sortOrder, setSortOrder] = useState("latest");
@@ -34,6 +35,12 @@ function Main() {
     }
     return 0; // Əlavə sıralama növü əlavə etmək mümkündür.
   });
+  const addToFavorites = (item) => {
+    setFavorites((currentFavorites) => {
+      if (currentFavorites.find((fav) => fav.id === item.id)) return currentFavorites;
+      return [...currentFavorites, item];
+    });
+  };
 
   return (
     <div>
@@ -59,13 +66,17 @@ function Main() {
                 className="max-w-[200px] h-[500px] rounded overflow-hidden shadow-lg bg-white relative"
               >
                 <div className="rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5">
-                  <Heart />
+                <button onClick={() => addToFavorites(item)}>
+                        <Heart />
+                      </button>
                 </div>
+                <Link to={`/cosmetics/${item.id}`}>
                 <img
                   className="w-full h-[300px]"
                   src={item.api_featured_image}
                   alt={item.name.slice(0, 10)}
                 />
+                </Link>
                 <div className="p-4">
                   <h2 className="text-xl font-semibold mb-2 whitespace-nowrap">
                     {item.name.slice(0, 15)}

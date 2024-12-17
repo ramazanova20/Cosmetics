@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Heart from './Heart';
+import { TiDelete } from "react-icons/ti";
 
-function Favorites({ favorites, removeFromFavorites }) {
+function Favorites({ favorites = [], removeFromFavorites }) {
   const [quantities, setQuantities] = useState({});
 
   const updateQuantity = (id, newQuantity) => {
@@ -19,20 +19,21 @@ function Favorites({ favorites, removeFromFavorites }) {
           <div key={item.id} className="max-w-[200px] h-[500px] rounded overflow-hidden shadow-lg bg-white relative flex flex-col">
             <div className="rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5">
               <button onClick={() => removeFromFavorites(item.id)}>
-                <Heart />
+              <TiDelete />
               </button>
             </div>
             <div className='w-full h-[280px]'>
               <img
                 className='h-full object-contain'
-                src={item.api_featured_image}
-                alt={item.name}
+                src={item.api_featured_image || item.image || 'default-image-url.jpg'}
+                alt={item.name || item.title || 'Product Image'}
               />
             </div>
             <div className="p-4">
               <h2 className="text-xl font-semibold mb-2 whitespace-nowrap">
-                {item.name.slice(0, 15)}
+                {(item.name?.slice(0, 15)) || (item.title?.slice(0, 15))}
               </h2>
+
               <h5 className="text-lg font-semibold mb-4">
                 {Math.floor((quantities[item.id] || 1) * item.price)}₼
               </h5>
@@ -58,7 +59,7 @@ function Favorites({ favorites, removeFromFavorites }) {
               <button
                 onClick={() =>
                   alert(
-                    `Seçtiğiniz məhsul: ${quantities[item.id] || 1} ədəd ${item.name} toplamda ${
+                    `Seçtiğiniz məhsul: ${quantities[item.id] || 1} ədəd ${item.name || item.title} toplamda ${
                       Math.floor((quantities[item.id] || 1) * item.price)
                     } ₼.`
                   )

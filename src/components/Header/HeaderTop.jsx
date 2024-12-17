@@ -21,7 +21,7 @@ function HeaderTop() {
       <div className='flex-col gap-4'>
         <div className='flex flex-col justify-start sm:flex-row sm:justify-between sm:items-center gap-4'>
           <div className='logo'>
-            <img src="./src/assets/img/logos.png" alt="Logo" />
+            <img src="https://kosmetika.az/logos.png?25" alt="Logo" />
           </div>
           <div className='min-w-14 hidden lg:block'>
             <form onSubmit={handleSearchSubmit}>

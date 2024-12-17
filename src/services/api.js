@@ -13,9 +13,24 @@ async function getJeweleryData() {
     const res = await axios.get("https://fakestoreapi.com/products")
     return res.data
 }
+async function getInfoData() {
+    const res = await axios.get("http://localhost:3005/info")
+    return res.data
+}
 
 
 
+async function getProductByIdFromFakeStore(id) {
+  const res = await axios.get(`https://fakestoreapi.com/products/${id}`);
+  return res.data;
+}
+
+async function getProductByIdFromMakeupAPI(id) {
+  const res = await axios.get(`https://makeup-api.herokuapp.com/api/v1/products/${id}.json`);
+  return res.data;
+}
+
+  
 export {
-    getAllData, getProductByName, getJeweleryData
+    getAllData, getProductByName, getJeweleryData, getInfoData, getProductByIdFromFakeStore,getProductByIdFromMakeupAPI
 }
