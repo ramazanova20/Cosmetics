@@ -13,11 +13,15 @@ import ProductDetail from './components/Main/ProductDetail';
 function App() {
   const [favorites, setFavorites] = useState([]);
 
+  // useEffect(() => {
+  //   const savedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+  //   setFavorites(savedFavorites);
+  // }, []);
   useEffect(() => {
-    const savedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    setFavorites(savedFavorites);
+    const savedFavorites = JSON.parse(localStorage.getItem('favorites'));
+    setFavorites(Array.isArray(savedFavorites) ? savedFavorites : []);
   }, []);
-
+  
   useEffect(() => {
     localStorage.setItem('favorites', JSON.stringify(favorites));
   }, [favorites]);
@@ -27,6 +31,7 @@ function App() {
       prevFavorites.filter((item) => item.id !== id)
     );
   };
+  
 
   return (
     <Routes>
@@ -38,16 +43,20 @@ function App() {
         <Route path="/cosmetics/:id" element={<ProductDetail />} />
         <Route path="/aksesuar/:id" element={<ProductDetail />} />
         
+        <Route
+  path="/favorites"
+  element={<Favorites favorites={favorites} removeFromFavorites={removeFromFavorites} />}
+/>
 
 
         <Route
           path="/cosmetics"
           element={<Cosmetics favorites={favorites} setFavorites={setFavorites} />}
         />
-        <Route
+        {/* <Route
           path="/favorites"
           element={<Favorites favorites={favorites} removeFromFavorites={setFavorites} />}
-        />
+        /> */}
         
         <Route path="*" element={<Error />} />
       </Route>

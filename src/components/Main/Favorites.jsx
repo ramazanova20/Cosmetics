@@ -18,9 +18,10 @@ function Favorites({ favorites = [], removeFromFavorites }) {
         {favorites.map((item) => (
           <div key={item.id} className="max-w-[200px] h-[500px] rounded overflow-hidden shadow-lg bg-white relative flex flex-col">
             <div className="rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5">
-              <button onClick={() => removeFromFavorites(item.id)}>
-              <TiDelete />
-              </button>
+            <button onClick={() => removeFromFavorites(item.id)}>
+  <TiDelete />
+</button>
+
             </div>
             <div className='w-full h-[280px]'>
               <img
