@@ -11,20 +11,47 @@ function DataContext({ children }) {
   const [data, setData] = useState({});
   const [jewelery, setJewelery] = useState(null);
   const [info, setInfo] = useState(null);
-  const [searchQuery, setSearchQuery] = useState(""); 
-  // const [favorites, setFavorites] = useState([]); 
-  
-
+  const [searchQuery, setSearchQuery] = useState("");
+  const [favorites, setFavorites] = useState([]);
+  const [counts, setCounts] = useState(0);
   const productTypes = ["lipstick", "foundation", "eyeliner"];
 
   useEffect(() => {
-    getJeweleryData().then((res) => setJewelery(res));
-  }, []);
+    setCounts(favorites.length);
+  }, [favorites]);
+  
+
   useEffect(() => {
-    getInfoData().then((res) => setInfo(res));
+    const savedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    setFavorites(Array.isArray(savedFavorites) ? savedFavorites : []);
   }, []);
 
   useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }, [favorites]);
+
+  
+  const addToFavorites = (item) => {
+    setFavorites((prevFavorites) => {
+      if (!prevFavorites.some((fav) => fav.id === item.id)) {
+        return [...prevFavorites, item];
+      }
+      return prevFavorites;
+    });
+  };
+
+  
+  const removeFromFavorites = (id) => {
+    setFavorites((prevFavorites) =>
+      prevFavorites.filter((item) => item.id !== id)
+    );
+  };
+
+  
+  useEffect(() => {
+    getJeweleryData().then((res) => setJewelery(res));
+    getInfoData().then((res) => setInfo(res));
+
     const fetchData = async () => {
       let response = await getAllData();
       if (response) {
@@ -42,22 +69,6 @@ function DataContext({ children }) {
       }));
     });
   }, []);
-  
-
-  // const addToFavorites = (item) => {
-  //   setFavorites((lastFavorites) => {
-  //     if (!lastFavorites.some((fav) => fav.id === item.id)) {
-  //       return [...lastFavorites, item];
-  //     }
-  //     return lastFavorites;
-  //   });
-  // };
-
-  // const removeFromFavorites = (id) => {
-  //   setFavorites((lastFavorites) =>
-  //     lastFavorites.filter((item) => item.id !== id)
-  //   );
-  // };
 
   const filterAndSortData = () => {
     const filteredData = {};
@@ -83,15 +94,18 @@ function DataContext({ children }) {
   const filteredData = filterAndSortData();
 
   return (
-    <DATA.Provider value={{ 
-      ...filteredData, 
-      jewelery,
-      info, 
-      // favorites,  
-      // addToFavorites,  
-      // removeFromFavorites, 
-      setSearchQuery 
-    }}>
+    <DATA.Provider
+      value={{
+        ...filteredData,
+        jewelery,
+        info,
+        favorites,
+        addToFavorites,
+        removeFromFavorites,
+        setSearchQuery,
+        counts
+      }}
+    >
       {children}
     </DATA.Provider>
   );

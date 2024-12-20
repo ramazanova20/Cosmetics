@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { getProductByName } from '../../services/api';
 import Heart from './Heart';
-
-function Cosmetics({ favorites, setFavorites }) {
+import { useDataContext } from "../../context/DataContext"; 
+function Cosmetics() {
+   const { favorites, addToFavorites } = useDataContext(); 
   const location = useLocation();
   const url = location.search;
   const tip = new URLSearchParams(url).get('tip');
@@ -29,12 +30,12 @@ function Cosmetics({ favorites, setFavorites }) {
     }));
   };
 
-  const addToFavorites = (item) => {
-    setFavorites((currentFavorites) => {
-      if (currentFavorites.find((fav) => fav.id === item.id)) return currentFavorites;
-      return [...currentFavorites, item];
-    });
-  };
+  // const addToFavorites = (item) => {
+  //   setFavorites((currentFavorites) => {
+  //     if (currentFavorites.find((fav) => fav.id === item.id)) return currentFavorites;
+  //     return [...currentFavorites, item];
+  //   });
+  // };
 
   const shouldShowImage = !(tip === 'lipstick' || tip === 'foundation' || tip === 'eyeliner');
 

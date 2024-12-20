@@ -2,12 +2,15 @@ import React, { useContext, useState, useEffect } from "react";
 import { DATA } from "../../context/DataContext";
 import Heart from './Heart'; 
 import { Link } from "react-router-dom";
+import { BASKET } from "../../context/BasketContext";
+import { useDataContext } from "../../context/DataContext"; // Importing context
 
-function Aksesuar({ favorites, setFavorites }) { 
-  const { jewelery } = useContext(DATA);
+function Aksesuar() { 
+  const { jewelery, favorites, addToFavorites } = useDataContext(); // Accessing favorites from context
   const [showProductList, setShowProductList] = useState([]);
   const [sorting, setSorting] = useState("latest");
   const [quantities, setQuantities] = useState({});
+  const { addToBasket } = useContext(BASKET);
 
   useEffect(() => {
     if (jewelery) {
@@ -44,13 +47,6 @@ function Aksesuar({ favorites, setFavorites }) {
     }));
   };
 
-  const addToFavorites = (item) => {
-    setFavorites((currentFavorites) => {
-      if (currentFavorites.find((fav) => fav.id === item.id)) return currentFavorites;
-      return [...currentFavorites, item];
-    });
-  };
-
   if (!jewelery) {
     return <div>Loading...</div>;
   }
@@ -75,20 +71,20 @@ function Aksesuar({ favorites, setFavorites }) {
               </select>
             </div>
             <div className="flex flex-wrap gap-10 mx-auto justify-center m-1">
-              {showProductList.map((item, i) => {
+              {showProductList.map((item) => {
                 const itemQuantity = quantities[item.id] || 1;
                 const totalPrice = Math.floor(itemQuantity * item.price);
 
                 return (
-                  <div key={i} className="max-w-[200px] h-[500px] rounded overflow-hidden shadow-lg bg-white relative">
+                  <div key={item.id} className="max-w-[200px] h-[500px] rounded overflow-hidden shadow-lg bg-white relative">
                     <div className="rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5">
                       <button onClick={() => addToFavorites(item)}>
                         <Heart />
                       </button>
                     </div>
                     <Link to={`/aksesuar/${item.id}`} className="w-full h-[280px]">
-  <img className='h-full object-contain' src={item.image} alt={item.title} />
-</Link>
+                      <img className='object-contain' src={item.image} alt={item.title} />
+                    </Link>
 
                     <div className="p-4">
                       <h2 className="text-xl font-semibold mb-2 whitespace-nowrap">
@@ -113,15 +109,12 @@ function Aksesuar({ favorites, setFavorites }) {
                         </button>
                       </div>
                       <button
-                        onClick={() =>
-                          alert(
-                            `You selected ${itemQuantity} ${item.title}(s) for ${totalPrice} ₼.`
-                          )
-                        }
-                        className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+                        onClick={() => addToBasket(item.id, item.image, item.title, item.price)}
+                        className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 block"
                       >
                         Buy
                       </button>
+
                     </div>
                   </div>
                 );

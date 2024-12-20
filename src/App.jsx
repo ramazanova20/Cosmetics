@@ -9,30 +9,32 @@ import Error from './components/Main/Error';
 import Favorites from './components/Main/Favorites';
 import Melumat from './components/Main/Melumat';
 import ProductDetail from './components/Main/ProductDetail';
+import Basket from './components/Main/Basket';
+import { useDataContext } from "./context/DataContext";
 
 function App() {
-  const [favorites, setFavorites] = useState([]);
+  // const [favorites, setFavorites] = useState([]);
 
+  // // useEffect(() => {
+  // //   const savedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+  // //   setFavorites(savedFavorites);
+  // // }, []);
   // useEffect(() => {
-  //   const savedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
-  //   setFavorites(savedFavorites);
+  //   const savedFavorites = JSON.parse(localStorage.getItem('favorites'));
+  //   setFavorites(Array.isArray(savedFavorites) ? savedFavorites : []);
   // }, []);
-  useEffect(() => {
-    const savedFavorites = JSON.parse(localStorage.getItem('favorites'));
-    setFavorites(Array.isArray(savedFavorites) ? savedFavorites : []);
-  }, []);
   
-  useEffect(() => {
-    localStorage.setItem('favorites', JSON.stringify(favorites));
-  }, [favorites]);
+  // useEffect(() => {
+  //   localStorage.setItem('favorites', JSON.stringify(favorites));
+  // }, [favorites]);
 
-  const removeFromFavorites = (id) => {
-    setFavorites((prevFavorites) =>
-      prevFavorites.filter((item) => item.id !== id)
-    );
-  };
+  // const removeFromFavorites = (id) => {
+  //   setFavorites((prevFavorites) =>
+  //     prevFavorites.filter((item) => item.id !== id)
+  //   );
+  // };
   
-
+  const { favorites, setFavorites, removeFromFavorites } = useDataContext();
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
@@ -40,6 +42,7 @@ function App() {
         <Route path="/aksesuar" element={<Aksesuar favorites={favorites} setFavorites={setFavorites} />} />
         <Route path="/brend" element={<Brend />} />
         <Route path="/melumat" element={<Melumat />} />
+        <Route path="/basket" element={<Basket/>} />
         <Route path="/cosmetics/:id" element={<ProductDetail />} />
         <Route path="/aksesuar/:id" element={<ProductDetail />} />
         
