@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState} from "react";
 import { TiDelete } from "react-icons/ti";
 import { useDataContext } from "../../context/DataContext";
+import { BASKET } from "../../context/BasketContext";
 
 function Favorites() {
   const { favorites, removeFromFavorites } = useDataContext(); 
@@ -12,7 +13,7 @@ function Favorites() {
       [id]: newQuantity,
     }));
   };
-
+ const { addToBasket } = useContext(BASKET);
   return (
     <div className="container mx-auto p-4">
       <h2 className="text-2xl font-bold mb-4">Seçilmiş Məhsullar</h2>
@@ -59,17 +60,14 @@ function Favorites() {
                 </button>
               </div>
               <button
-                onClick={() =>
-                  alert(
-                    `Seçtiğiniz məhsul: ${quantities[item.id] || 1} ədəd ${item.name || item.title} toplamda ${
-                      Math.floor((quantities[item.id] || 1) * item.price)
-                    } ₼.`
-                  )
-                }
-                className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
-              >
-                Satın Al
-              </button>
+                        onClick={() => addToBasket( item.id,
+                          item.api_featured_image || item.image, 
+                          item.name || item.title, 
+                          item.price)}
+                        className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 block"
+                      >
+                        Buy
+                      </button>
             </div>
           </div>
         ))}

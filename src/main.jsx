@@ -6,6 +6,7 @@ import { BrowserRouter } from 'react-router-dom'
 import DataContext from './context/DataContext.jsx'
 import DataContextProvider from './context/AllDataContext.jsx'
 import BasketContext from './context/BasketContext.jsx'
+import 'antd/dist/reset.css'; // Ant Design stilini daxil edir
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>

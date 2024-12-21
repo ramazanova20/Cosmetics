@@ -11,6 +11,7 @@ import Melumat from './components/Main/Melumat';
 import ProductDetail from './components/Main/ProductDetail';
 import Basket from './components/Main/Basket';
 import { useDataContext } from "./context/DataContext";
+import ProductInfo from './components/Main/ProductInfo';
 
 function App() {
   // const [favorites, setFavorites] = useState([]);
@@ -45,6 +46,7 @@ function App() {
         <Route path="/basket" element={<Basket/>} />
         <Route path="/cosmetics/:id" element={<ProductDetail />} />
         <Route path="/aksesuar/:id" element={<ProductDetail />} />
+        <Route path="/melumat/:id" element={<ProductInfo />} />
         
         <Route
   path="/favorites"

@@ -9,6 +9,7 @@ function Main({ favorites, setFavorites }) {
   const [quantities, setQuantities] = useState({});
   const [sortOrder, setSortOrder] = useState("latest");
   const { addToBasket } = useContext(BASKET);
+  const [slice, setSlice] =useState(15)
   if (!data) {
     return <div>Loading...</div>;
   }
@@ -61,7 +62,7 @@ function Main({ favorites, setFavorites }) {
             </select>
           </div>
           <div className="flex flex-wrap gap-6 mx-auto justify-center m-1">
-            {sortedData.map((item, i) => (
+            {sortedData.slice(0, slice).map((item, i) => (
               <div
                 key={i}
                 className="max-w-[200px] h-[500px] rounded overflow-hidden shadow-lg bg-white relative"
@@ -127,6 +128,7 @@ function Main({ favorites, setFavorites }) {
               </div>
             ))}
           </div>
+          <button onClick={() =>setSlice(slice+15)} className="bg-red">OK</button>
         </div>
       </div>
     </div>

@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect,useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getProductByIdFromMakeupAPI, getProductByIdFromFakeStore} from "../../services/api"; 
+import { BASKET } from "../../context/BasketContext";
 
 
 function ProductDetail() {
   const { id } = useParams(); 
   const [product, setProduct] = useState(null); 
   const [quantity, setQuantity] = useState(1);  
+  const { addToBasket } = useContext(BASKET);
   useEffect(() => {
     const fetchProduct = location.pathname.includes("aksesuar") 
       ? getProductByIdFromFakeStore(id) 
@@ -26,7 +28,7 @@ function ProductDetail() {
   if (!product) return <div>Yüklənir...</div>;  
  
   return (
-    <div className="container mx-auto p-4">
+    <div className="container lg:max-w-[1024px] mx-auto p-4">
         
       {/* <h1 className="text-2xl font-bold mb-4">{product.name || product.title}</h1> */}
       <div className="w-full h-[280px]">
@@ -42,6 +44,7 @@ function ProductDetail() {
         <h5 className="text-lg font-semibold mb-4">
           {Math.floor(quantity * product.price)}₼   
         </h5>
+        <p>{product.description}</p>
         <div className="flex items-center mb-2">
           <button
             onClick={() => setQuantity(Math.max(quantity - 1, 1))}
@@ -58,16 +61,13 @@ function ProductDetail() {
           </button>
         </div>
         <button
-          onClick={() =>
-            alert(
-              `Seçdiyiniz məhsul: ${quantity} ədəd ${product.name || product.title} toplamda ${
-                Math.floor(quantity * product.price)
-              } ₼.`
-            )
-          }
-          className="w-[150px] bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+          onClick={() => addToBasket( product.id,
+            product.api_featured_image || product.image, 
+            product.name || product.title,  product.description,
+            product.price)}
+          className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 block"
         >
-          Satın Al
+          Buy
         </button>
       </div>
     </div>

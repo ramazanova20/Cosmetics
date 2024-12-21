@@ -17,6 +17,10 @@ async function getInfoData() {
     const res = await axios.get("http://localhost:3005/info")
     return res.data
 }
+async function getInfoById(id) {
+    const res = await axios.get(`http://localhost:3005/info/${id}`)
+    return res.data
+}
 
 
 
@@ -32,5 +36,5 @@ async function getProductByIdFromMakeupAPI(id) {
 
   
 export {
-    getAllData, getProductByName, getJeweleryData, getInfoData, getProductByIdFromFakeStore,getProductByIdFromMakeupAPI
+    getAllData, getProductByName, getJeweleryData, getInfoData,getInfoById, getProductByIdFromFakeStore,getProductByIdFromMakeupAPI
 }
