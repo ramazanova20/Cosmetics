@@ -13,12 +13,12 @@ function DataContext({ children }) {
   const [info, setInfo] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [favorites, setFavorites] = useState([]);
-  const [counts, setCounts] = useState(0);
+  // const [counts, setCounts] = useState(0);
   const productTypes = ["lipstick", "foundation", "eyeliner"];
 
-  useEffect(() => {
-    setCounts(favorites.length);
-  }, [favorites]);
+  // useEffect(() => {
+  //   setCounts(favorites.length);
+  // }, [favorites]);
   
 
   useEffect(() => {
@@ -103,7 +103,7 @@ function DataContext({ children }) {
         addToFavorites,
         removeFromFavorites,
         setSearchQuery,
-        counts
+        // counts
       }}
     >
       {children}

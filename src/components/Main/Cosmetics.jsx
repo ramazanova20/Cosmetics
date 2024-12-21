@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useEffect, useState, useContext  } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { getProductByName } from '../../services/api';
 import Heart from './Heart';
+import { BASKET } from '../../context/BasketContext';
 import { useDataContext } from "../../context/DataContext"; 
+
 function Cosmetics() {
    const { favorites, addToFavorites } = useDataContext(); 
   const location = useLocation();
@@ -10,7 +12,7 @@ function Cosmetics() {
   const tip = new URLSearchParams(url).get('tip');
   const [data, setData] = useState(null);
   const [quantities, setQuantities] = useState({});
-
+  const { addToBasket } = useContext(BASKET);
   useEffect(() => {
     if (tip) {
       getProductByName(tip)
@@ -97,7 +99,7 @@ function Cosmetics() {
                     +
                   </button>
                 </div>
-                <button
+                {/* <button
                   onClick={() =>
                     alert(
                       `Seçtiğiniz məhsul: ${quantities[item.id] || 1} ədəd ${item.name} toplamda ${
@@ -108,6 +110,15 @@ function Cosmetics() {
                   className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
                 >
                   Satın Al
+                </button> */}
+                <button
+                  onClick={() => addToBasket( item.id,
+                    item.api_featured_image || item.image, 
+                    item.name || item.title, 
+                    item.price)}
+                  className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 block"
+                >
+                  Buy
                 </button>
               </div>
             </div>

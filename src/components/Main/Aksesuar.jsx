@@ -3,10 +3,10 @@ import { DATA } from "../../context/DataContext";
 import Heart from './Heart'; 
 import { Link } from "react-router-dom";
 import { BASKET } from "../../context/BasketContext";
-import { useDataContext } from "../../context/DataContext"; // Importing context
+import { useDataContext } from "../../context/DataContext"; 
 
 function Aksesuar() { 
-  const { jewelery, favorites, addToFavorites } = useDataContext(); // Accessing favorites from context
+  const { jewelery, favorites, addToFavorites } = useDataContext();
   const [showProductList, setShowProductList] = useState([]);
   const [sorting, setSorting] = useState("latest");
   const [quantities, setQuantities] = useState({});
@@ -109,7 +109,10 @@ function Aksesuar() {
                         </button>
                       </div>
                       <button
-                        onClick={() => addToBasket(item.id, item.image, item.title, item.price)}
+                        onClick={() => addToBasket( item.id,
+                          item.api_featured_image || item.image, 
+                          item.name || item.title, 
+                          item.price)}
                         className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 block"
                       >
                         Buy

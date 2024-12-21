@@ -12,7 +12,7 @@ function Menu() {
   const [show, setShow] = useState(false);
   const [sebet, setSebet] = useState(cook.get("sebet") || [])
   const {count} = useContext(BASKET)
-  const { favorites, counts } = useDataContext();
+  const { favorites } = useDataContext();
 
   // console.log(sebet)
 
@@ -38,7 +38,7 @@ function Menu() {
                   <GrFavorite className="text-2xl"/>
                 </Link>
                 <span className="absolute top-[-10px] right-[-13px] bg-white text-black text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                  {counts}
+                  {favorites.length}
                 </span>
               </div>
               <div className="relative">
@@ -92,7 +92,7 @@ function Menu() {
                   <GrFavorite className="text-2xl"/>
                 </Link>
                 <span className="absolute top-[-10px] right-[-13px] bg-white text-black text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                  {counts}
+                {favorites.length}
                 </span>
               </div>
               <div className="relative">

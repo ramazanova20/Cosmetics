@@ -12,18 +12,22 @@ function BasketContext({ children }) {
     setCount(sebet.length )
   },[sebet ])
 
-  function addToBasket(id, image, title, price) {
+  function addToBasket(id, api_featured_image, image, name, title, price) {
 
-    setSebet((prevSebet) => {
-      const newSebet = [...prevSebet, { id, image, title, price }];
+    setSebet((sebet) => {
+      const order = sebet.find((item) => item.id === id);
+      if (order) {
+        return sebet; 
+      }
+      const newSebet = [...sebet, {id, api_featured_image, image, name, title,price: price || 0}];
       cook.set("sebet", JSON.stringify(newSebet));
       return newSebet;
     });
   }
 
   const removeFromBasket = (id) => {
-    setSebet((prevSebet) => {
-      const newSebet = prevSebet.filter((item) => item.id !== id);
+    setSebet((sebet) => {
+      const newSebet = sebet.filter((item) => item.id !== id);
       cook.set("sebet", JSON.stringify(newSebet)); 
       return newSebet;
     });

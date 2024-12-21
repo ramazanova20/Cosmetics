@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, {  useEffect, useState, useContext } from "react";
 import { useAllDataContext } from "../../context/AllDataContext";
 import Heart from "./Heart";
 import { Link } from "react-router-dom";
+import { BASKET } from "../../context/BasketContext";
 
 function Main({ favorites, setFavorites }) {
   const { data } = useAllDataContext();
   const [quantities, setQuantities] = useState({});
   const [sortOrder, setSortOrder] = useState("latest");
-
+  const { addToBasket } = useContext(BASKET);
   if (!data) {
     return <div>Loading...</div>;
   }
@@ -114,17 +115,13 @@ function Main({ favorites, setFavorites }) {
                     </button>
                   </div>
                   <button
-                    onClick={() =>
-                      alert(
-                        `Seçtiğiniz ürün: ${quantities[item.id] || 1} adet ${item.name} toplamda ${
-                          Math.floor((quantities[item.id] || 1) * item.price)
-                        } ₼.`
-                      )
-                      
-                    }
-                    className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+                    onClick={() => addToBasket( item.id,
+                      item.api_featured_image || item.image, 
+                      item.name || item.title, 
+                      item.price)}
+                    className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 block"
                   >
-                    Satın Al
+                    Buy
                   </button>
                 </div>
               </div>
