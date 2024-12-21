@@ -24,7 +24,7 @@ function Menu() {
   // const [favorites, setFavorites] = useState([]);
   return (
     <div className="bg-pink-500">
-      <div className="container lg:max-w-[1024px] mx-auto p-3 ">
+      <div className="container lg:max-w-[1024px] mx-auto p-2 ">
         <div >
           <div className="flex flex-row items-center justify-start md:hidden gap-2 text-white">
             <div className="text-xl">
@@ -60,7 +60,7 @@ function Menu() {
               maxHeight: show ? "500px" : 0
             }}
             className="max-h-0 transition-all duration-500 overflow-hidden rounded shadow">
-            <div className="flex flex-col p-4 items-start text-white gap-2">
+            <div className="flex flex-col p-2 items-start text-white gap-2">
 
               <ul className="flex flex-col gap-2">
                 <li onClick={handleClick}><Link to={""}>Home Page</Link></li>
@@ -75,18 +75,18 @@ function Menu() {
 
         </div>
         <div className="hidden md:block">
-          <div className="flex flex-row items-center justify-start gap-4 text-white">
-            <div>
+          <div className="flex flex-row items-center justify-start gap-2 text-white">
+            <div className="text-2xl">
               <Link to={""}><FaHome /></Link>
 
             </div>
-            <ul className="flex flex-row gap-4">
+            <ul className="flex flex-row gap-2 items-center pt-4">
               <li><Link to={"/cosmetics"}>Kosmetika</Link></li>
               <li><Link to={"/aksesuar"}>Aksessuar və Moda</Link></li>
               <li><Link to={"/brend"}>Brendlər</Link></li>
               <li><Link to={"/melumat"}>Məlumatlar</Link></li>
             </ul>
-            <div className="flex flex-row items-center gap-4 text-white ml-4">
+            <div className="flex flex-row items-center gap-2 text-white ml-4">
               <div>
                 <Link to="/favorites">
                   <GrFavorite className="text-2xl"/>

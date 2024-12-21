@@ -71,6 +71,8 @@ function DataContext({ children }) {
   }, []);
 
   const filterAndSortData = () => {
+    console.log("Filtering data with search query:", searchQuery); // Check if searchQuery is updated
+
     const filteredData = {};
 
     Object.keys(data).forEach((key) => {

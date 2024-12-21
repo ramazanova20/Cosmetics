@@ -4,7 +4,7 @@ import { getProductByName } from '../../services/api';
 import Heart from './Heart';
 import { BASKET } from '../../context/BasketContext';
 import { useDataContext } from "../../context/DataContext"; 
-
+import { Pagination } from 'antd';
 function Cosmetics() {
    const { favorites, addToFavorites } = useDataContext(); 
   const location = useLocation();
@@ -13,6 +13,8 @@ function Cosmetics() {
   const [data, setData] = useState(null);
   const [quantities, setQuantities] = useState({});
   const { addToBasket } = useContext(BASKET);
+  const [page, setPage] = useState(1);
+  const pageSize = 15;
   useEffect(() => {
     if (tip) {
       getProductByName(tip)
@@ -32,14 +34,11 @@ function Cosmetics() {
     }));
   };
 
-  // const addToFavorites = (item) => {
-  //   setFavorites((currentFavorites) => {
-  //     if (currentFavorites.find((fav) => fav.id === item.id)) return currentFavorites;
-  //     return [...currentFavorites, item];
-  //   });
-  // };
 
   const shouldShowImage = !(tip === 'lipstick' || tip === 'foundation' || tip === 'eyeliner');
+  const startIndex = (page - 1) * pageSize;
+  const endIndex = startIndex + pageSize;
+  const currentData = data ? data.slice(startIndex, endIndex) : [];
 
   return (
     <div>
@@ -55,7 +54,7 @@ function Cosmetics() {
         </div>
 
         <div className="flex flex-wrap gap-10 mx-auto justify-center m-1">
-          {data && data.map((item) => (
+          {currentData && currentData.map((item) => (
             <div key={item.id}
             className="max-w-[200px] h-[500px] rounded overflow-hidden shadow-lg bg-white relative flex flex-col"
           >
@@ -112,14 +111,14 @@ function Cosmetics() {
                   Satın Al
                 </button> */}
                 <button
-                  onClick={() => addToBasket( item.id,
-                    item.api_featured_image || item.image, 
-                    item.name || item.title, 
-                    item.price)}
-                  className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 block"
-                >
-                  Buy
-                </button>
+                    onClick={() => addToBasket( item.id,
+                      item.api_featured_image || item.image, 
+                      item.name || item.title, 
+                      item.price)}
+                    className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 block"
+                  >
+                    Buy
+                  </button>
               </div>
             </div>
           ))}
@@ -134,6 +133,19 @@ function Cosmetics() {
             </div>
           )}
         </div>
+        <div className="flex justify-center py-6">
+          {!shouldShowImage && (
+            <Pagination
+              current={page}
+              total={data ? data.length : 0}
+              pageSize={pageSize}
+              onChange={(newPage) => setPage(newPage)}
+              className="custom-pagination"
+              showSizeChanger={false} 
+            />
+          )}
+        </div>
+
       </div>
     </div>
   );

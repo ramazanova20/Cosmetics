@@ -128,8 +128,11 @@ function Main({ favorites, setFavorites }) {
               </div>
             ))}
           </div>
-          <button onClick={() =>setSlice(slice+15)} className="bg-red">OK</button>
+          
         </div>
+        <div className="max-w-[400px] mx-auto items-center rounded overflow-hidden shadow-lg">
+            <button onClick={() =>setSlice(slice+15)} className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 block">More</button>
+          </div>
       </div>
     </div>
   );
