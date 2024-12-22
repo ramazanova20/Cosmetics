@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { BASKET } from '../../context/BasketContext'
 import { TiDelete } from "react-icons/ti";
+import { Link } from 'react-router-dom';
 
 function Basket() {
     const { sebet, removeFromBasket } = useContext(BASKET);
@@ -60,18 +61,20 @@ function Basket() {
                   +
                 </button>
               </div>
+              <Link to={`/login/`}>
               <button
-                onClick={() =>
-                  alert(
-                    `Seçtiğiniz məhsul: ${quantities[item.id] || 1} ədəd ${item.name || item.title} toplamda ${
-                      Math.floor((quantities[item.id] || 1) * item.price)
-                    } ₼.`
-                  )
-                }
+                // onClick={() =>
+                //   alert(
+                //     `Seçtiğiniz məhsul: ${quantities[item.id] || 1} ədəd ${item.name || item.title} toplamda ${
+                //       Math.floor((quantities[item.id] || 1) * item.price)
+                //     } ₼.`
+                //   )
+                // }
                 className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
               >
                 Satın Al
               </button>
+              </Link>
                             {/* <p>Miqdar: {item.count}</p> */}
                         </div>
                     </div>

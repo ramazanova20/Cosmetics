@@ -15,7 +15,7 @@ function Favorites() {
   };
  const { addToBasket } = useContext(BASKET);
   return (
-    <div className="container mx-auto p-4">
+    <div className="container lg:max-w-[1024px] mx-auto p-4">
       <h2 className="text-2xl font-bold mb-4">Seçilmiş Məhsullar</h2>
       <div className="flex flex-wrap gap-6">
         {favorites.map((item) => (
