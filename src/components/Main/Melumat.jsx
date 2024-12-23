@@ -27,8 +27,7 @@ function Melumat() {
     </div>
                       
           </Link>
-                      {/* <img className='h-full object-fit' src={item.img} alt={item.title} /> */}
-                  
+                    
           <div className="p-4">
             <h2 className="text-xl font-semibold mb-2">{item.title}</h2>
             <p className="text-gray-700 mb-4">{item.description.slice(0, 100)}</p>

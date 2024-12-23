@@ -11,14 +11,9 @@ function DataContext({ children }) {
   const [data, setData] = useState({});
   const [jewelery, setJewelery] = useState(null);
   const [info, setInfo] = useState(null);
-  const [searchQuery, setSearchQuery] = useState("");
+  // const [searchQuery, setSearchQuery] = useState("");
   const [favorites, setFavorites] = useState([]);
-  // const [counts, setCounts] = useState(0);
   const productTypes = ["lipstick", "foundation", "eyeliner"];
-
-  // useEffect(() => {
-  //   setCounts(favorites.length);
-  // }, [favorites]);
 
 
   useEffect(() => {
@@ -69,33 +64,79 @@ function DataContext({ children }) {
       }));
     });
   }, []);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const allData = await getAllData();
+  //       setData(allData);
+  
+  //       const productPromises = productTypes.map((type) => getProductByName(type));
+  //       const productData = await Promise.all(productPromises);
+  
+  //       const productMap = productTypes.reduce((acc, type, index) => {
+  //         acc[type] = productData[index];
+  //         return acc;
+  //       }, {});
+  
+  //       setData((currentData) => ({ ...currentData, ...productMap }));
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+  //     }
+  //   };
+  
+  //   fetchData();
+  //   getJeweleryData().then(setJewelery);
+  //   getInfoData().then(setInfo);
+  // }, []);
+  
 
-  const filterAndSortData = () => {
-    console.log("Filtering data with search query:", searchQuery); // Check if searchQuery is updated
+  // const filterAndSortData = () => {
+  //   console.log("Filtering data with search query:", searchQuery); // Check if searchQuery is updated
 
-    const filteredData = {};
+  //   const filteredData = {};
 
-    Object.entries(data)
-      .map(([, value]) => value)
-      .filter(item => item.name?.includes(searchQuery))
+  //   // Object.entries(data)
+  //   //   .map(([, value]) => value)
+  //   //   .filter(item => item.name?.includes(searchQuery))
+
+  //   Object.entries(data)
+  //   .map(([, value]) => value)
+  //   .filter(item => item.name?.toLowerCase().includes(searchQuery.toLowerCase()))
+
+  //   return filteredData;
+  // };
+
+  //baax
+  // const filterAndSortData = () => {
+  //   if (!searchQuery.trim()) {
+  //     return data; // Əgər sorğu boşdursa, hamısını qaytar
+  //   }
+  
+  //   const filteredData = {};
+  
+  //   Object.entries(data)
+  //   .map(([, value]) => value)
+  //   .filter(item => item.name?.toLowerCase().includes(searchQuery.toLowerCase()))
+
+  
+  //   return filteredData;
+  // };
+  
 
 
-    return filteredData;
-  };
-
-  const filteredData = filterAndSortData();
+  // const filteredData = filterAndSortData();
 
   return (
     <DATA.Provider
       value={{
-        ...filteredData,
+        // ...filteredData,
         jewelery,
         info,
         favorites,
         addToFavorites,
         removeFromFavorites,
         setFavorites,
-        setSearchQuery,
+        // searchQuery, setSearchQuery
         // counts
       }}
     >

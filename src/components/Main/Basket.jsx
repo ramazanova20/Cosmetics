@@ -28,10 +28,6 @@ function Basket() {
 
   return (
     <div className='container lg:max-w-[1024px] mx-auto p-4'>
-      {/* Ümumi Qiyməti Göstər */}
-      <div className="text-xl font-bold mb-4">
-        Ümumi Qiymət: {totalPrice.toFixed(2)} ₼
-      </div>
       <div className='flex flex-wrap gap-6'>
         {sebet && sebet.map((item) => (
           <div key={item.id} className="max-w-[200px] h-[500px] rounded overflow-hidden shadow-lg bg-white relative flex flex-col">
@@ -53,7 +49,7 @@ function Basket() {
                   item.title ? item.title :
                     "Məlumat yoxdur"}
               </h2>
-              <h5 className="text-lg font-semibold mb-4">
+              <h5 className="text-lg font-semibold mb-4 items-center">
                 {Math.floor((quantities[item.id] || 1) * (item.name || 0))}₼
               </h5>
               <div className="flex items-center justify-between mb-2">
@@ -91,6 +87,21 @@ function Basket() {
           </div>
         ))}
       </div>
+      <Link to={`/login/`}>
+        <div className='p-4 flex flex-col items-center'>
+                <div className='w-[300px] flex justify-center p-2 mb-4 bg-sky-700 text-white'> Ümumi Qiymət: {totalPrice.toFixed(2)} ₼</div>
+                <button
+                  className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+                >
+                  Satın Al
+                </button>
+        </div>
+      </Link>
+      {/* <Link to={`/login/`}>
+      <div className="text-xl font-bold mb-4">
+        Ümumi Qiymət: {totalPrice.toFixed(2)} ₼
+      </div>
+      </Link> */}
     </div>
   );
 }

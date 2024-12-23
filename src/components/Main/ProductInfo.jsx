@@ -80,9 +80,9 @@ function ProductInfo() {
         <div className="flex justify-center py-6">
           <Pagination
             current={page}
-            total={info.length} // Total data length for pagination
-            pageSize={pageSize} // Number of items per page
-            onChange={(newPage) => setPage(newPage)} // Handle page change
+            total={info.length} 
+            pageSize={pageSize} 
+            onChange={(newPage) => setPage(newPage)} 
             className="custom-pagination"
             showSizeChanger={false} 
           />

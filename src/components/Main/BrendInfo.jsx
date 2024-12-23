@@ -4,9 +4,8 @@ import { useAllDataContext } from '../../context/AllDataContext';
 import Heart from './Heart';
 
 function BrendInfo() {
-  const { brand } = useParams(); // URL-dən brend adını alırıq
+  const { brand } = useParams(); 
   const { data } = useAllDataContext();
-//   const [quant, setQuant] = useState(1);
 
   if (!data) {
     return <div>Loading...</div>;
@@ -42,14 +41,6 @@ function BrendInfo() {
                 <div className="rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5">
                   <Heart />
                 </div>
-                {/* <div className="w-full h-[280px]">
-        
-        <img
-          className="h-full object-contain"
-          src={item.api_featured_image}
-                  alt={item.name.slice(0, 10)}
-        />
-      </div> */}
                <img
                   className=" w-full h-2/4"
                   src={item.api_featured_image}
@@ -58,21 +49,6 @@ function BrendInfo() {
                 <div className="p-4">
                   <h2 className="text-xl font-semibold mb-2">{item.name}</h2>
                   <h5 className="text-lg font-semibold mb-4">{ item.price}₼</h5>
-                  {/* <div className="flex items-center justify-between mb-3">
-                    <button
-                      onClick={() => setQuant(quant > 1 ? quant - 1 : quant)}
-                      className="px-3 py-1 bg-gray-200 rounded"
-                    >
-                      -
-                    </button>
-                    <span className="px-3 py-2">{quant}</span>
-                    <button
-                      onClick={() => setQuant(quant + 1)}
-                      className="px-3 py-1 bg-gray-200 rounded"
-                    >
-                      +
-                    </button>
-                  </div> */}
                   <button
                         onClick={() => addToBasket( item.id,
                           item.api_featured_image || item.image, 

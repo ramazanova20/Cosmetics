@@ -8,7 +8,6 @@ import Loading from "./Loading";
 
 function Main({ favorites, setFavorites }) {
   const { data } = useAllDataContext();
-  // const [quantities, setQuantities] = useState({});
   const [sortOrder, setSortOrder] = useState("latest");
   const { addToBasket } = useContext(BASKET);
   const [slice, setSlice] =useState(15)
@@ -22,12 +21,6 @@ function Main({ favorites, setFavorites }) {
     return <div>No items found.</div>;
   }
 
-  // const updateQuantity = (id, newQuantity) => {
-  //   setQuantities((quant) => ({
-  //     ...quant,
-  //     [id]: newQuantity,
-  //   }));
-  // };
 
   const handleSortChange = (e) => {
     setSortOrder(e.target.value);
@@ -39,7 +32,7 @@ function Main({ favorites, setFavorites }) {
     } else if (sortOrder === "high-to-low") {
       return b.price - a.price;
     }
-    return 0; // Əlavə sıralama növü əlavə etmək mümkündür.
+    return 0; 
   });
   const addToFavorites = (item) => {
     setFavorites((currentFavorites) => {
@@ -90,33 +83,6 @@ function Main({ favorites, setFavorites }) {
                   <h5 className="text-lg font-semibold mb-4">
                     {item.price}₼
                   </h5>
-                  {/* <div className="flex items-center justify-between mb-2">
-                    <button
-                      onClick={() =>
-                        updateQuantity(
-                          item.id,
-                          Math.max((quantities[item.id] || 1) - 1, 1)
-                        )
-                      }
-                      className="px-3 py-1 bg-gray-200 rounded"
-                    >
-                      -
-                    </button>
-                    <span className="px-3 py-2">
-                      {quantities[item.id] || 1}
-                    </span>
-                    <button
-                      onClick={() =>
-                        updateQuantity(
-                          item.id,
-                          (quantities[item.id] || 1) + 1
-                        )
-                      }
-                      className="px-3 py-1 bg-gray-200 rounded"
-                    >
-                      +
-                    </button>
-                  </div> */}
                   <button
                     onClick={() => addToBasket( item.id,
                       item.api_featured_image || item.image, 

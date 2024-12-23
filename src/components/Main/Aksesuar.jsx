@@ -10,7 +10,6 @@ function Aksesuar() {
   const { jewelery, favorites, addToFavorites } = useDataContext();
   const [showProductList, setShowProductList] = useState([]);
   const [sorting, setSorting] = useState("latest");
-  // const [quantities, setQuantities] = useState({});
   const { addToBasket } = useContext(BASKET);
 
   useEffect(() => {
@@ -40,14 +39,6 @@ function Aksesuar() {
 
     setShowProductList(sortedProducts);
   };
-
-  // const updateQuantity = (id, newQuantity) => {
-  //   setQuantities((quant) => ({
-  //     ...quant,
-  //     [id]: newQuantity,
-  //   }));
-  // };
-
   if (!jewelery) {
     return <div className="container lg:max-w-[1024px] mx-auto p-3">
     <Loading/>
@@ -75,8 +66,6 @@ function Aksesuar() {
             </div>
             <div className="flex flex-wrap gap-10 mx-auto justify-center m-1">
               {showProductList.map((item) => {
-                // const itemQuantity = quantities[item.id] || 1;
-                // const totalPrice = Math.floor(itemQuantity * item.price);
 
                 return (
                   <div key={item.id} className="max-w-[200px] rounded overflow-hidden shadow-lg bg-white relative">
@@ -100,24 +89,6 @@ function Aksesuar() {
                   {item.price}₼
                   </h5>
                 </div>
-                     
-                      {/* <div className="flex items-center justify-between mb-3">
-                        <button
-                          onClick={() =>
-                            updateQuantity(item.id, Math.max(itemQuantity - 1, 1))
-                          }
-                          className="px-3 py-1 bg-gray-200 rounded"
-                        >
-                          -
-                        </button>
-                        <span className="px-3 py-2">{itemQuantity}</span>
-                        <button
-                          onClick={() => updateQuantity(item.id, itemQuantity + 1)}
-                          className="px-3 py-1 bg-gray-200 rounded"
-                        >
-                          +
-                        </button>
-                      </div> */}
                       <button
                         onClick={() => addToBasket( item.id,
                           item.api_featured_image || item.image, 

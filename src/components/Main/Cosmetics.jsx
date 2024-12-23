@@ -12,7 +12,6 @@ function Cosmetics() {
   const url = location.search;
   const tip = new URLSearchParams(url).get('tip');
   const [data, setData] = useState(null);
-  // const [quantities, setQuantities] = useState({});
   const { addToBasket } = useContext(BASKET);
   const [page, setPage] = useState(1);
   const pageSize = 15;
@@ -28,13 +27,6 @@ function Cosmetics() {
     }
   }, [tip]);
  
-
-  // const updateQuantity = (id, newQuantity) => {
-  //   setQuantities((quant) => ({
-  //     ...quant,
-  //     [id]: newQuantity,
-  //   }));
-  // };
 
 
   const shouldShowImage = !(tip === 'lipstick' || tip === 'foundation' || tip === 'eyeliner');
@@ -83,37 +75,6 @@ function Cosmetics() {
                     {item.price}₼
                   </h5>
                 </div>
-                {/* <div className="flex items-center justify-between mb-2">
-                  <button
-                    onClick={() =>
-                      updateQuantity(item.id, Math.max((quantities[item.id] || 1) - 1, 1))
-                    }
-                    className="px-3 py-1 bg-gray-200 rounded"
-                  >
-                    -
-                  </button>
-                  <span className="px-3 py-2">{quantities[item.id] || 1}</span>
-                  <button
-                    onClick={() =>
-                      updateQuantity(item.id, (quantities[item.id] || 1) + 1)
-                    }
-                    className="px-3 py-1 bg-gray-200 rounded"
-                  >
-                    +
-                  </button>
-                </div> */}
-                {/* <button
-                  onClick={() =>
-                    alert(
-                      `Seçtiğiniz məhsul: ${quantities[item.id] || 1} ədəd ${item.name} toplamda ${
-                        Math.floor((quantities[item.id] || 1) * item.price)
-                      } ₼.`
-                    )
-                  }
-                  className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
-                >
-                  Satın Al
-                </button> */}
                 <button
                     onClick={() => addToBasket( item.id,
                       item.api_featured_image || item.image, 
