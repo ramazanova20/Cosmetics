@@ -2,12 +2,15 @@ import React, { useEffect,useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getProductByIdFromMakeupAPI, getProductByIdFromFakeStore} from "../../services/api"; 
 import { BASKET } from "../../context/BasketContext";
+import Loading from "./Loading";
+import Main from "./Main";
+import Aksesuar from "./Aksesuar";
 
 
 function ProductDetail() {
   const { id } = useParams(); 
   const [product, setProduct] = useState(null); 
-  const [quantity, setQuantity] = useState(1);  
+  // const [quantity, setQuantity] = useState(1);  
   const { addToBasket } = useContext(BASKET);
   useEffect(() => {
     const fetchProduct = location.pathname.includes("aksesuar") 
@@ -25,7 +28,9 @@ function ProductDetail() {
   //     .catch((err) => console.error("Məhsul tapılmadı:", err));
   // }, [id]);
 
-  if (!product) return <div>Yüklənir...</div>;  
+  if (!product) return <div className="container lg:max-w-[1024px] mx-auto p-3">
+  <Loading/>
+ </div>;  
  
   return (
     <div className="container lg:max-w-[1024px] mx-auto p-4">
@@ -42,10 +47,10 @@ function ProductDetail() {
       <div className="p-4">
         <h2 className="text-xl font-semibold mb-2">{product.name || product.title}</h2>
         <h5 className="text-lg font-semibold mb-4">
-          {Math.floor(quantity * product.price)}₼   
+          {product.price}₼   
         </h5>
         <p>{product.description}</p>
-        <div className="flex items-center mb-2">
+        {/* <div className="flex items-center mb-2">
           <button
             onClick={() => setQuantity(Math.max(quantity - 1, 1))}
             className="px-3 py-1 bg-gray-200 rounded"
@@ -59,7 +64,7 @@ function ProductDetail() {
           >
             +
           </button>
-        </div>
+        </div> */}
         <button
           onClick={() => addToBasket( product.id,
             product.api_featured_image || product.image, 
@@ -70,6 +75,15 @@ function ProductDetail() {
           Buy
         </button>
       </div>
+      { 
+  product.category === "women's clothing" || 
+  product.category === "men's clothing" || 
+  product.category === "jewelery" || 
+  product.category === "electronics" 
+  ? <Aksesuar/> 
+  : <Main />
+}
+
     </div>
   );
 }

@@ -8,7 +8,7 @@ import Loading from "./Loading";
 
 function Main({ favorites, setFavorites }) {
   const { data } = useAllDataContext();
-  const [quantities, setQuantities] = useState({});
+  // const [quantities, setQuantities] = useState({});
   const [sortOrder, setSortOrder] = useState("latest");
   const { addToBasket } = useContext(BASKET);
   const [slice, setSlice] =useState(15)
@@ -22,12 +22,12 @@ function Main({ favorites, setFavorites }) {
     return <div>No items found.</div>;
   }
 
-  const updateQuantity = (id, newQuantity) => {
-    setQuantities((quant) => ({
-      ...quant,
-      [id]: newQuantity,
-    }));
-  };
+  // const updateQuantity = (id, newQuantity) => {
+  //   setQuantities((quant) => ({
+  //     ...quant,
+  //     [id]: newQuantity,
+  //   }));
+  // };
 
   const handleSortChange = (e) => {
     setSortOrder(e.target.value);
@@ -69,7 +69,7 @@ function Main({ favorites, setFavorites }) {
             {sortedData.slice(0, slice).map((item, i) => (
               <div
                 key={i}
-                className="max-w-[200px] h-[500px] rounded overflow-hidden shadow-lg bg-white relative"
+                className="max-w-[200px] rounded overflow-hidden shadow-lg bg-white relative"
               >
                 <div className="rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5">
                 <button onClick={() => addToFavorites(item)}>
@@ -78,7 +78,7 @@ function Main({ favorites, setFavorites }) {
                 </div>
                 <Link to={`/cosmetics/${item.id}`}>
                 <img
-                  className="w-full h-[300px]"
+                  className=" w-full h-2/4"
                   src={item.api_featured_image}
                   alt={item.name.slice(0, 10)}
                 />
@@ -88,11 +88,9 @@ function Main({ favorites, setFavorites }) {
                     {item.name.slice(0, 15)}
                   </h2>
                   <h5 className="text-lg font-semibold mb-4">
-                    {Math.floor(
-                      (quantities[item.id] || 1) * item.price
-                    )}₼
+                    {item.price}₼
                   </h5>
-                  <div className="flex items-center justify-between mb-2">
+                  {/* <div className="flex items-center justify-between mb-2">
                     <button
                       onClick={() =>
                         updateQuantity(
@@ -118,7 +116,7 @@ function Main({ favorites, setFavorites }) {
                     >
                       +
                     </button>
-                  </div>
+                  </div> */}
                   <button
                     onClick={() => addToBasket( item.id,
                       item.api_featured_image || item.image, 

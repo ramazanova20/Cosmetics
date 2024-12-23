@@ -4,12 +4,13 @@ import Heart from './Heart';
 import { Link } from "react-router-dom";
 import { BASKET } from "../../context/BasketContext";
 import { useDataContext } from "../../context/DataContext"; 
+import Loading from "./Loading";
 
 function Aksesuar() { 
   const { jewelery, favorites, addToFavorites } = useDataContext();
   const [showProductList, setShowProductList] = useState([]);
   const [sorting, setSorting] = useState("latest");
-  const [quantities, setQuantities] = useState({});
+  // const [quantities, setQuantities] = useState({});
   const { addToBasket } = useContext(BASKET);
 
   useEffect(() => {
@@ -40,15 +41,17 @@ function Aksesuar() {
     setShowProductList(sortedProducts);
   };
 
-  const updateQuantity = (id, newQuantity) => {
-    setQuantities((quant) => ({
-      ...quant,
-      [id]: newQuantity,
-    }));
-  };
+  // const updateQuantity = (id, newQuantity) => {
+  //   setQuantities((quant) => ({
+  //     ...quant,
+  //     [id]: newQuantity,
+  //   }));
+  // };
 
   if (!jewelery) {
-    return <div>Loading...</div>;
+    return <div className="container lg:max-w-[1024px] mx-auto p-3">
+    <Loading/>
+  </div>;
   }
 
   return (
@@ -72,26 +75,33 @@ function Aksesuar() {
             </div>
             <div className="flex flex-wrap gap-10 mx-auto justify-center m-1">
               {showProductList.map((item) => {
-                const itemQuantity = quantities[item.id] || 1;
-                const totalPrice = Math.floor(itemQuantity * item.price);
+                // const itemQuantity = quantities[item.id] || 1;
+                // const totalPrice = Math.floor(itemQuantity * item.price);
 
                 return (
-                  <div key={item.id} className="max-w-[200px] h-[500px] rounded overflow-hidden shadow-lg bg-white relative">
+                  <div key={item.id} className="max-w-[200px] rounded overflow-hidden shadow-lg bg-white relative">
                     <div className="rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5">
                       <button onClick={() => addToFavorites(item)}>
                         <Heart />
                       </button>
                     </div>
-                    <Link to={`/aksesuar/${item.id}`} className="w-full h-[280px]">
-                      <img className='object-contain' src={item.image} alt={item.title} />
+                    <Link to={`/aksesuar/${item.id}`} >
+                      <div className="w-full h-[280px] p-1">
+                        <img className='object-contain w-full h-3/4' src={item.image} alt={item.title} />
+                      </div>
                     </Link>
 
                     <div className="p-4">
                       <h2 className="text-xl font-semibold mb-2 whitespace-nowrap">
-                        {item.title.slice(0, 17)}
+                        {item.title.slice(0, 14)}
                       </h2>
-                      <h5 className="text-lg font-semibold mb-4">{totalPrice}₼</h5>
-                      <div className="flex items-center justify-between mb-3">
+                      <div className='flex justify-center'>
+                  <h5 className="text-lg font-semibold mb-4">
+                  {item.price}₼
+                  </h5>
+                </div>
+                     
+                      {/* <div className="flex items-center justify-between mb-3">
                         <button
                           onClick={() =>
                             updateQuantity(item.id, Math.max(itemQuantity - 1, 1))
@@ -107,7 +117,7 @@ function Aksesuar() {
                         >
                           +
                         </button>
-                      </div>
+                      </div> */}
                       <button
                         onClick={() => addToBasket( item.id,
                           item.api_featured_image || item.image, 

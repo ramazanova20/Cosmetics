@@ -13,6 +13,7 @@ import Basket from './components/Main/Basket';
 import { useDataContext } from "./context/DataContext";
 import ProductInfo from './components/Main/ProductInfo';
 import LogIn from './components/Main/LogIn';
+import BrendInfo from './components/Main/BrendInfo';
 
 function App() {
   // const [favorites, setFavorites] = useState([]);
@@ -49,6 +50,7 @@ function App() {
         <Route path="/cosmetics/:id" element={<ProductDetail />} />
         <Route path="/aksesuar/:id" element={<ProductDetail />} />
         <Route path="/melumat/:id" element={<ProductInfo />} />
+        <Route path="/brend/:brand" element={<BrendInfo />} />
         
         <Route
   path="/favorites"

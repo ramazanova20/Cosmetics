@@ -6,7 +6,7 @@ import { GrFavorite } from "react-icons/gr";
 import { SlBasket } from "react-icons/sl";
 import { Cookies } from "react-cookie";
 import { BASKET } from "../../context/BasketContext";
-import { useDataContext } from "../../context/DataContext";
+import { DATA, useDataContext } from "../../context/DataContext";
 
 function Menu() {
   const cook = new Cookies();

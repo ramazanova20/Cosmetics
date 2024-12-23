@@ -5,14 +5,14 @@ import { BASKET } from "../../context/BasketContext";
 
 function Favorites() {
   const { favorites, removeFromFavorites } = useDataContext(); 
-  const [quantities, setQuantities] = useState({});
+  // const [quantities, setQuantities] = useState({});
 
-  const updateQuantity = (id, newQuantity) => {
-    setQuantities((quant) => ({
-      ...quant,
-      [id]: newQuantity,
-    }));
-  };
+  // const updateQuantity = (id, newQuantity) => {
+  //   setQuantities((quant) => ({
+  //     ...quant,
+  //     [id]: newQuantity,
+  //   }));
+  // };
  const { addToBasket } = useContext(BASKET);
   return (
     <div className="container lg:max-w-[1024px] mx-auto p-4">
@@ -38,9 +38,9 @@ function Favorites() {
               </h2>
 
               <h5 className="text-lg font-semibold mb-4">
-                {Math.floor((quantities[item.id] || 1) * item.price)}₼
+                { item.price}₼
               </h5>
-              <div className="flex items-center justify-between mb-2">
+              {/* <div className="flex items-center justify-between mb-2">
                 <button
                   onClick={() =>
                     updateQuantity(item.id, Math.max((quantities[item.id] || 1) - 1, 1))
@@ -58,7 +58,7 @@ function Favorites() {
                 >
                   +
                 </button>
-              </div>
+              </div> */}
               <button
                         onClick={() => addToBasket( item.id,
                           item.api_featured_image || item.image, 

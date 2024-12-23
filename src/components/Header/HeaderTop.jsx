@@ -1,7 +1,7 @@
 // In HeaderTop.js
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { IoSearch } from "react-icons/io5";
-import { useDataContext } from "../../context/DataContext";
+import { DATA, useDataContext } from "../../context/DataContext";
 import { FaInstagram } from "react-icons/fa";
 import { FaPhoneAlt } from "react-icons/fa";
 
@@ -15,6 +15,9 @@ function HeaderTop() {
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value); // Update the search query in context
   };
+
+
+
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();

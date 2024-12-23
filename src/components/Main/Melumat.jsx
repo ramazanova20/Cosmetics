@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import { DATA } from '../../context/DataContext';
 import { Link } from "react-router-dom";
+import Loading from "./Loading";
 function Melumat() {
   const {info} = useContext(DATA);
   if (!info) {
-    return <div>Loading...</div>;  
+    return <div><Loading/></div>;  
   }
   return (
     <div  className='container lg:max-w-[1024px] mx-auto p-3'>
@@ -16,9 +17,16 @@ function Melumat() {
       {info.map((item,i) => (
         <div key={i} className="max-w-[300px] rounded overflow-hidden shadow-lg bg-white ">
         
-          <Link to={`/melumat/${item.id}`} className="w-full h-[280px]">
-                      <img className='object-contain' src={item.img} alt={item.title} />
-                    </Link>
+          <Link to={`/melumat/${item.id}`}>
+          <div className="w-full h-[200px]">
+      <img
+        className="object-cover w-full h-full"
+        src={item.img}
+        alt={item.title}
+      />
+    </div>
+                      
+          </Link>
                       {/* <img className='h-full object-fit' src={item.img} alt={item.title} /> */}
                   
           <div className="p-4">

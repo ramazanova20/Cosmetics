@@ -5,13 +5,14 @@ import Heart from './Heart';
 import { BASKET } from '../../context/BasketContext';
 import { useDataContext } from "../../context/DataContext"; 
 import { Pagination } from 'antd';
+import Loading from './Loading';
 function Cosmetics() {
    const { favorites, addToFavorites } = useDataContext(); 
   const location = useLocation();
   const url = location.search;
   const tip = new URLSearchParams(url).get('tip');
   const [data, setData] = useState(null);
-  const [quantities, setQuantities] = useState({});
+  // const [quantities, setQuantities] = useState({});
   const { addToBasket } = useContext(BASKET);
   const [page, setPage] = useState(1);
   const pageSize = 15;
@@ -26,13 +27,14 @@ function Cosmetics() {
       setData(null);
     }
   }, [tip]);
+ 
 
-  const updateQuantity = (id, newQuantity) => {
-    setQuantities((quant) => ({
-      ...quant,
-      [id]: newQuantity,
-    }));
-  };
+  // const updateQuantity = (id, newQuantity) => {
+  //   setQuantities((quant) => ({
+  //     ...quant,
+  //     [id]: newQuantity,
+  //   }));
+  // };
 
 
   const shouldShowImage = !(tip === 'lipstick' || tip === 'foundation' || tip === 'eyeliner');
@@ -56,7 +58,7 @@ function Cosmetics() {
         <div className="flex flex-wrap gap-10 mx-auto justify-center m-1">
           {currentData && currentData.map((item) => (
             <div key={item.id}
-            className="max-w-[200px] h-[500px] rounded overflow-hidden shadow-lg bg-white relative flex flex-col"
+            className="max-w-[200px] rounded overflow-hidden shadow-lg bg-white relative flex flex-col"
           >
               <div className="rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5">
                 <button onClick={() => addToFavorites(item)}>
@@ -73,13 +75,15 @@ function Cosmetics() {
                 />
               </Link>
               <div className="p-4">
-                <h2 className="text-xl font-semibold mb-2 whitespace-nowrap">
-                  {item.name.slice(0, 15)}
+                <h2 className=" font-semibold mb-2 whitespace-nowrap">
+                  {item.name.slice(0, 21)}
                 </h2>
-                <h5 className="text-lg font-semibold mb-4">
-                  {Math.floor((quantities[item.id] || 1) * item.price)}₼
-                </h5>
-                <div className="flex items-center justify-between mb-2">
+                <div className='flex justify-center'>
+                  <h5 className="text-lg font-semibold mb-4">
+                    {item.price}₼
+                  </h5>
+                </div>
+                {/* <div className="flex items-center justify-between mb-2">
                   <button
                     onClick={() =>
                       updateQuantity(item.id, Math.max((quantities[item.id] || 1) - 1, 1))
@@ -97,7 +101,7 @@ function Cosmetics() {
                   >
                     +
                   </button>
-                </div>
+                </div> */}
                 {/* <button
                   onClick={() =>
                     alert(

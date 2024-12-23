@@ -19,7 +19,7 @@ function DataContext({ children }) {
   // useEffect(() => {
   //   setCounts(favorites.length);
   // }, [favorites]);
-  
+
 
   useEffect(() => {
     const savedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
@@ -30,7 +30,7 @@ function DataContext({ children }) {
     localStorage.setItem("favorites", JSON.stringify(favorites));
   }, [favorites]);
 
-  
+
   const addToFavorites = (item) => {
     setFavorites((prevFavorites) => {
       if (!prevFavorites.some((fav) => fav.id === item.id)) {
@@ -40,14 +40,14 @@ function DataContext({ children }) {
     });
   };
 
-  
+
   const removeFromFavorites = (id) => {
     setFavorites((prevFavorites) =>
       prevFavorites.filter((item) => item.id !== id)
     );
   };
 
-  
+
   useEffect(() => {
     getJeweleryData().then((res) => setJewelery(res));
     getInfoData().then((res) => setInfo(res));
@@ -75,20 +75,10 @@ function DataContext({ children }) {
 
     const filteredData = {};
 
-    Object.keys(data).forEach((key) => {
-      if (Array.isArray(data[key])) {
-        filteredData[key] = data[key]
-          .filter((item) => {
-            const searchTerm = searchQuery.toLowerCase();
-            return (item.name || item.title)
-              .toLowerCase()
-              .includes(searchTerm);
-          })
-          .slice(0, 10);
-      } else {
-        filteredData[key] = data[key];
-      }
-    });
+    Object.entries(data)
+      .map(([, value]) => value)
+      .filter(item => item.name?.includes(searchQuery))
+
 
     return filteredData;
   };
