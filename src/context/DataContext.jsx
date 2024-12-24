@@ -136,6 +136,7 @@ function DataContext({ children }) {
         addToFavorites,
         removeFromFavorites,
         setFavorites,
+        data
         // searchQuery, setSearchQuery
         // counts
       }}

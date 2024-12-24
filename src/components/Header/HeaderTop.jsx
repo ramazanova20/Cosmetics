@@ -4,7 +4,7 @@ import { useDataContext } from "../../context/DataContext";
 import { FaInstagram, FaPhoneAlt } from "react-icons/fa";
 
 function HeaderTop() {
-  const { data } = useDataContext(); // Getting the data from context
+  const {data} = useDataContext(); // Getting the data from context
   const [searchQuery, setSearchQuery] = useState(""); // Declare searchQuery only once
   const [filteredProducts, setFilteredProducts] = useState([]);
 
@@ -25,7 +25,7 @@ function HeaderTop() {
 
       setFilteredProducts(filteredData);  // Set filtered products
     }
-  }, [searchQuery, data]);  // Re-run effect when searchQuery or data changes
+  }, [searchQuery,data]);  // Re-run effect when searchQuery or data changes
 
   const handleSearch = (e) => {
     setSearchQuery(e.target.value);  // Update search query
@@ -39,7 +39,7 @@ function HeaderTop() {
             <img src="https://kosmetika.az/logos.png?25" alt="Logo" />
           </div>
           <div className="min-w-14 hidden lg:block">
-            <form >
+            {/* <form >
               <div className="flex min-w-14">
                 <input
                   type="text"
@@ -55,7 +55,7 @@ function HeaderTop() {
                   <IoSearch />
                 </button>
               </div>
-            </form>
+            </form> */}
           </div>
           <div className="flex">
             <div className="flex mr-3 text-center justify-between">
@@ -73,7 +73,7 @@ function HeaderTop() {
           </div>
         </div>
         <div className="flex-grow items-center justify-center lg:hidden mt-4">
-          <form >
+          {/* <form >
             <div className="flex">
               <input
                 type="text"
@@ -89,23 +89,12 @@ function HeaderTop() {
                 <IoSearch />
               </button>
             </div>
-          </form>
+          </form> */}
         </div>
       </div>
 
       {/* Display filtered products */}
-      <div>
-        {filteredProducts && filteredProducts.length > 0 ? (
-          filteredProducts.map((product, index) => (
-            <div key={index}>
-              <h3>{product.name}</h3>
-              {/* Additional product info can be displayed here */}
-            </div>
-          ))
-        ) : (
-          <p>No products found.</p> // Fallback message if no products match the search
-        )}
-      </div>
+      
     </div>
   );
 }

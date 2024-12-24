@@ -16,28 +16,8 @@ import LogIn from './components/Main/LogIn';
 import BrendInfo from './components/Main/BrendInfo';
 
 function App() {
-  // const [favorites, setFavorites] = useState([]);
 
-  // // useEffect(() => {
-  // //   const savedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
-  // //   setFavorites(savedFavorites);
-  // // }, []);
-  // useEffect(() => {
-  //   const savedFavorites = JSON.parse(localStorage.getItem('favorites'));
-  //   setFavorites(Array.isArray(savedFavorites) ? savedFavorites : []);
-  // }, []);
-  
-  // useEffect(() => {
-  //   localStorage.setItem('favorites', JSON.stringify(favorites));
-  // }, [favorites]);
-
-  // const removeFromFavorites = (id) => {
-  //   setFavorites((prevFavorites) =>
-  //     prevFavorites.filter((item) => item.id !== id)
-  //   );
-  // };
-  
-  const { favorites, setFavorites, removeFromFavorites } = useDataContext();
+    const { favorites, setFavorites, removeFromFavorites } = useDataContext();
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
@@ -50,8 +30,7 @@ function App() {
         <Route path="/cosmetics/:id" element={<ProductDetail />} />
         <Route path="/aksesuar/:id" element={<ProductDetail />} />
         <Route path="/melumat/:id" element={<ProductInfo />} />
-        <Route path="/brend/:brand" element={<BrendInfo />} />
-        
+        <Route path="/brend/:brand" element={<BrendInfo />} /> 
         <Route
   path="/favorites"
   element={<Favorites favorites={favorites} removeFromFavorites={removeFromFavorites} />}
@@ -62,10 +41,6 @@ function App() {
           path="/cosmetics"
           element={<Cosmetics favorites={favorites} setFavorites={setFavorites} />}
         />
-        {/* <Route
-          path="/favorites"
-          element={<Favorites favorites={favorites} removeFromFavorites={setFavorites} />}
-        /> */}
         
         <Route path="*" element={<Error />} />
       </Route>

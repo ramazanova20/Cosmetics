@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebookSquare } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 function FooterBottom() {
   return (
@@ -27,11 +28,10 @@ function FooterBottom() {
           <div className="flex flex-col items-start w-full md:w-[48%] lg:w-auto">
             <h6 className="mb-4">Kategoriyalar</h6>
             <ul className="flex flex-col gap-2">
-              <li>Kosmetika</li>
-              <li>Baxım</li>
-              <li>Aksessuar və Moda</li>
-              <li>Brendlər</li>
-              <li>Məlumatlar</li>
+              <Link to="/cosmetics">Kosmetika</Link>
+              <Link to="/aksesuar">Aksessuar və Moda</Link>
+              <Link to="/brend">Brendlər</Link>
+              <Link to="/melumat">Məlumatlar</Link>
             </ul>
           </div>
 
