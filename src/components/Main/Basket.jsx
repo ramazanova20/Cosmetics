@@ -36,13 +36,23 @@ function Basket() {
                 <TiDelete />
               </button>
             </div>
-            <div className="w-full h-[280px]">
-              <img
-                className='h-full object-contain'
-                src={item.api_featured_image || item.image || 'default-image-url.jpg'}
-                alt={item.name || item.title || 'Product Image'}
-              />
-            </div>
+            <Link
+  to={
+    ["women's clothing", "men's clothing", "jewelery", "electronics"].includes(item.category)
+      ? `/aksesuar/${item.id}`
+      : `/cosmetics/${item.id}`
+  }
+>
+  <div className="w-full h-[280px]">
+    <img
+      className="h-full object-contain"
+      src={item.api_featured_image || item.image || 'default-image-url.jpg'}
+      alt={item.name || item.title || 'Product Image'}
+    />
+  </div>
+</Link>
+
+
             <div className="p-4">
               <h2 className="text-xl font-semibold mb-2 whitespace-nowrap">
                 {item.image ? item.image :

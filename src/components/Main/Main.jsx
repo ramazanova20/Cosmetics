@@ -44,7 +44,7 @@ function Main({ favorites, setFavorites }) {
   return (
     <div>
       <div className="container lg:max-w-[1024px] mx-auto p-3">
-        <div className="my-4">
+        <div className="my-4 ">
           <div className="mb-4">
             <label htmlFor="sorting">Sıralama:</label>
             <select
