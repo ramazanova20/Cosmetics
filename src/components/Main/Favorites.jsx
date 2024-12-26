@@ -6,17 +6,11 @@ import { Link } from "react-router-dom";
 
 function Favorites() {
   const { favorites, removeFromFavorites } = useDataContext(); 
-  // const [quantities, setQuantities] = useState({});
 
-  // const updateQuantity = (id, newQuantity) => {
-  //   setQuantities((quant) => ({
-  //     ...quant,
-  //     [id]: newQuantity,
-  //   }));
-  // };
+
  const { addToBasket } = useContext(BASKET);
   return (
-    <div className="container lg:max-w-[1024px] mx-auto p-4">
+    <div className="container lg:max-w-[1280px] mx-auto p-4">
       <h2 className="text-2xl font-bold mb-4">Seçilmiş Məhsullar</h2>
       <div className="flex flex-wrap gap-6">
         {favorites.map((item) => (
@@ -49,25 +43,6 @@ function Favorites() {
               <h5 className="text-lg font-semibold mb-4">
                 { item.price}₼
               </h5>
-              {/* <div className="flex items-center justify-between mb-2">
-                <button
-                  onClick={() =>
-                    updateQuantity(item.id, Math.max((quantities[item.id] || 1) - 1, 1))
-                  }
-                  className="px-3 py-1 bg-gray-200 rounded"
-                >
-                  -
-                </button>
-                <span className="px-3 py-2">{quantities[item.id] || 1}</span>
-                <button
-                  onClick={() =>
-                    updateQuantity(item.id, (quantities[item.id] || 1) + 1)
-                  }
-                  className="px-3 py-1 bg-gray-200 rounded"
-                >
-                  +
-                </button>
-              </div> */}
               <button
                         onClick={() => addToBasket( item.id,
                           item.api_featured_image || item.image, 

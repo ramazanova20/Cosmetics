@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 function FooterBottom() {
   return (
     <div className="bg-stone-800">
-      <div className="container lg:max-w-[1024px] mx-auto p-3">
+      <div className="container lg:max-w-[1280px] mx-auto p-3">
         
         <div className="flex flex-wrap justify-between text-white gap-6">
           

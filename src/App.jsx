@@ -14,6 +14,7 @@ import { useDataContext } from "./context/DataContext";
 import ProductInfo from './components/Main/ProductInfo';
 import LogIn from './components/Main/LogIn';
 import BrendInfo from './components/Main/BrendInfo';
+import Contact from './components/Main/Contact';
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
         <Route path="/melumat" element={<Melumat />} />
         <Route path="/basket" element={<Basket/>} />
         <Route path="/login" element={<LogIn/>} />
+        <Route path="/contact" element={<Contact/>} />
         <Route path="/cosmetics/:id" element={<ProductDetail />} />
         <Route path="/aksesuar/:id" element={<ProductDetail />} />
         <Route path="/melumat/:id" element={<ProductInfo />} />

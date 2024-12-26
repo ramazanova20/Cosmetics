@@ -20,24 +20,46 @@ function ProductDetail() {
       .then(setProduct)
       .catch((err) => console.error("Error:", err));
   }, [id, location.pathname]);
-  
+  const [position, setPosition] = useState({ x: "50%", y: "50%" });
+  const handleMouseMove = (e) => {
+    const { left, top, width, height } = e.target.getBoundingClientRect();
+    const x = ((e.clientX - left) / width) * 100;
+    const y = ((e.clientY - top) / height) * 100;
+    setPosition({ x: `${x}%`, y: `${y}%` });
+  };
   // useEffect(() => {
   //   getProductById(id)  
   //     .then((data) => setProduct(data))  
   //     .catch((err) => console.error("Məhsul tapılmadı:", err));
   // }, [id]);
 
-  if (!product) return <div className="container lg:max-w-[1024px] mx-auto p-3">
+  if (!product) return <div className="container lg:max-w-[1280px] mx-auto p-3">
   <Loading/>
  </div>;  
  
   return (
-    <div className="container lg:max-w-[1024px] mx-auto p-4">
+    <div className="container lg:max-w-[1280px] mx-auto p-4">
         
-      <div className="w-full h-[280px]">
+      <div className="w-full h-[280px]  relative overflow-hidden rounded-lg"
+      style={{
+        width: "200px", 
+        height: "400px", 
+      }}>
         
         <img
-          className="h-full object-contain"
+          className="absolute w-full h-auto transition-transform duration-300"
+        style={{
+          transform: "scale(1)",
+          transformOrigin: `${position.x} ${position.y}`,
+        }}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = "scale(2)"; 
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = "scale(1)"; 
+        }}
+      
           src={product.api_featured_image || product.image} 
           alt={product.name || product.title} 
         />

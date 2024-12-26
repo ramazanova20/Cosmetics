@@ -8,7 +8,7 @@ function Melumat() {
     return <div><Loading/></div>;  
   }
   return (
-    <div  className='container lg:max-w-[1024px] mx-auto p-3'>
+    <div  className='container lg:max-w-[1280px] mx-auto p-3'>
       <div>
          Kosmetika məlumatları
       </div>

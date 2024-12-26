@@ -27,7 +27,7 @@ function ProductInfo() {
 
   if (!info) {
     return (
-      <div className="container lg:max-w-[1024px] mx-auto p-3">
+      <div className="container lg:max-w-[1280px] mx-auto p-3">
         <Loading />
       </div>
     );  
@@ -35,7 +35,7 @@ function ProductInfo() {
 
   if (!product) {
     return (
-      <div className="container lg:max-w-[1024px] mx-auto p-3">
+      <div className="container lg:max-w-[1280px] mx-auto p-3">
         <Loading />
       </div>
     ); 
@@ -47,7 +47,7 @@ function ProductInfo() {
   const paginatedInfo = info.slice(startIndex, endIndex);
 
   return (
-    <div className="container lg:max-w-[1024px] mx-auto p-4">
+    <div className="container lg:max-w-[1280px] mx-auto p-4">
       <div className="w-full h-[280px]">
         <img className="h-full object-contain" src={product.img} alt={product.title} />
       </div>

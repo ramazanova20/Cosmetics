@@ -40,14 +40,14 @@ function Aksesuar() {
     setShowProductList(sortedProducts);
   };
   if (!jewelery) {
-    return <div className="container lg:max-w-[1024px] mx-auto p-3">
+    return <div className="container lg:max-w-[1280px] mx-auto p-3">
     <Loading/>
   </div>;
   }
 
   return (
     <div>
-      <div className='container lg:max-w-[1024px] mx-auto p-3'>
+      <div className='container lg:max-w-[1280px] mx-auto p-3'>
         <h6>Aksessuar və Moda</h6>
         <div className='my-4'>
           <div className="flex flex-col">

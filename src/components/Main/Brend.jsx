@@ -1,26 +1,29 @@
 import React from 'react';
 import { useAllDataContext } from '../../context/AllDataContext';
 import { Link } from 'react-router-dom';
+import Loading from './Loading';
 
 function Brend() {
   const { data } = useAllDataContext();
 
   if (!data) {
-    return <div>Loading...</div>;
+    return <div className="container lg:max-w-[1280px] mx-auto p-3">
+    <Loading/>
+  </div>;
   }
 
   if (data.length === 0) {
     return <div>No items found.</div>;
   }
 
-  // Təkrarları aradan qaldırmaq üçün unikal brendləri müəyyən edirik
+
   const uniqueBrands = Array.from(
     new Map(data.map((item) => [item.brand, item])).values()
   );
 
   return (
     <div>
-      <div className="container lg:max-w-[1024px] mx-auto p-3">
+      <div className="container lg:max-w-[1280px] mx-auto p-3">
         <div>
           <h1 className="text-2xl font-bold mb-4">Brend kosmetika firmalar</h1>
           {uniqueBrands.length > 0 ? (

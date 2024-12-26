@@ -12,7 +12,7 @@ function Main({ favorites, setFavorites }) {
   const { addToBasket } = useContext(BASKET);
   const [slice, setSlice] =useState(15)
   if (!data) {
-    return <div className="container lg:max-w-[1024px] mx-auto p-3">
+    return <div className="container lg:max-w-[1280px] mx-auto p-3">
       <Loading/>
     </div>;
   }
@@ -43,7 +43,7 @@ function Main({ favorites, setFavorites }) {
 
   return (
     <div>
-      <div className="container lg:max-w-[1024px] mx-auto p-3">
+      <div className="container lg:max-w-[1280px] mx-auto p-3">
         <div className="my-4 ">
           <div className="mb-4">
             <label htmlFor="sorting">Sıralama:</label>

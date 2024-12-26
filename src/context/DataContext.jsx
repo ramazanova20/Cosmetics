@@ -11,7 +11,6 @@ function DataContext({ children }) {
   const [data, setData] = useState({});
   const [jewelery, setJewelery] = useState(null);
   const [info, setInfo] = useState(null);
-  // const [searchQuery, setSearchQuery] = useState("");
   const [favorites, setFavorites] = useState([]);
   const productTypes = ["lipstick", "foundation", "eyeliner"];
 
@@ -64,67 +63,7 @@ function DataContext({ children }) {
       }));
     });
   }, []);
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const allData = await getAllData();
-  //       setData(allData);
   
-  //       const productPromises = productTypes.map((type) => getProductByName(type));
-  //       const productData = await Promise.all(productPromises);
-  
-  //       const productMap = productTypes.reduce((acc, type, index) => {
-  //         acc[type] = productData[index];
-  //         return acc;
-  //       }, {});
-  
-  //       setData((currentData) => ({ ...currentData, ...productMap }));
-  //     } catch (error) {
-  //       console.error("Error fetching data:", error);
-  //     }
-  //   };
-  
-  //   fetchData();
-  //   getJeweleryData().then(setJewelery);
-  //   getInfoData().then(setInfo);
-  // }, []);
-  
-
-  // const filterAndSortData = () => {
-  //   console.log("Filtering data with search query:", searchQuery); // Check if searchQuery is updated
-
-  //   const filteredData = {};
-
-  //   // Object.entries(data)
-  //   //   .map(([, value]) => value)
-  //   //   .filter(item => item.name?.includes(searchQuery))
-
-  //   Object.entries(data)
-  //   .map(([, value]) => value)
-  //   .filter(item => item.name?.toLowerCase().includes(searchQuery.toLowerCase()))
-
-  //   return filteredData;
-  // };
-
-  //baax
-  // const filterAndSortData = () => {
-  //   if (!searchQuery.trim()) {
-  //     return data; // Əgər sorğu boşdursa, hamısını qaytar
-  //   }
-  
-  //   const filteredData = {};
-  
-  //   Object.entries(data)
-  //   .map(([, value]) => value)
-  //   .filter(item => item.name?.toLowerCase().includes(searchQuery.toLowerCase()))
-
-  
-  //   return filteredData;
-  // };
-  
-
-
-  // const filteredData = filterAndSortData();
 
   return (
     <DATA.Provider
@@ -137,8 +76,6 @@ function DataContext({ children }) {
         removeFromFavorites,
         setFavorites,
         data
-        // searchQuery, setSearchQuery
-        // counts
       }}
     >
       {children}

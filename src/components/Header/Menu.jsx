@@ -21,7 +21,7 @@ function Menu() {
 
   return (
     <div className="bg-pink-500 overflow-x-hidden">
-      <div className="container lg:max-w-[1024px] mx-auto p-2">
+      <div className="container lg:max-w-[1280px] mx-auto p-2">
         <div>
           {/* Mobile Menu */}
           <div className="flex flex-row items-center justify-between md:hidden gap-2 text-white">
@@ -94,7 +94,7 @@ function Menu() {
                 <FaHome />
               </Link>
             </div>
-            <ul className="flex flex-row gap-4 items-center my-4">
+            <ul className="flex flex-row gap-36 items-center my-4">
               <li>
                 <Link to={"/cosmetics"}>Kosmetika</Link>
               </li>

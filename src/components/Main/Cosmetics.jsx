@@ -36,7 +36,7 @@ function Cosmetics() {
 
   return (
     <div>
-      <div className="container lg:max-w-[1024px] mx-auto p-3">
+      <div className="container lg:max-w-[1280px] mx-auto p-3">
         <div>
           <h6>Kosmetika</h6>
           <ul className="flex flex-col md:flex-row gap-4">
