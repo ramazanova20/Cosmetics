@@ -85,7 +85,7 @@ function Cosmetics() {
                   <Heart />
                 </button>
               </div>
-              <Link to={`/cosmetics/${item.id}`} className='w-full h-[280px]'>
+              <Link to={`/cosmetics/${item.id}`} className='w-full h-[290px]'>
                 <img className='h-full object-contain' src={item.api_featured_image} alt={item.name}/>
               </Link>
               <div className="p-4">

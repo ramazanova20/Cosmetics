@@ -24,7 +24,7 @@ function Favorites() {
               <>
       <div className="flex flex-wrap gap-6">
         {favorites.map((item) => (
-          <div key={item.id} className="max-w-[200px] h-[500px] rounded overflow-hidden shadow-lg bg-white relative flex flex-col transition-transform duration-200 hover:scale-105">
+          <div key={item.id} className="max-w-[200px]  rounded overflow-hidden shadow-lg bg-white relative flex flex-col transition-transform duration-200 hover:scale-105">
             <div className="rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5">
               <button onClick={() => removeFromFavorites(item.id)}>
                 <TiDelete className="text-2xl text-red-600"/>
