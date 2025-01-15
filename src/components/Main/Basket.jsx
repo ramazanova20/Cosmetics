@@ -30,7 +30,7 @@ function Basket() {
     setTotalQuantity(newTotalQuantity);
   }, [quantities, sebet]);
   return (
-    <div className='container lg:max-w-[1280px] mx-auto p-4 md:flex'>
+    <div className='container lg:max-w-[1280px] mx-auto p-4 md:flex justify-between'>
       {sebet.length === 0 ? (
         <div className="text-center py-10 mx-auto">
           <img src="https://media.tenor.com/J3mNIbj6A4wAAAAM/empty-shelves-john-travolta.gif" alt="" className='mx-auto'/>
@@ -101,7 +101,7 @@ function Basket() {
           </div>
         ))}
       </div>
-      <div className='min-w-[220px]'>
+      <div className='min-w-[220px] mt-4 sm:mt-0'>
         <table className='table-auto border-collapse text-left bg-white shadow-md rounded sticky top-0 right-0'>
           <thead>
             <tr className='bg-gray-200 '>

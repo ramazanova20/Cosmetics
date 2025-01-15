@@ -70,7 +70,7 @@ function Aksesuar() {
                 <option value="low-to-high">Ucuzdan Bahaya</option>
               </select>
             </div>
-            <div className="flex flex-wrap gap-6 justify-center m-1">
+            <div className="flex flex-wrap gap-10 justify-center m-1">
               {paginatedInfo.map((item) => {
                 return (
                   <div key={item.id} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 max-w-[200px] rounded overflow-hidden shadow-lg bg-white relative mt-4 transition-transform duration-200 hover:scale-105">

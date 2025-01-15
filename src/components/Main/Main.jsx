@@ -12,7 +12,7 @@ function Main({ favorites, setFavorites }) {
   const [sortOrder, setSortOrder] = useState("latest");
   const { addToBasket } = useContext(BASKET);
   const [slice, setSlice] =useState(15)
-  const [showCarusell, setShowCarusell] = useState(true); 
+  const [showData, setShowData] = useState(true); 
 
   if (!data) {
     return <div className="container lg:max-w-[1280px] mx-auto p-3">
@@ -46,7 +46,7 @@ function Main({ favorites, setFavorites }) {
 
   return (
     <div>
-       {showCarusell ? (
+       
         <div className="container lg:max-w-[1280px] mx-auto p-3">
           <div className="relative flex justify-center items-center w-full h-96">
     <img
@@ -54,23 +54,23 @@ function Main({ favorites, setFavorites }) {
       src="https://images.unsplash.com/photo-1595051665600-afd01ea7c446?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       alt="Cosmetics"
     />
-    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white px-5 py-3 rounded-md text-center">
+    {/* <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white px-5 py-3 rounded-md text-center">
       <button
-        onClick={() => setShowCarusell(false)}
+        
         className="text-2xl font-semibold tracking-wide hover:opacity-80 transition-opacity"
       >
         Cosmetics
       </button>
-                        </div>
+                        </div> */}
                       </div>
           {/* <button
-            onClick={() => setShowCarusell(false)} // Carusell-i bağlamaq üçün
+            onClick={() => setShowData(false)} 
             className="bg-blue-500 text-white py-2 px-4 rounded mt-4 hover:bg-blue-600"
           >
             Məhsulları Gör
           </button> */}
         </div>
-      ) : (
+      
       <div className="container lg:max-w-[1280px] mx-auto p-3">
         <div className="my-4 ">
         <h1 className='text-2xl font-bold mb-4 uppercase italic'>Kosmetik Mehsullar</h1>
@@ -129,17 +129,17 @@ function Main({ favorites, setFavorites }) {
     </div>
    ))}
    </div>
-   <div className="max-w-[400px] mx-auto items-center rounded overflow-hidden shadow-lg">
+   <div className="max-w-[400px] mx-auto items-center rounded overflow-hidden shadow-lg mt-4">
      <button
        onClick={() => setSlice(slice + 15)}
-       className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 block"
+       className="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700 block"
      >
        Daha Çox
      </button>
    </div>
  </div>
 </div>
-)}
+
 </div>
   );
 }
