@@ -2,7 +2,7 @@ import React from 'react'
 
 function FooterText() {
   return (
-    <div className='bg-stone-800'>
+    <div className='bg-[#F48FB1]'>
         <div className='container lg:max-w-[1280px] mx-auto p-3 text-white'>
             <p>Kosmetika.az Original və Brend kosmetika məhsulları satisi ilə məşğuldur. 
                 Kosmetik vasitələr Amerika, Almaniya və İngiltərədən gətirilir. 

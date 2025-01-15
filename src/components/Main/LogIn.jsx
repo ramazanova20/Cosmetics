@@ -1,20 +1,17 @@
 import React from 'react'
-
+import logo from "../../assets/img/logo3.png"
 function LogIn() {
   return (
     <>
        <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <img
-            alt="Your Company"
-            src="https://kosmetika.az/logos.png?25"
-            className="mx-auto h-10 w-auto"
-          />
+          <div className="logo mb-4">
+            <img src={logo} alt="Logo" className='max-w-[220px] mx-auto w-auto'/>
+          </div>
           <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
             Sign in to your account
           </h2>
         </div>
-
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <form action="#" method="POST" className="space-y-6">
             <div>
@@ -32,7 +29,6 @@ function LogIn() {
                 />
               </div>
             </div>
-
             <div>
               <div className="flex items-center justify-between">
                 <label htmlFor="password" className="block text-sm/6 font-medium text-gray-900">

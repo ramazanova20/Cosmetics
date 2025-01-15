@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, {useContext, useState} from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useAllDataContext } from '../../context/AllDataContext';
 import Heart from './Heart';
 import Loading from './Loading';
-
+import { SlBasket } from "react-icons/sl";
+import { BASKET } from "../../context/BasketContext";
 function BrendInfo() {
   const { brand } = useParams(); 
   const { data } = useAllDataContext();
-
+ const { addToBasket } = useContext(BASKET);
   if (!data) {
     return <div className="container lg:max-w-[1280px] mx-auto p-3">
     <Loading/>
@@ -37,34 +38,24 @@ function BrendInfo() {
         <div className="my-4">
           <div className="flex flex-wrap gap-6 mx-auto justify-center m-1">
             {filteredProducts.map((item, i) => (
-              <div
-                key={i}
-                className="max-w-[200px] rounded overflow-hidden shadow-lg bg-white relative"
-              >
+              <div key={i} className="max-w-[200px] rounded overflow-hidden shadow-lg bg-white relative">
                 <div className="rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5">
                   <Heart />
                 </div>
-                <Link 
-            
-            to={`/cosmetics/${item.id}`} >
-              <img
-                  className=" w-full h-2/4"
-                  src={item.api_featured_image}
-                  alt={item.name.slice(0, 10)}
-                />
-            </Link>
-               
+                <Link to={`/cosmetics/${item.id}`} >
+                  <img className=" w-full h-2/4" src={item.api_featured_image} alt={item.name}/>
+                </Link>
                 <div className="p-4">
-                  <h2 className="text-xl font-semibold mb-2">{item.name}</h2>
-                  <h5 className="text-lg font-semibold mb-4">{ item.price}₼</h5>
-                  <button
-                        onClick={() => addToBasket( item.id,
-                          item.api_featured_image || item.image, 
-                          item.name || item.title, 
-                          item.price)}
-                        className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 block"
-                      >
-                    Satın Al
+                  <h2 className="text-xl font-semibold mb-2">{item.name.slice(0, 14) + (item.name.length > 14 ? "..." : "")}</h2>
+                  <h5 className="text-lg font-semibold mb-4 flex justify-center">{ item.price}₼</h5>
+                   <button onClick={() => addToBasket( item.id,
+                      item.api_featured_image || item.image, 
+                      item.name || item.title, 
+                      item.price)}
+                    className="m-auto text-blue-500 py-2 rounded block">
+                    <div className=" font-bold rounded transition-transform duration-300 hover:animate-bounce">
+                      <SlBasket className="text-2xl" />
+                    </div>
                   </button>
                 </div>
               </div>

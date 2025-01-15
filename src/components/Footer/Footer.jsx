@@ -6,7 +6,7 @@ function Footer() {
   return (
     <div>
         <div>
-            <FooterText/>
+            {/* <FooterText/> */}
             <FooterBottom/>
         </div>
     </div>

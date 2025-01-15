@@ -26,18 +26,18 @@ function DataContext({ children }) {
 
 
   const addToFavorites = (item) => {
-    setFavorites((prevFavorites) => {
-      if (!prevFavorites.some((fav) => fav.id === item.id)) {
-        return [...prevFavorites, item];
+    setFavorites((listFavorites) => {
+      if (!listFavorites.some((fav) => fav.id === item.id)) {
+        return [...listFavorites, item];
       }
-      return prevFavorites;
+      return listFavorites;
     });
   };
 
 
   const removeFromFavorites = (id) => {
-    setFavorites((prevFavorites) =>
-      prevFavorites.filter((item) => item.id !== id)
+    setFavorites((listFavorites) =>
+      listFavorites.filter((item) => item.id !== id)
     );
   };
 

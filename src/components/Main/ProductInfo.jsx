@@ -11,7 +11,7 @@ function ProductInfo() {
   const [product, setProduct] = useState(null);
   const { info } = useContext(DATA);
   const [page, setPage] = useState(1);
-  const pageSize = 6;
+  const pageSize = 8;
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -51,13 +51,14 @@ function ProductInfo() {
       <div className="w-full h-[280px]">
         <img className="h-full object-contain" src={product.img} alt={product.title} />
       </div>
-      <div className="p-4">
+      <div className="py-4">
         <h2 className="text-xl font-semibold mb-2">{product.title}</h2>
-        <p className="text-gray-700 mb-4">{product.description}</p>
-        <p className="text-gray-700 mb-4">{product.history}</p>
+        <p className="text-gray-700 mb-4 leading-8">{product.description}</p>
+        <p className="text-gray-700 mb-4 italic">{product.history}</p>
       </div>
       <div className="my-4">
-        <div className="flex flex-wrap gap-6 mx-auto justify-center m-1">
+        <h1 className=" uppercase italic text-2xl font-bold mb-4">Useful Information</h1>
+        <div className="flex flex-wrap gap-4 mx-auto justify-center m-1">
           {paginatedInfo.map((item, i) => (
             <div key={i} className="max-w-[300px] rounded overflow-hidden shadow-lg bg-white">
               <Link to={`/melumat/${item.id}`}>
@@ -72,7 +73,7 @@ function ProductInfo() {
               <div className="p-4">
                 <h2 className="text-xl font-semibold mb-2">{item.title}</h2>
                 <p className="text-gray-700 mb-4">{item.description.slice(0, 100)}</p>
-                <p className="text-gray-700 mb-4">{item.history}</p>
+                <p className="text-gray-700 mb-4 italic">{item.history}</p>
               </div>
             </div>
           ))}

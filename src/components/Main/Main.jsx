@@ -4,7 +4,7 @@ import Heart from "./Heart";
 import { Link } from "react-router-dom";
 import { BASKET } from "../../context/BasketContext";
 import Loading from "./Loading";
-
+import { SlBasket } from "react-icons/sl";
 
 function Main({ favorites, setFavorites }) {
   const { data } = useAllDataContext();
@@ -45,14 +45,14 @@ function Main({ favorites, setFavorites }) {
     <div>
       <div className="container lg:max-w-[1280px] mx-auto p-3">
         <div className="my-4 ">
+        <h1 className='text-2xl font-bold mb-4 uppercase italic'>Kosmetik Mehsullar</h1>
           <div className="mb-4">
             <label htmlFor="sorting">Sıralama:</label>
             <select
               id="sorting"
               value={sortOrder}
               onChange={handleSortChange}
-              className="ml-2 border rounded p-1"
-            >
+              className="ml-2 border rounded p-1">
               <option value="latest">Son Məhsullar</option>
               <option value="high-to-low">Bahadan Ucuza</option>
               <option value="low-to-high">Ucuzdan Bahaya</option>
@@ -60,27 +60,24 @@ function Main({ favorites, setFavorites }) {
           </div>
           <div className="flex flex-wrap gap-6 mx-auto justify-center m-1">
             {sortedData.slice(0, slice).map((item, i) => (
-              <div
-                key={i}
-                className="max-w-[200px] rounded overflow-hidden shadow-lg bg-white relative"
-              >
+              <div key={i} className="max-w-[200px] rounded overflow-hidden shadow-lg bg-white relative transition-transform duration-200 hover:scale-105">
                 <div className="rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5">
-                <button onClick={() => addToFavorites(item)}>
-                        <Heart />
-                      </button>
+                  <button onClick={() => addToFavorites(item)}>
+                    <Heart />
+                  </button>
                 </div>
-                <Link to={`/cosmetics/${item.id}`}>
-                <img
-                  className=" w-full h-2/4"
-                  src={item.api_featured_image}
-                  alt={item.name.slice(0, 10)}
-                />
+                <Link to={`/cosmetics/${item.id}`} className="w-full">
+                  <img
+                    className=" w-full h-2/4"
+                    src={item.api_featured_image}
+                    alt={item.name}
+                  />
                 </Link>
                 <div className="p-4">
                   <h2 className="text-xl font-semibold mb-2 whitespace-nowrap">
-                    {item.name.slice(0, 15)}
+                    {item.name.slice(0, 15) + (item.name.length > 15 ? "..." : "")}
                   </h2>
-                  <h5 className="text-lg font-semibold mb-4">
+                  <h5 className="text-lg font-semibold mb-4 flex justify-center">
                     {item.price}₼
                   </h5>
                   <button
@@ -88,9 +85,10 @@ function Main({ favorites, setFavorites }) {
                       item.api_featured_image || item.image, 
                       item.name || item.title, 
                       item.price)}
-                    className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 block"
-                  >
-                    Buy
+                    className="m-auto text-blue-500 py-2 rounded block">
+                    <div className=" font-bold rounded transition-transform duration-300 hover:animate-bounce">
+                     <SlBasket className="text-2xl" />
+                    </div>
                   </button>
                 </div>
               </div>
@@ -99,8 +97,8 @@ function Main({ favorites, setFavorites }) {
           
         </div>
         <div className="max-w-[400px] mx-auto items-center rounded overflow-hidden shadow-lg">
-            <button onClick={() =>setSlice(slice+15)} className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 block">More</button>
-          </div>
+          <button onClick={() =>setSlice(slice+15)} className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 block">More</button>
+        </div>
       </div>
     </div>
   );
