@@ -17,26 +17,35 @@ function BrendInfo() {
 
   if (!brand) {
     return <div>Brand is not specified in the URL.</div>;
-  }
-
-  // Brendə aid məhsulları filtrələyirik
+  } 
   const filteredProducts = data.filter(
     (item) =>
       item.brand &&
       brand &&
       item.brand.toLowerCase().trim() === brand.toLowerCase().trim()
   );
-
+  
   if (filteredProducts.length === 0) {
-    return <div>No products found for this brand.</div>;
+    return <div className=''>
+      <div className="text-center py-10 mx-auto">
+                <img src="https://minteventrentals.com/public/templates/mint/images/noproductfound.png" alt="" className='mx-auto'/>
+                <h2 className="text-2xl font-bold mb-4"> No products found for this brand.</h2>
+                <Link to="/brend" className="text-blue-500 hover:underline">
+                  Try New Brands
+                </Link>
+              </div>
+     </div>;
   }
 
   return (
     <div>
       <div className="container lg:max-w-[1280px] mx-auto p-3">
-        <h1 className="text-2xl font-bold mb-4">{brand} Məhsulları</h1>
+        <div className='flex'>
+          <h1 className="text-2xl font-bold mb-4 mr-2 italic text-green-500">"{brand}" </h1>
+          <h1 className="text-2xl font-bold mb-4">Məhsulları</h1>
+        </div>
         <div className="my-4">
-          <div className="flex flex-wrap gap-6 mx-auto justify-center m-1">
+          <div className="flex flex-wrap gap-10 mx-auto justify-center m-1">
             {filteredProducts.map((item, i) => (
               <div key={i} className="max-w-[200px] rounded overflow-hidden shadow-lg bg-white relative">
                 <div className="rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5">
@@ -46,7 +55,7 @@ function BrendInfo() {
                   <img className=" w-full h-2/4" src={item.api_featured_image} alt={item.name}/>
                 </Link>
                 <div className="p-4">
-                  <h2 className="text-xl font-semibold mb-2">{item.name.slice(0, 14) + (item.name.length > 14 ? "..." : "")}</h2>
+                  <h2 className="text-xl font-semibold mb-2 text-center whitespace-nowrap">{item.name.slice(0, 14) + (item.name.length > 14 ? "..." : "")}</h2>
                   <h5 className="text-lg font-semibold mb-4 flex justify-center">{ item.price}₼</h5>
                    <button onClick={() => addToBasket( item.id,
                       item.api_featured_image || item.image, 

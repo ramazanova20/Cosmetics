@@ -23,13 +23,13 @@ function FooterBottom() {
               <img src={logo} alt="Logo" className='max-w-[220px]'/>
             </div>
             <div className="flex flex-row gap-3">
-              <a href="https://www.instagram.com/kosmetika_aksessuar" target="_blank" className="p-1 text-sky-700 text-xl">
+              <a href="" target="_blank" className="p-1 text-sky-700 text-xl">
                 <FaFacebookSquare className='transition-transform duration-300 hover:scale-150 cursor-pointer' />
               </a>
-              <a href="https://www.instagram.com/kosmetika_aksessuar" target="_blank" className="p-1 text-[#DE1772] text-xl">
+              <a href="" target="_blank" className="p-1 text-[#DE1772] text-xl">
                 <FaInstagram className='transition-transform duration-300 hover:scale-150 cursor-pointer'/>
               </a>
-              <a href="https://www.instagram.com/kosmetika_aksessuar" target="_blank" className="p-1 text-xl">
+              <a href="" target="_blank" className="p-1 text-xl">
                 <FcGoogle className='transition-transform duration-300 hover:scale-150 cursor-pointer'/>
               </a>
             </div>

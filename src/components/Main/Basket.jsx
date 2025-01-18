@@ -49,29 +49,14 @@ function Basket() {
                 <TiDelete className="text-2xl text-red-600" />
               </button>
             </div>
-          {/* <Link
-            to={
-              ["women's clothing", "men's clothing", "jewelery", "electronics"].includes(item.category)
-                ? `/aksesuar/${item.id}`
-                : `/cosmetics/${item.id}`
-            }
-          > */}
-            <div className="w-full h-[280px]">
+            <div className="w-full h-[280px] p-2">
               <img
                 className="h-full object-contain"
                 src={item.api_featured_image || item.image || 'default-image-url.jpg'}
                 alt={item.name || item.title || 'Product Image'}/>
             </div>
-          {/* </Link> */}
-
-
             <div className="p-4">
-              {/* <h2 className="text-xl font-semibold mb-2 whitespace-nowrap">
-                {item.image ? item.image :
-                  item.title ? item.title :
-                    "Məlumat yoxdur"}
-              </h2> */}
-              <h2 className="text-xl font-semibold mb-2 whitespace-nowrap">
+              <h2 className="text-xl font-semibold mb-2 whitespace-nowrap text-center">
                 {item.image
                   ? item.image.slice(0, 15) + (item.image.length > 15 ? "..." : "")
                   : item.title
@@ -102,9 +87,9 @@ function Basket() {
         ))}
       </div>
       <div className='min-w-[220px] mt-4 sm:mt-0'>
-        <table className='table-auto border-collapse text-left bg-white shadow-md rounded sticky top-0 right-0'>
+        <table className='table-auto border-collapse text-left bg-white shadow-md rounded sticky top-0 right-0  mx-auto'>
           <thead>
-            <tr className='bg-gray-200 '>
+            <tr className='bg-gradient-to-r from-blue-400 to-purple-600 text-white '>
               <th className='px-2 sm:px-4 py-2 border'>Məhsul</th>
               <th className='px-2 sm:px-4 py-2 border'>Miqdar</th>
               <th className='px-2 sm:px-4 py-2 border'>Qiymət (₼)</th>
@@ -116,16 +101,16 @@ function Basket() {
                 <td className='px-2 sm:px-4 py-2 border'>{item.image ? item.image :
                   item.title ? item.title :
                     "Məlumat yoxdur"}</td>
-                <td className='px-2 sm:px-4 py-2 border'>{quantities[item.id] || 1}</td>
-                <td className='px-2 sm:px-4 py-2 border'>{Math.floor((quantities[item.id] || 1) * (item.name || item.title))}</td>
+                <td className='px-2 sm:px-4 py-2 border text-center'>{quantities[item.id] || 1}</td>
+                <td className='px-2 sm:px-4 py-2 border text-center'>{Math.floor((quantities[item.id] || 1) * (item.name || item.title))}</td>
               </tr>
             ))}
           </tbody>
           <tfoot>
             <tr>
               <td className='px-2 sm:px-4 py-2 border font-bold'>Ümumi</td>
-              <td className='px-2 sm:px-4 py-2 border font-bold'>{totalQuantity}</td>
-              <td className='px-2 sm:px-4 py-2 border font-bold'>{totalPrice.toFixed(2)}₼</td>
+              <td className='px-2 sm:px-4 py-2 border font-bold text-center'>{totalQuantity}</td>
+              <td className='px-2 sm:px-4 py-2 border font-bold text-center'>{totalPrice.toFixed(2)}₼</td>
             </tr>
             <tr>
             <td colSpan="3" className="px-4 py-2 text-center">

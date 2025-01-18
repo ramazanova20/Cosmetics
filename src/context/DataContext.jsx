@@ -68,7 +68,6 @@ function DataContext({ children }) {
   return (
     <DATA.Provider
       value={{
-        // ...filteredData,
         jewelery,
         info,
         favorites,

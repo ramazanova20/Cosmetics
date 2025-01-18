@@ -6,7 +6,8 @@ import { BASKET } from '../../context/BasketContext';
 import { useDataContext } from "../../context/DataContext"; 
 import { Pagination } from 'antd';
 import { SlBasket } from "react-icons/sl";
-import Carusell from './Carusell'; // Düzgün yoldan daxil edin
+import Carusell from './Carusell'; 
+import Loading from './Loading';
 
 
 function Cosmetics() {
@@ -18,25 +19,35 @@ function Cosmetics() {
   const { addToBasket } = useContext(BASKET);
   const [page, setPage] = useState(1);
   const pageSize = 15;
+  const [loading, setLoading] = useState(true); 
+
   useEffect(() => {
     if (tip) {
+      setLoading(true);
       getProductByName(tip)
-        .then((res) => setData(res))
+        .then((res) => {setData(res);
+        setLoading(false); })
         .catch((error) => {
-          console.error('Error fetching data:', error);
+          console.error('Error fetching data:', error)
+          setLoading(false);
         });
     } else {
       setData(null);
+      setLoading(false);
     }
   }, [tip]);
  
-
-
   const shouldShowImage = !(tip === 'lipstick' || tip === 'foundation' || tip === 'eyeliner');
   const startIndex = (page - 1) * pageSize;
   const endIndex = startIndex + pageSize;
   const currentData = data ? data.slice(startIndex, endIndex) : [];
-
+  if (loading) {
+    return (
+      <div className="container lg:max-w-[1280px] mx-auto p-3">
+        <Loading /> 
+      </div>
+    );
+  }
   return (
     <div>
       <div className="container lg:max-w-[1280px] mx-auto p-3">
@@ -89,7 +100,7 @@ function Cosmetics() {
                 <img className='h-full object-contain' src={item.api_featured_image} alt={item.name}/>
               </Link>
               <div className="p-4">
-                <h2 className=" font-semibold mb-2 whitespace-nowrap">
+                <h2 className=" font-semibold mb-2 whitespace-nowrap text-center">
                   {item.name.slice(0, 20) + (item.name.length > 20 ? "..." : "")}
                 </h2>
                 <div className='flex justify-center'>

@@ -4,7 +4,7 @@ function FooterText() {
   return (
     <div className='bg-[#F48FB1]'>
         <div className='container lg:max-w-[1280px] mx-auto p-3 text-white'>
-            <p>Kosmetika.az Original və Brend kosmetika məhsulları satisi ilə məşğuldur. 
+            <p>Original və Brend kosmetika məhsulları satisi ilə məşğuldur. 
                 Kosmetik vasitələr Amerika, Almaniya və İngiltərədən gətirilir. 
                 Bütün kosmetik məhsullar yüksək keyfiyyətdə və originaldır. 
                 Brend kosmetika vasiteler Bakida sifaris etmek istəyənlər müraciət etsinlər. 

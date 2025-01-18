@@ -15,7 +15,7 @@ function Favorites() {
        {favorites.length === 0 ? (
               <div className="text-center py-10">
                 <img src="https://i.pinimg.com/originals/a0/26/23/a02623143702407373cf63d686054335.gif" alt="" className="m-auto" />
-                <h2 className="text-2xl font-bold mb-4"> You dont like anything!</h2>
+                <h2 className="text-2xl font-bold mb-4"> You don't like anything!</h2>
                 <Link to="/" className="text-blue-500 hover:underline">
                   Lets discover the products
                 </Link>
@@ -34,7 +34,7 @@ function Favorites() {
               ["women's clothing", "men's clothing", "jewelery", "electronics"].includes(item.category)
                 ? `/aksesuar/${item.id}`
                 : `/cosmetics/${item.id}`}>
-              <div className="w-full h-[280px]">
+              <div className="w-full h-[280px] p-2">
                 <img
                   className="h-full object-contain"
                   src={item.api_featured_image || item.image || 'default-image-url.jpg'}
@@ -42,7 +42,7 @@ function Favorites() {
               </div>
             </Link>
             <div className="p-4">
-              <h2 className="text-xl font-semibold mb-2 whitespace-nowrap">
+              <h2 className="text-xl font-semibold mb-2 whitespace-nowrap text-center">
                 {(item.name?.slice(0, 15)) || (item.title?.slice(0, 15))}
               </h2>
               <h5 className="text-lg font-semibold mb-4 flex justify-center">

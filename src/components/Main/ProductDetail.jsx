@@ -30,12 +30,7 @@ const showCategory = !location.pathname.includes("cosmetics");
     const y = ((e.clientY - top) / height) * 100;
     setPosition({ x: `${x}%`, y: `${y}%` });
   };
-  // useEffect(() => {
-  //   getProductById(id)  
-  //     .then((data) => setProduct(data))  
-  //     .catch((err) => console.error("Məhsul tapılmadı:", err));
-  // }, [id]);
-
+  
   if (!product) return <div className="container lg:max-w-[1280px] mx-auto p-3">
   <Loading/>
  </div>;  

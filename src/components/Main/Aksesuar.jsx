@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from "react";
-import { DATA } from "../../context/DataContext";
 import Heart from './Heart'; 
 import { Link } from "react-router-dom";
 import { BASKET } from "../../context/BasketContext";

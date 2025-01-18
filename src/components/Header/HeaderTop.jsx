@@ -42,19 +42,19 @@ function HeaderTop() {
         </div>
 
         {/* Search Input */}
-        <div className="min-w-14">
+        <div className="min-w-14 mx-auto">
           <form>
             <div className="flex relative transition-transform duration-200 hover:scale-105">
               <input
                 type="text"
-                className="border p-1 sm:p-2 rounded-l-md"
+                className="border p-2 rounded-l-md w-[220px]"
                 placeholder="Axtar..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
               <button
                 type="submit"
-                className="border p-1 sm:p-2 text-red-700 rounded-r-md flex items-center justify-center"
+                className="border p-2 text-red-700 rounded-r-md flex items-center justify-center"
               >
                 <GiTwirlyFlower />
               </button>
