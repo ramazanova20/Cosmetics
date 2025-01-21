@@ -15,11 +15,11 @@ async function getJeweleryData() {
     return res.data
 }
 async function getInfoData() {
-    const res = await axios.get("http://localhost:3005/info")
+    const res = await axios.get("https://json-server-eight-gray.vercel.app/info")
     return res.data
 }
 async function getInfoById(id) {
-    const res = await axios.get(`http://localhost:3005/info/${id}`)
+    const res = await axios.get(`https://json-server-eight-gray.vercel.app/info/${id}`)
     return res.data
 }
 
