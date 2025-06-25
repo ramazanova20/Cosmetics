@@ -11,18 +11,18 @@ function Favorites() {
  const { addToBasket } = useContext(BASKET);
   return (
     <div className="container lg:max-w-[1280px] mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4 uppercase italic">Seçilmiş Məhsullar</h1>
+      <h1 className="text-2xl font-bold mb-4 uppercase italic">Selected Products</h1>
        {favorites.length === 0 ? (
               <div className="text-center py-10">
                 <img src="https://i.pinimg.com/originals/a0/26/23/a02623143702407373cf63d686054335.gif" alt="" className="m-auto" />
                 <h2 className="text-2xl font-bold mb-4"> You don't like anything!</h2>
                 <Link to="/" className="text-blue-500 hover:underline">
-                  Lets discover the products
+                  Let's discover the products!
                 </Link>
               </div>
             ) : (
               <>
-      <div className="flex flex-wrap gap-6">
+      <div className="flex flex-wrap gap-6 justify-center">
         {favorites.map((item) => (
           <div key={item.id} className="max-w-[200px]  rounded overflow-hidden shadow-lg bg-white relative flex flex-col transition-transform duration-200 hover:scale-105">
             <div className="rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5">
@@ -46,7 +46,7 @@ function Favorites() {
                 {(item.name?.slice(0, 15)) || (item.title?.slice(0, 15))}
               </h2>
               <h5 className="text-lg font-semibold mb-4 flex justify-center">
-                { item.price}₼
+                { item.price}$
               </h5>
               <button
                 onClick={() => addToBasket( item.id,

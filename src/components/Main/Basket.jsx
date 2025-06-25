@@ -34,9 +34,9 @@ function Basket() {
       {sebet.length === 0 ? (
         <div className="text-center py-10 mx-auto">
           <img src="https://media.tenor.com/J3mNIbj6A4wAAAAM/empty-shelves-john-travolta.gif" alt="" className='mx-auto'/>
-          <h2 className="text-2xl font-bold mb-4">Səbətiniz boşdur!</h2>
+          <h2 className="text-2xl font-bold mb-4">Your cart is empty!</h2>
           <Link to="/" className="text-blue-500 hover:underline">
-            Alış-verişə başla
+            Let's Start Shopping!
           </Link>
         </div>
       ) : (
@@ -65,7 +65,7 @@ function Basket() {
               </h2>
 
               <h5 className="text-lg font-semibold mb-4 items-center flex justify-center">
-                {Math.floor((quantities[item.id] || 1) * (item.name || item.title))}₼
+                {Math.floor((quantities[item.id] || 1) * (item.name || item.title))}$
               </h5>
               <div className="flex items-center justify-between mb-2">
                 <button onClick={() => updateQuantity(item.id, Math.max((quantities[item.id] || 1) - 1, 1))}className="px-3 py-1 bg-gray-200 rounded">
@@ -79,7 +79,7 @@ function Basket() {
               <Link to={`/login/`}>
                 <button className="relative mt-4 w-full sm:px-6 py-3 bg-green-500 text-white font-bold rounded overflow-hidden group">
                   <span className="absolute inset-0 w-full h-full bg-green-700 transform translate-x-full transition-transform duration-300 group-hover:translate-x-0"></span>
-                  <span className="relative z-10">Satın Al</span>
+                  <span className="relative z-10">Buy</span>
                 </button>
               </Link>
             </div>
@@ -90,9 +90,9 @@ function Basket() {
         <table className='table-auto border-collapse text-left bg-white shadow-md rounded sticky top-0 right-0  mx-auto'>
           <thead>
             <tr className='bg-gradient-to-r from-blue-400 to-purple-600 text-white '>
-              <th className='px-2 sm:px-4 py-2 border'>Məhsul</th>
-              <th className='px-2 sm:px-4 py-2 border'>Miqdar</th>
-              <th className='px-2 sm:px-4 py-2 border'>Qiymət (₼)</th>
+              <th className='px-2 sm:px-4 py-2 border'>Product</th>
+              <th className='px-2 sm:px-4 py-2 border'>Quantity</th>
+              <th className='px-2 sm:px-4 py-2 border'>Price ($)</th>
             </tr>
           </thead>
           <tbody>
@@ -108,16 +108,16 @@ function Basket() {
           </tbody>
           <tfoot>
             <tr>
-              <td className='px-2 sm:px-4 py-2 border font-bold'>Ümumi</td>
+              <td className='px-2 sm:px-4 py-2 border font-bold'>General</td>
               <td className='px-2 sm:px-4 py-2 border font-bold text-center'>{totalQuantity}</td>
-              <td className='px-2 sm:px-4 py-2 border font-bold text-center'>{totalPrice.toFixed(2)}₼</td>
+              <td className='px-2 sm:px-4 py-2 border font-bold text-center'>{totalPrice.toFixed(2)}$</td>
             </tr>
             <tr>
             <td colSpan="3" className="px-4 py-2 text-center">
             <Link to={`/login/`}>
           <button className="relative mt-4 w-full px-6 py-3 bg-green-500 text-white font-bold rounded overflow-hidden group">
             <span className="absolute inset-0 w-full h-full bg-green-700 transform translate-x-full transition-transform duration-500 group-hover:translate-x-0"></span>
-            <span className="relative z-10">Satın Al</span>
+            <span className="relative z-10">Buy</span>
           </button>
         </Link>
             </td>

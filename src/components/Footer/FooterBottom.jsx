@@ -37,36 +37,36 @@ function FooterBottom() {
 
          
           <div className="flex flex-col items-start w-full md:w-[48%] lg:w-auto">
-            <h6 className="mb-4 font-bold">Kategoriyalar</h6>
+            <h6 className="mb-4 font-bold">Categories</h6>
             <ul className="flex flex-col gap-2">
               <div className="relative group inline-block">
                 <span className="absolute inset-0 bg-emerald-100 opacity-10 blur-lg rounded group-hover:opacity-100 transition-opacity duration-300"></span>
                 <span className="relative text-green-900 ">
-                <Link to="/cosmetics">Kosmetika</Link>
+                <Link to="/cosmetics">Cosmetics</Link>
                 </span>
               </div>
               <div className="relative group inline-block">
                 <span className="absolute inset-0 bg-emerald-100 opacity-10 blur-lg rounded group-hover:opacity-100 transition-opacity duration-300"></span>
                 <span className="relative text-green-900 ">
-                <Link to="/aksesuar">Aksessuar və Moda</Link>
+                <Link to="/aksesuar">Accessories and Fashion</Link>
+                </span>
+              </div>
+              {/* <div className="relative group inline-block">
+                <span className="absolute inset-0 bg-emerald-100 opacity-10 blur-lg rounded group-hover:opacity-100 transition-opacity duration-300"></span>
+                <span className="relative text-green-900 ">
+                  <Link to={"/melumat"}>Information</Link>
+                </span>
+              </div> */}
+              <div className="relative group inline-block">
+                <span className="absolute inset-0 bg-emerald-100 opacity-10 blur-lg rounded group-hover:opacity-100 transition-opacity duration-300"></span>
+                <span className="relative text-green-900 ">
+                <Link to="/brend">Brands</Link>
                 </span>
               </div>
               <div className="relative group inline-block">
                 <span className="absolute inset-0 bg-emerald-100 opacity-10 blur-lg rounded group-hover:opacity-100 transition-opacity duration-300"></span>
                 <span className="relative text-green-900 ">
-                  <Link to={"/melumat"}>Məlumatlar</Link>
-                </span>
-              </div>
-              <div className="relative group inline-block">
-                <span className="absolute inset-0 bg-emerald-100 opacity-10 blur-lg rounded group-hover:opacity-100 transition-opacity duration-300"></span>
-                <span className="relative text-green-900 ">
-                <Link to="/brend">Brendlər</Link>
-                </span>
-              </div>
-              <div className="relative group inline-block">
-                <span className="absolute inset-0 bg-emerald-100 opacity-10 blur-lg rounded group-hover:opacity-100 transition-opacity duration-300"></span>
-                <span className="relative text-green-900 ">
-                  <Link to={"/melumat"}>Məlumatlar</Link>
+                  <Link to={"/melumat"}>Information</Link>
                 </span>
               </div>
             </ul>
@@ -74,11 +74,11 @@ function FooterBottom() {
 
           
           <div className="flex flex-col items-start w-full md:w-[48%] lg:w-auto">
-            <h6 className="mb-4 font-bold">Məlumatlar</h6>
+            <h6 className="mb-4 font-bold">Information</h6>
             <div className="relative group inline-block">
               <span className="absolute inset-0 bg-emerald-100 opacity-10 blur-lg rounded group-hover:opacity-100 transition-opacity duration-300"></span>
               <span className="relative text-green-900 ">
-                <Link to={"/melumat"}>Məlumatlar</Link>
+                <Link to={"/melumat"}>Information</Link>
               </span>
             </div>
           </div>

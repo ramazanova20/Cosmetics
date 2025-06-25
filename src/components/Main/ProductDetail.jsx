@@ -75,7 +75,7 @@ const showCategory = !location.pathname.includes("cosmetics");
 
         <h2 className="text-xl font-semibold mb-2">{product.name || product.title}</h2>
         <h5 className="text-lg font-semibold mb-4">
-         {product.price}₼   
+         {product.price}$   
         </h5>
         <div className="">
         <h5 className="text-lg font-semibold mb-4">

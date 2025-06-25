@@ -52,13 +52,13 @@ function Cosmetics() {
     <div>
       <div className="container lg:max-w-[1280px] mx-auto p-3">
         <div>
-          <h1 className='text-2xl font-bold mb-4 uppercase italic'>Kosmetika</h1>
+          <h1 className='text-2xl font-bold mb-4 uppercase italic'>Cosmetics</h1>
           <ul className="flex flex-col md:flex-row gap-4">
             <li>
               <div className="relative group inline-block">
                 <span className="absolute inset-0  bg-pink-500 opacity-30 blur-lg rounded group-hover:opacity-100 transition-opacity duration-300"></span>
                 <span className="relative flex items-center justify-center text-black text-lg">
-                <Link to="/cosmetics?tip=foundation">ÜZ üçün Kosmetika</Link>
+                <Link to="/cosmetics?tip=foundation">FACE Cosmetics</Link>
                 </span>
               </div>
             </li>
@@ -66,7 +66,7 @@ function Cosmetics() {
             <div className="relative group inline-block">
               <span className="absolute inset-0 bg-pink-500 opacity-30 blur-lg rounded group-hover:opacity-100 transition-opacity duration-300"></span>
               <span className="relative flex items-center justify-center text-black text-lg">
-              <Link to="/cosmetics?tip=eyeliner">GÖZ üçün Kosmetika</Link>
+              <Link to="/cosmetics?tip=eyeliner">EYE Cosmetics</Link>
               </span>
             </div>
             </li>
@@ -74,7 +74,7 @@ function Cosmetics() {
             <div className="relative group inline-block">
               <span className="absolute inset-0  bg-pink-500 opacity-30 blur-lg rounded group-hover:opacity-100 transition-opacity duration-300"></span>
               <span className="relative flex items-center justify-center text-black text-lg">
-              <Link to="/cosmetics?tip=lipstick">DODAQ üçün Kosmetika</Link>
+              <Link to="/cosmetics?tip=lipstick">LIP Cosmetics</Link>
               </span>
             </div>
             </li>
@@ -82,7 +82,7 @@ function Cosmetics() {
             <div className="relative group inline-block">
               <span className="absolute inset-0 bg-pink-500 opacity-30 blur-lg rounded group-hover:opacity-100 transition-opacity duration-300"></span>
               <span className="relative flex items-center justify-center text-black text-lg">
-              <Link to="/aksesuar">Aksessuarlar</Link>
+              <Link to="/aksesuar">Accessories</Link>
               </span>
             </div>
             </li>
@@ -105,7 +105,7 @@ function Cosmetics() {
                 </h2>
                 <div className='flex justify-center'>
                   <h5 className="text-lg font-semibold mb-4">
-                    {item.price}₼
+                    {item.price}$
                   </h5>
                 </div>
                 <button

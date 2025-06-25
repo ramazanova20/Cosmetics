@@ -48,7 +48,7 @@ function HeaderTop() {
               <input
                 type="text"
                 className="border p-2 rounded-l-md w-[220px]"
-                placeholder="Axtar..."
+                placeholder="Search..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />

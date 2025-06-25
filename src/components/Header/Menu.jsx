@@ -29,7 +29,7 @@ function Menu() {
             <div className="text-2xl">
               <IoMdMenu onClick={handleClick} className="transition-transform duration-300 hover:scale-150"/>
             </div>
-            <div className="text-lg font-bold">Kosmetika</div>
+            <div className="text-lg font-bold">Cosmetics</div>
             <div className="flex flex-row items-center gap-4 text-white relative">
               <div className="relative">
                 <Link to="/favorites">
@@ -71,7 +71,7 @@ function Menu() {
                 <span className="absolute inset-0 bg-yellow-400 opacity-10 blur-lg rounded group-hover:opacity-100 transition-opacity duration-300"></span>
                 <span className="relative flex items-center justify-center text-white text-lg">
                 <Link to={"/cosmetics"} className="text-sm">
-                    Kosmetika
+                    Cosmetics
                   </Link>
                 </span>
               </div>
@@ -81,7 +81,7 @@ function Menu() {
                 <span className="absolute inset-0 bg-yellow-400 opacity-10 blur-lg rounded group-hover:opacity-100 transition-opacity duration-300"></span>
                 <span className="relative flex items-center justify-center text-white text-lg">
                 <Link to={"/aksesuar"} className="text-sm">
-                    Aksessuar və Moda
+                    Accessories and Fashion
                   </Link>
                 </span>
               </div>
@@ -91,7 +91,7 @@ function Menu() {
                 <span className="absolute inset-0 bg-yellow-400 opacity-10 blur-lg rounded group-hover:opacity-100 transition-opacity duration-300"></span>
                 <span className="relative flex items-center justify-center text-white text-lg">
                 <Link to={"/brend"} className="text-sm">
-                    Brendlər
+                    Brands
                   </Link>
                 </span>
               </div>
@@ -101,7 +101,7 @@ function Menu() {
                 <span className="absolute inset-0 bg-yellow-400 opacity-10 blur-lg rounded group-hover:opacity-100 transition-opacity duration-300"></span>
                 <span className="relative flex items-center justify-center text-white text-lg">
                 <Link to={"/melumat"} className="text-sm">
-                    Məlumatlar
+                    Information
                   </Link>
                 </span>
               </div>

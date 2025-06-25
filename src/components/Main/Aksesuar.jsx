@@ -53,20 +53,20 @@ function Aksesuar() {
   return (
     <div>
       <div className='container lg:max-w-[1280px] mx-auto p-3'>
-        <h1 className=" uppercase italic text-2xl font-bold mb-4">Aksessuar və Moda</h1>
+        <h1 className=" uppercase italic text-2xl font-bold mb-4">Accessories and Fashion</h1>
         <div className='my-4'>
           <div className="flex flex-col">
             <div>
-              Sıralama:
+              Sorting:
               <select
                 name="sorting"
                 id="sorting"
                 onChange={(e) => handleSortingChange(e.target.value)}
                 value={sorting}
               >
-                <option value="latest">Son Məhsullar</option>
-                <option value="high-to-low">Bahadan Ucuza</option>
-                <option value="low-to-high">Ucuzdan Bahaya</option>
+                <option value="latest">Last Products</option>
+                <option value="high-to-low">From Expensive to Cheap</option>
+                <option value="low-to-high">From Cheap to Expensive</option>
               </select>
             </div>
             <div className="flex flex-wrap gap-10 justify-center m-1">
@@ -92,7 +92,7 @@ function Aksesuar() {
                         {item.title.slice(0, 13) + (item.title.length > 13 ? "..." : "")}
                       </h2>
                       <div className="flex justify-center">
-                        <h5 className="text-lg font-semibold mb-4">{item.price}₼</h5>
+                        <h5 className="text-lg font-semibold mb-4">{item.price}$</h5>
                       </div>
                       <button
                         onClick={() =>

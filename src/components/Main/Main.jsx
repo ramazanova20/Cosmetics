@@ -46,17 +46,17 @@ function Main({ favorites, setFavorites }) {
     <div>
       <div className="container lg:max-w-[1280px] mx-auto p-3">
         <div className="my-4 ">
-        <h1 className='text-2xl font-bold mb-4 uppercase italic'>Kosmetik Mehsullar</h1>
+        <h1 className='text-2xl font-bold mb-4 uppercase italic'>Cosmetics Products</h1>
           <div className="mb-4">
-            <label htmlFor="sorting">Sıralama:</label>
+            <label htmlFor="sorting">Sorting:</label>
             <select
               id="sorting"
               value={sortOrder}
               onChange={handleSortChange}
               className="ml-2 border rounded p-1">
-              <option value="latest">Son Məhsullar</option>
-              <option value="high-to-low">Bahadan Ucuza</option>
-              <option value="low-to-high">Ucuzdan Bahaya</option>
+              <option value="latest">Last Products</option>
+              <option value="high-to-low">From Expensive to Cheap</option>
+              <option value="low-to-high">From Cheap to Expensive</option>
             </select>
           </div>
           <div className="flex flex-wrap gap-10 mx-auto justify-center m-1">
@@ -82,7 +82,7 @@ function Main({ favorites, setFavorites }) {
                       {item.name.slice(0, 15) + (item.name.length > 15 ? "..." : "")}
                     </h2>
                     <h5 className="text-lg font-semibold mb-4 flex justify-center">
-                      {item.price}₼
+                      {item.price}$
                     </h5>
                     <button
                       onClick={() =>
@@ -107,7 +107,7 @@ function Main({ favorites, setFavorites }) {
                     onClick={() => setSlice(slice + 15)}
                     className="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700 block"
                   >
-                    Daha Çox
+                    More
                   </button>
                 </div>
               </div>

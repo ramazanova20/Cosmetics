@@ -21,7 +21,7 @@ function Brend() {
     <div>
       <div className="container lg:max-w-[1280px] mx-auto p-3">
         <div>
-          <h1 className="text-2xl font-bold mb-4 uppercase italic">Brend kosmetika firmalar</h1>
+          <h1 className="text-2xl font-bold mb-4 uppercase italic">Brand cosmetics companies</h1>
           {uniqueBrands.length > 0 ? (
             <div className="flex flex-wrap  justify-start ">
               {uniqueBrands.map((brand, i) => (

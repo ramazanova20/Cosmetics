@@ -42,7 +42,7 @@ function BrendInfo() {
       <div className="container lg:max-w-[1280px] mx-auto p-3">
         <div className='flex'>
           <h1 className="text-2xl font-bold mb-4 mr-2 italic text-green-500">"{brand}" </h1>
-          <h1 className="text-2xl font-bold mb-4">Məhsulları</h1>
+          <h1 className="text-2xl font-bold mb-4">Products</h1>
         </div>
         <div className="my-4">
           <div className="flex flex-wrap gap-10 mx-auto justify-center m-1">
@@ -56,7 +56,7 @@ function BrendInfo() {
                 </Link>
                 <div className="p-4">
                   <h2 className="text-xl font-semibold mb-2 text-center whitespace-nowrap">{item.name.slice(0, 14) + (item.name.length > 14 ? "..." : "")}</h2>
-                  <h5 className="text-lg font-semibold mb-4 flex justify-center">{ item.price}₼</h5>
+                  <h5 className="text-lg font-semibold mb-4 flex justify-center">{ item.price}$</h5>
                    <button onClick={() => addToBasket( item.id,
                       item.api_featured_image || item.image, 
                       item.name || item.title, 

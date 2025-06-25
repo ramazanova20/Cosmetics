@@ -16,7 +16,7 @@ function Melumat() {
   return (
     <div  className='container lg:max-w-[1280px] mx-auto p-3'>
       <h1 className="text-2xl font-bold mb-4 uppercase italic">
-         Kosmetika məlumatları
+         Useful Information
       </h1>
       <div className="my-4">
       <div className="flex flex-wrap gap-4 mx-auto justify-center m-1">
